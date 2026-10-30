@@ -12,7 +12,7 @@ running the SQL — and remembering what worked.
 
 | What | Due | Status |
 |---|---|---|
-| Design doc (≤ 2 pages, ≤ 10 MB) | **Mon 26 Oct 2026, 11:59 PM IST** | v6 ready — `Capstone_Design_Doc_AdsKG_Agent_v6.pdf` (15 KB, 2 pages) |
+| Design doc (≤ 2 pages, ≤ 10 MB) | **Mon 26 Oct 2026, 11:59 PM IST** | v6 ready — `AdsKG_Agent_Design_Doc_v6.pdf` (15 KB, 2 pages) |
 | Project (repo, docs ≤ 5 pages, 3-min video) | **Fri 30 Oct 2026** | not started (M1 is next) |
 | OpenAI key | arrives after design-doc approval | use local FastEmbed until then |
 

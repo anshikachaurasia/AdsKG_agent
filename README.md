@@ -4,18 +4,14 @@ An AI assistant that answers *"what happened?"* questions about ad performance. 
 (search), then **connects** it to related tables (knowledge graph), then writes and runs the SQL, and it remembers
 what worked.
 
-Capstone project · AI Engineering Cohort (RAG & Agents) · Anshika Chaurasia (solo) · October 2026
-Design doc: `Capstone_Design_Doc_AdsKG_Agent_v6.pdf` · Build plan: `PLAN.md`
-
-> **Status (27 Oct 2026):** M1 warehouse ✅ · M2 table cards + search ✅ · M3 benchmark ✅ frozen · M4 versions A + B + harness ✅ · M5 table map + version D ✅ · M6 MCP server ✅ · M7 agent E + memory ✅ · M8–M10 in progress.
-> Results and failure analysis will be added here as each milestone finishes.
+> **Status:** all 10 milestones done (M1–M10). Build plan: `PLAN.md`.
 
 ---
 
-## Submission package
+## What's in this repository
 | Deliverable | Where |
 |---|---|
-| Design doc (2 pages) | `docs/Capstone_Design_Doc_AdsKG_Agent_v6.pdf` |
+| Design doc (2 pages) | `docs/AdsKG_Agent_Design_Doc_v6.pdf` |
 | Documentation (3 pages) | `docs/AdsKG_Agent_Documentation.pdf` |
 | Code | this repository; one walkthrough notebook per milestone in `notebooks/` |
 | Results and failure analysis | this README (Results, Final choice, Approaches tried and pivots, Failure analysis) |
