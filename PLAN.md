@@ -39,7 +39,7 @@ capstone_project/
 ├── PLAN.md                      this file
 ├── requirements.txt             pinned Python packages
 ├── .env.example                 OPENAI_API_KEY=, NEO4J_* (the real .env is never committed)
-├── Capstone Project Specification_ AI Engineering Cohort.pdf   (course brief)
+├── Capstone Project Specification_ AI Engineering Cohort.pdf   (course brief; not in the repository)
 │
 ├── data/                        (not committed: too big)
 │   ├── raw/                     Kaggle CSVs (raw_sample, ad_feature, user_profile)
