@@ -18,7 +18,8 @@ from collections import Counter
 from datetime import date
 from pathlib import Path
 
-import duckdb
+sys.path.append(str(Path(__file__).resolve().parent.parent / "mcp_server"))
+from safety import connect  # noqa: E402
 
 PROJECT = Path(__file__).resolve().parent.parent
 DB_PATH = PROJECT / "data" / "ads.duckdb"
@@ -67,7 +68,7 @@ def fingerprint():
 
 
 def check_gold():
-    con = duckdb.connect(str(DB_PATH), read_only=True)
+    con = connect(DB_PATH)   # read-only, no file access (same as everywhere else)
     questions = load_jsonl(BENCH / "questions.jsonl")
     conversations = load_jsonl(BENCH / "conversations.jsonl")
 

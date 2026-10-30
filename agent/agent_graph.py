@@ -37,7 +37,7 @@ from typing_extensions import TypedDict
 
 sys.path.append(str(Path(__file__).resolve().parent))
 load_dotenv(Path(__file__).resolve().parent.parent / ".env")   # OPENAI_API_KEY
-from answer_checks import says_not_sure, unrun_sql  # noqa: E402
+from answer_checks import RUN_IT, drop_old_run_it, says_not_sure, unrun_sql  # noqa: E402
 from mcp_tools import MCPConnection, langchain_tools  # noqa: E402
 from memory import recall  # noqa: E402
 
@@ -74,8 +74,6 @@ Final answer (when you are done):
 
 FINISH_NOW = ("You have reached your limit for this question. Do not call tools. Give your final answer now, based "
               "ONLY on queries that already ran successfully. If none did, say \"not sure\".")
-RUN_IT = ("Your answer shows SQL that you have not run. Run it with run_sql now, then answer from its actual "
-          "result (or say \"not sure\").")
 
 
 class State(TypedDict):
@@ -125,6 +123,8 @@ def build_agent(config, connection):
 
     def agent(state):
         messages = recent_turns(state["messages"])
+        starts = [i for i, m in enumerate(messages) if isinstance(m, HumanMessage)]
+        messages = drop_old_run_it(messages, starts[-1])   # the "run your SQL" note is only for this question
         question = [m for m in messages if isinstance(m, HumanMessage)][-1].content
         system = SYSTEM_PROMPT
         if config.get("example_memory"):

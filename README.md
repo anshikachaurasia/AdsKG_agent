@@ -261,20 +261,28 @@ without hybrid 72.5%; without re-rank 76.3%. As on practice, rewrite and re-rank
 ### Post-hoc: the agent after the code-review fixes (not part of the frozen results)
 A code review (30 Oct) found two agent bugs, both by reading **test** answers: long SQL results were cut mid-JSON
 (so a successful query counted as a failed run and couldn't be graded), and the agent often ended with SQL it had
-never run (scored as "not sure"). The fixes (`agent/answer_checks.py`): long results keep valid JSON and drop rows
-instead; if an answer shows SQL that never ran, the agent is sent back **once** to run it; an answer counts as
+never run (scored as "not sure"). The fixes (`agent/answer_checks.py`): long results keep valid JSON and drop list
+items instead (SQL rows, search hits, table columns); if an answer shows SQL that never ran, the agent is sent back **once** to run it (that note is only sent for the
+current question, not in later turns of a conversation); an answer counts as
 "not sure" only if it *starts* with "not sure". Same settings otherwise (`configs/E_fixed.yaml`,
 `configs/E_memory_fixed.yaml`); 3 runs on test plus 1 on practice.
 
 | Version | Frozen result (test) | After fixes (test) [95% CI] | Practice after fixes | "Not sure" per run (before → after) |
 |---|---|---|---|---|
 | E | 80.0% | **84.2%** [78–90] | 85.0% | 5.0 → 3.3 |
-| E + memory | 92.5% | **95.0%** [91–98] | 97.5% | 4.0 → 0.3 |
+| E + memory | 92.5% | **95.0%** [91–98] | 97.5%¹ | 4.0 → 0.3 |
+
+¹ **Inflated by design:** example memory holds the 34 *practice* questions E answered correctly, so on practice
+the agent is often shown the very question it is asked, with its correct SQL. Only the test numbers mean anything here.
 
 - E improves: 9 questions fixed, 1 broken (McNemar p = 0.02). E + memory gains 2.5 points on average, but counting
   each question once (majority of 3 runs) nothing changes (0 vs 0): the fix makes its answers more *consistent*
   rather than fixing new questions. Abstentions almost disappear (4.0 → 0.3 per run).
 - **Still statistically tied with A** (A 90.4% vs fixed E + memory 95.0%: 2 vs 8, p = 0.11).
+- **Second review round (after these runs):** long *search, look-alike and description* results are now also
+  shortened by list items instead of being cut (before, only SQL results were), and the "run your SQL" note is no
+  longer sent in later turns of a conversation. The numbers above come from the runs *before* this round: the
+  second change doesn't affect single questions; the first mainly affects the "needed tables shown" count.
 - **Why this is reported separately:** the bugs were found by looking at test answers, so re-running on test and
   replacing the frozen numbers would be tuning on the test set. The frozen results above stay the main results;
   these numbers are an honest "what the bugs cost", and are optimistic in the same way.
@@ -389,7 +397,7 @@ After the code review, the agent had bugs fixed and was re-run as a separate, po
 | 7 | Advanced RAG (rewrite, hybrid, re-rank) | worse than basic search on practice **and** test | kept as a reported negative result; not tuned |
 | 8 | Running the 35 final runs one after another | about 3.5 h: local Qdrant allows one program at a time | one Qdrant copy per parallel chain (`QDRANT_PATH`), about 2 h |
 | 9 | Search alone for join questions | finds the summary table, misses `dim_user` / `dim_ad` | table map (D) and the agent's `get_join_path` tool |
-| 10 | Code review after the final runs | `run_sql` could read local files; long results counted as failed runs; unrun SQL scored as "not sure"; greedy scorer; no unit tests | file access off + 28-table allow-list (no score changed); agent fixes re-run as a separate post-hoc result (E 84.2%, E + memory 95.0%); backtracking scorer (re-scoring 666 wrong answers changed none); 27 unit tests + CI |
+| 10 | Code review after the final runs (two rounds) | `run_sql` could read local files; long results counted as failed runs; unrun SQL scored as "not sure"; greedy scorer; no unit tests | file access off + 28-table allow-list (no score changed); agent fixes re-run as a separate post-hoc result (E 84.2%, E + memory 95.0%); backtracking scorer (re-scoring 666 wrong answers changed none); 30 unit tests + CI |
 
 ## Differences from the design doc (honest list)
 - **Langfuse was not used.** Every step of every run is logged instead to `results/<run>/answers.jsonl` (SQL, tool
@@ -399,7 +407,7 @@ After the code review, the agent had bugs fixed and was re-run as a separate, po
 - **No blind questions from a classmate**; all 120 are AI-drafted from templates and checked against raw data (see Benchmark).
 - **Bigger catalog: 1 run per size** (not 3), and E was not included.
 - Model: `gpt-5-mini` for all versions, `gpt-5` as the grader.
-- **Unit tests and CI were added after a code review** (`tests/`, `.github/workflows/tests.yml`): 27 tests that need no
+- **Unit tests and CI were added after a code review** (`tests/`, `.github/workflows/tests.yml`): 30 tests that need no
   data or services. The `check_*.py` done-tests still need the database, Qdrant and Neo4j.
 
 ## User interface

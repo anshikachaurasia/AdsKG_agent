@@ -289,7 +289,7 @@ s += [milestone("M9", "Final exam: 80 test questions, 3 runs each",
                 "An outside review of the finished code found real problems and over-strong claims.",
                 "Switched off DuckDB file access and allowed only the 28 warehouse tables (a SELECT could read "
                 "<font face='Courier'>.env</font>); long results now drop rows instead of breaking JSON; the agent is sent "
-                "back once to run SQL it only showed; a fairer scorer; 27 unit tests that run on GitHub; Bonferroni and "
+                "back once to run SQL it only showed; a fairer scorer; 30 unit tests that run on GitHub; Bonferroni and "
                 "\"chosen on test\" caveats added.",
                 "No frozen number changed (re-checked 3,280 queries and 666 wrong answers). The fixed agent, re-run as a "
                 "separate post-hoc result: E 80.0% &rarr; 84.2%, E + memory 92.5% &rarr; 95.0%, still tied with A.",

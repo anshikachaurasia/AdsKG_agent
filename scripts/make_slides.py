@@ -380,7 +380,7 @@ fixes = [("Security", "SELECT could read files (.env)", "file access off + 28-ta
          ("Agent", "long results broke JSON; SQL shown but never run", "rows trimmed, not text · sent back once to run it"),
          ("Scoring", "greedy column match", "backtracking (re-scored 666 answers: none changed)"),
          ("Claims", "8 tests, no correction; winner picked on test", "Bonferroni column · “tie with A” · optimism noted"),
-         ("Tests", "no unit tests or CI", "27 unit tests, run on GitHub on every push")]
+         ("Tests", "no unit tests or CI", "30 unit tests, run on GitHub on every push")]
 for i, (area, problem, fix) in enumerate(fixes):
     y = 1.85 + i * 0.86
     text(s, 0.6, y, 1.4, 0.7, area, size=16, color=NAVY, bold=True, anchor=MSO_ANCHOR.MIDDLE)

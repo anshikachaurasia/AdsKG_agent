@@ -8,9 +8,11 @@ Run from the project folder:
     .venv/bin/python benchmark/cross_check.py
 """
 import json
+import sys
 from pathlib import Path
 
-import duckdb
+sys.path.append(str(Path(__file__).resolve().parent.parent / "mcp_server"))
+from safety import connect  # noqa: E402
 
 PROJECT = Path(__file__).resolve().parent.parent
 DB_PATH = PROJECT / "data" / "ads.duckdb"
@@ -34,7 +36,7 @@ RAW_SQL = {
 
 
 def cross_check():
-    con = duckdb.connect(str(DB_PATH), read_only=True)
+    con = connect(DB_PATH)   # read-only, no file access (same as everywhere else)
     questions = [json.loads(line) for line in (BENCH / "questions.jsonl").read_text().splitlines()]
     gold = {r["id"]: r["rows"] for r in map(json.loads, (BENCH / "gold_results.jsonl").read_text().splitlines())}
 
