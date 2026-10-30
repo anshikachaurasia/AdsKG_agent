@@ -1,0 +1,29 @@
+table: talkingdata_gender_age
+description: Inferred demographic information (gender, age and age/group label) for
+  TalkingData devices, used to analyze user demographics and segment devices for modeling
+  and reporting.
+grain: one row per device_id (one device's demographic record)
+freshness: static
+traffic: n/a
+joins:
+  device_id: talkingdata_phone_brand_device_model2
+lookalikes: []
+columns:
+- name: device_id
+  type: INT
+- name: gender
+  type: TEXT
+- name: age
+  type: INT
+- name: group
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: talkingdata
+search_text: 'Table talkingdata_gender_age. Inferred demographic information (gender,
+  age and age/group label) for TalkingData devices, used to analyze user demographics
+  and segment devices for modeling and reporting. One row = one row per device_id
+  (one device''s demographic record). Freshness: static. Traffic: n/a. Columns: device_id,
+  gender, age, group.'

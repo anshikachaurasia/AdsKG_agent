@@ -1,0 +1,44 @@
+table: food_inspection_2_employee
+description: 'Employee roster for the food inspection program: contact details, job
+  title, salary and supervisor information used to manage staff and assign inspections.'
+grain: one row per employee (includes employee ID, name, contact/address, title, salary,
+  and supervisor ID)
+freshness: static
+traffic: n/a
+joins:
+  supervisor: food_inspection_2_employee
+lookalikes: []
+columns:
+- name: employee_id
+  type: INT
+- name: first_name
+  type: TEXT
+- name: last_name
+  type: TEXT
+- name: address
+  type: TEXT
+- name: city
+  type: TEXT
+- name: state
+  type: TEXT
+- name: zip
+  type: INT
+- name: phone
+  type: TEXT
+- name: title
+  type: TEXT
+- name: salary
+  type: INT
+- name: supervisor
+  type: INT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: food_inspection_2
+search_text: 'Table food_inspection_2_employee. Employee roster for the food inspection
+  program: contact details, job title, salary and supervisor information used to manage
+  staff and assign inspections. One row = one row per employee (includes employee
+  ID, name, contact/address, title, salary, and supervisor ID). Freshness: static.
+  Traffic: n/a. Columns: employee_id, first_name, last_name, address, city, state,
+  zip, phone, title, salary, supervisor.'

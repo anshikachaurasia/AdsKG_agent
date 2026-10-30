@@ -1,0 +1,83 @@
+table: fact_ad_events
+description: Every single ad impression (one ad shown to one user) with exact time,
+  click flag, ad, campaign, brand, category, placement and price. Very large; use
+  summary tables when they fit the question.
+grain: one row per impression
+freshness: includes_today
+traffic: all
+joins:
+  user_id: dim_user
+  ad_id: dim_ad
+  campaign_id: dim_campaign
+lookalikes:
+- agg_ad_hourly
+columns:
+- name: event_time
+  type: TIMESTAMP
+- name: event_date
+  type: DATE
+- name: event_hour
+  type: TIMESTAMP
+- name: user_id
+  type: BIGINT
+- name: ad_id
+  type: BIGINT
+- name: campaign_id
+  type: BIGINT
+- name: advertiser_id
+  type: BIGINT
+- name: brand_id
+  type: BIGINT
+- name: category_id
+  type: BIGINT
+- name: placement_id
+  type: VARCHAR
+- name: is_click
+  type: BIGINT
+- name: price
+  type: DOUBLE
+row_count: 26557961
+date_range: 2017-05-06 to 2017-05-13
+examples:
+- event_time: '2017-05-11 16:05:34'
+  event_date: '2017-05-11'
+  event_hour: '2017-05-11 16:00:00'
+  user_id: '700823'
+  ad_id: '106061'
+  campaign_id: '212462'
+  advertiser_id: '152554'
+  brand_id: None
+  category_id: '6519'
+  placement_id: '430539_1007'
+  is_click: '0'
+  price: '45.0'
+- event_time: '2017-05-12 13:29:05'
+  event_date: '2017-05-12'
+  event_hour: '2017-05-12 13:00:00'
+  user_id: '450472'
+  ad_id: '106061'
+  campaign_id: '212462'
+  advertiser_id: '152554'
+  brand_id: None
+  category_id: '6519'
+  placement_id: '430548_1007'
+  is_click: '0'
+  price: '45.0'
+- event_time: '2017-05-13 20:03:29'
+  event_date: '2017-05-13'
+  event_hour: '2017-05-13 20:00:00'
+  user_id: '326397'
+  ad_id: '106061'
+  campaign_id: '212462'
+  advertiser_id: '152554'
+  brand_id: None
+  category_id: '6519'
+  placement_id: '430539_1007'
+  is_click: '1'
+  price: '45.0'
+search_text: 'Table fact_ad_events. Every single ad impression (one ad shown to one
+  user) with exact time, click flag, ad, campaign, brand, category, placement and
+  price. Very large; use summary tables when they fit the question. One row = one
+  row per impression. Freshness: includes_today. Traffic: all. Columns: event_time,
+  event_date, event_hour, user_id, ad_id, campaign_id, advertiser_id, brand_id, category_id,
+  placement_id, is_click, price.'

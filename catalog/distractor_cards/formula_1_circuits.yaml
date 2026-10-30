@@ -1,0 +1,39 @@
+table: formula_1_circuits
+description: List of Formula 1 circuits (race tracks) with identifying details, location,
+  and map coordinates used to reference circuits in race and event data.
+grain: one row per circuit (race track) with its id, reference code, name, location,
+  country, latitude, longitude, altitude and URL
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: circuitId
+  type: INT
+- name: circuitRef
+  type: TEXT
+- name: name
+  type: TEXT
+- name: location
+  type: TEXT
+- name: country
+  type: TEXT
+- name: lat
+  type: DOUBLE
+- name: lng
+  type: DOUBLE
+- name: alt
+  type: INT
+- name: url
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: formula_1
+search_text: 'Table formula_1_circuits. List of Formula 1 circuits (race tracks) with
+  identifying details, location, and map coordinates used to reference circuits in
+  race and event data. One row = one row per circuit (race track) with its id, reference
+  code, name, location, country, latitude, longitude, altitude and URL. Freshness:
+  static. Traffic: n/a. Columns: circuitId, circuitRef, name, location, country, lat,
+  lng, alt, url.'

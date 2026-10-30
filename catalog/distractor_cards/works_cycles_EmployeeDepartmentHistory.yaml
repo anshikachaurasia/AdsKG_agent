@@ -1,0 +1,34 @@
+table: works_cycles_EmployeeDepartmentHistory
+description: History of employee department and shift assignments with start/end dates
+  and last modification time, used to track when employees were assigned or transferred
+  between departments/shifts.
+grain: one row per employee department-and-shift assignment period (one assignment
+  record for a given employee with its start and end dates)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: BusinessEntityID
+  type: INT
+- name: DepartmentID
+  type: INT
+- name: ShiftID
+  type: INT
+- name: StartDate
+  type: DATE
+- name: EndDate
+  type: DATE
+- name: ModifiedDate
+  type: DATETIME
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: works_cycles
+search_text: 'Table works_cycles_EmployeeDepartmentHistory. History of employee department
+  and shift assignments with start/end dates and last modification time, used to track
+  when employees were assigned or transferred between departments/shifts. One row
+  = one row per employee department-and-shift assignment period (one assignment record
+  for a given employee with its start and end dates). Freshness: static. Traffic:
+  n/a. Columns: BusinessEntityID, DepartmentID, ShiftID, StartDate, EndDate, ModifiedDate.'

@@ -1,0 +1,23 @@
+table: chicago_crime_Neighborhood
+description: Mapping of Chicago neighborhood names to their community area numbers,
+  used to link incidents or statistics to neighborhood and community-area geography.
+grain: one row per neighborhood with its community area number
+freshness: static
+traffic: n/a
+joins:
+  community_area_no: chicago_crime_Community_Area
+lookalikes: []
+columns:
+- name: neighborhood_name
+  type: TEXT
+- name: community_area_no
+  type: INT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: chicago_crime
+search_text: 'Table chicago_crime_Neighborhood. Mapping of Chicago neighborhood names
+  to their community area numbers, used to link incidents or statistics to neighborhood
+  and community-area geography. One row = one row per neighborhood with its community
+  area number. Freshness: static. Traffic: n/a. Columns: neighborhood_name, community_area_no.'

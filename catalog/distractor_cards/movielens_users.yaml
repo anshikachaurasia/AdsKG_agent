@@ -1,0 +1,26 @@
+table: movielens_users
+description: 'User demographic profiles for the MovieLens dataset: each user''s ID,
+  age category, gender, and occupation used for personalization and analysis.'
+grain: one row per MovieLens user (one user profile)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: userid
+  type: INT
+- name: age
+  type: TEXT
+- name: u_gender
+  type: TEXT
+- name: occupation
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: movielens
+search_text: 'Table movielens_users. User demographic profiles for the MovieLens dataset:
+  each user''s ID, age category, gender, and occupation used for personalization and
+  analysis. One row = one row per MovieLens user (one user profile). Freshness: static.
+  Traffic: n/a. Columns: userid, age, u_gender, occupation.'

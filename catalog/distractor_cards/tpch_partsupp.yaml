@@ -1,0 +1,30 @@
+table: tpch_partsupp
+description: Inventory and cost details for each part supplied by a specific supplier
+  — contains available quantity, supply cost, and a free-text comment, used for inventory,
+  procurement, and cost analysis.
+grain: one row per part and supplier pair (ps_partkey + ps_suppkey)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: ps_partkey
+  type: BIGINT
+- name: ps_suppkey
+  type: BIGINT
+- name: ps_availqty
+  type: BIGINT
+- name: ps_supplycost
+  type: DECIMAL(15,2)
+- name: ps_comment
+  type: VARCHAR
+row_count: null
+date_range: null
+examples: []
+source: TPCH
+database: tpch
+search_text: 'Table tpch_partsupp. Inventory and cost details for each part supplied
+  by a specific supplier — contains available quantity, supply cost, and a free-text
+  comment, used for inventory, procurement, and cost analysis. One row = one row per
+  part and supplier pair (ps_partkey + ps_suppkey). Freshness: static. Traffic: n/a.
+  Columns: ps_partkey, ps_suppkey, ps_availqty, ps_supplycost, ps_comment.'

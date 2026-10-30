@@ -1,0 +1,50 @@
+table: dim_ad
+description: Lookup of every ad with its campaign, advertiser, brand, product category
+  and item price. Use it to find which campaign, brand or advertiser an ad belongs
+  to.
+grain: one row per ad
+freshness: static
+traffic: n/a
+joins:
+  campaign_id: dim_campaign
+  advertiser_id: dim_advertiser
+  ad_id: agg_ad_daily
+lookalikes: []
+columns:
+- name: ad_id
+  type: BIGINT
+- name: campaign_id
+  type: BIGINT
+- name: advertiser_id
+  type: BIGINT
+- name: brand_id
+  type: BIGINT
+- name: category_id
+  type: BIGINT
+- name: price
+  type: DOUBLE
+row_count: 846811
+date_range: null
+examples:
+- ad_id: '63133'
+  campaign_id: '83237'
+  advertiser_id: '1'
+  brand_id: '95471'
+  category_id: '6406'
+  price: '170.0'
+- ad_id: '313401'
+  campaign_id: '83237'
+  advertiser_id: '1'
+  brand_id: '87331'
+  category_id: '6406'
+  price: '199.0'
+- ad_id: '248909'
+  campaign_id: '83237'
+  advertiser_id: '1'
+  brand_id: '32233'
+  category_id: '392'
+  price: '38.0'
+search_text: 'Table dim_ad. Lookup of every ad with its campaign, advertiser, brand,
+  product category and item price. Use it to find which campaign, brand or advertiser
+  an ad belongs to. One row = one row per ad. Freshness: static. Traffic: n/a. Columns:
+  ad_id, campaign_id, advertiser_id, brand_id, category_id, price.'

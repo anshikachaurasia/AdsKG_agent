@@ -1,0 +1,26 @@
+table: ice_hockey_draft_weight_info
+description: Lookup table of standardized player weights used in the ice hockey draft
+  system, storing each weight value in kilograms and pounds.
+grain: one row per standardized weight entry (weight_id with corresponding weight_in_kg
+  and weight_in_lbs)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: weight_id
+  type: INT
+- name: weight_in_kg
+  type: INT
+- name: weight_in_lbs
+  type: INT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: ice_hockey_draft
+search_text: 'Table ice_hockey_draft_weight_info. Lookup table of standardized player
+  weights used in the ice hockey draft system, storing each weight value in kilograms
+  and pounds. One row = one row per standardized weight entry (weight_id with corresponding
+  weight_in_kg and weight_in_lbs). Freshness: static. Traffic: n/a. Columns: weight_id,
+  weight_in_kg, weight_in_lbs.'

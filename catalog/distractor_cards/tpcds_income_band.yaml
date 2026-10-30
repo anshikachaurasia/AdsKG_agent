@@ -1,0 +1,25 @@
+table: tpcds_income_band
+description: Definitions of income bands used to categorize customer incomes for analysis
+  and reporting, with a band key and its lower and upper income bounds.
+grain: one row per income band (surrogate key) with its lower and upper income bounds.
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: ib_income_band_sk
+  type: BIGINT
+- name: ib_lower_bound
+  type: BIGINT
+- name: ib_upper_bound
+  type: INTEGER
+row_count: null
+date_range: null
+examples: []
+source: TPCDS
+database: tpcds
+search_text: 'Table tpcds_income_band. Definitions of income bands used to categorize
+  customer incomes for analysis and reporting, with a band key and its lower and upper
+  income bounds. One row = one row per income band (surrogate key) with its lower
+  and upper income bounds.. Freshness: static. Traffic: n/a. Columns: ib_income_band_sk,
+  ib_lower_bound, ib_upper_bound.'

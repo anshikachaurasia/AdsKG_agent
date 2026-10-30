@@ -1,0 +1,48 @@
+table: chicago_crime_Ward
+description: Contact details and basic population info for each Chicago city ward,
+  including alderman name, ward office and City Hall office phone/address/email —
+  used to find ward representatives and their contact information.
+grain: one row per Chicago ward (ward_no)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: ward_no
+  type: INT
+- name: alderman_first_name
+  type: TEXT
+- name: alderman_last_name
+  type: TEXT
+- name: alderman_name_suffix
+  type: TEXT
+- name: ward_office_address
+  type: TEXT
+- name: ward_office_zip
+  type: TEXT
+- name: ward_email
+  type: TEXT
+- name: ward_office_phone
+  type: TEXT
+- name: ward_office_fax
+  type: TEXT
+- name: city_hall_office_room
+  type: INT
+- name: city_hall_office_phone
+  type: TEXT
+- name: city_hall_office_fax
+  type: TEXT
+- name: Population
+  type: INT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: chicago_crime
+search_text: 'Table chicago_crime_Ward. Contact details and basic population info
+  for each Chicago city ward, including alderman name, ward office and City Hall office
+  phone/address/email — used to find ward representatives and their contact information.
+  One row = one row per Chicago ward (ward_no). Freshness: static. Traffic: n/a. Columns:
+  ward_no, alderman_first_name, alderman_last_name, alderman_name_suffix, ward_office_address,
+  ward_office_zip, ward_email, ward_office_phone, ward_office_fax, city_hall_office_room,
+  city_hall_office_phone, city_hall_office_fax, Population.'

@@ -1,0 +1,47 @@
+table: agg_placement_daily
+description: Final daily impressions, clicks, CTR and estimated value per ad placement
+  (position on the site).
+grain: one row per placement per day
+freshness: final
+traffic: all
+joins:
+  placement_id: dim_placement
+lookalikes: []
+columns:
+- name: event_date
+  type: DATE
+- name: placement_id
+  type: VARCHAR
+- name: impressions
+  type: BIGINT
+- name: clicks
+  type: HUGEINT
+- name: ctr
+  type: DOUBLE
+- name: est_value
+  type: DOUBLE
+row_count: 14
+date_range: 2017-05-06 to 2017-05-12
+examples:
+- event_date: '2017-05-06'
+  placement_id: '430539_1007'
+  impressions: '1235558'
+  clicks: '67292'
+  ctr: '0.05446284189006101'
+  est_value: '39352744.30999993'
+- event_date: '2017-05-06'
+  placement_id: '430548_1007'
+  impressions: '2034790'
+  clicks: '103040'
+  ctr: '0.050639132293750215'
+  est_value: '53076356.460000195'
+- event_date: '2017-05-07'
+  placement_id: '430548_1007'
+  impressions: '2137916'
+  clicks: '105980'
+  ctr: '0.049571638923138234'
+  est_value: '153734257.2899996'
+search_text: 'Table agg_placement_daily. Final daily impressions, clicks, CTR and
+  estimated value per ad placement (position on the site). One row = one row per placement
+  per day. Freshness: final. Traffic: all. Columns: event_date, placement_id, impressions,
+  clicks, ctr, est_value.'

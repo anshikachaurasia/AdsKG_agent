@@ -1,0 +1,22 @@
+table: trains_trains
+description: List of trains with their identifier and travel direction, used to look
+  up each train's orientation for scheduling and routing.
+grain: one row per train (unique train id)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: id
+  type: INT
+- name: direction
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: trains
+search_text: 'Table trains_trains. List of trains with their identifier and travel
+  direction, used to look up each train''s orientation for scheduling and routing.
+  One row = one row per train (unique train id). Freshness: static. Traffic: n/a.
+  Columns: id, direction.'

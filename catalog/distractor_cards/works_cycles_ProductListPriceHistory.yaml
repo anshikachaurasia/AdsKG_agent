@@ -1,0 +1,30 @@
+table: works_cycles_ProductListPriceHistory
+description: Historical list prices for products with the effective date range and
+  record modification time, used to track price changes over time.
+grain: one row per product per effective price period (ProductID + StartDate–EndDate)
+freshness: static
+traffic: n/a
+joins:
+  ProductID: works_cycles_Product
+lookalikes: []
+columns:
+- name: ProductID
+  type: INT
+- name: StartDate
+  type: DATE
+- name: EndDate
+  type: DATE
+- name: ListPrice
+  type: DOUBLE
+- name: ModifiedDate
+  type: DATETIME
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: works_cycles
+search_text: 'Table works_cycles_ProductListPriceHistory. Historical list prices for
+  products with the effective date range and record modification time, used to track
+  price changes over time. One row = one row per product per effective price period
+  (ProductID + StartDate–EndDate). Freshness: static. Traffic: n/a. Columns: ProductID,
+  StartDate, EndDate, ListPrice, ModifiedDate.'

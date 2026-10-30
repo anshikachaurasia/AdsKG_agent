@@ -1,0 +1,26 @@
+table: soccer_2016_Venue
+description: List of venues (stadiums) used in the 2016 soccer dataset, with their
+  IDs, names, and associated city IDs; used to look up venue details and join to matches
+  or city data.
+grain: one row per venue (stadium)
+freshness: static
+traffic: n/a
+joins:
+  City_Id: soccer_2016_City
+lookalikes: []
+columns:
+- name: Venue_Id
+  type: INT
+- name: Venue_Name
+  type: TEXT
+- name: City_Id
+  type: INT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: soccer_2016
+search_text: 'Table soccer_2016_Venue. List of venues (stadiums) used in the 2016
+  soccer dataset, with their IDs, names, and associated city IDs; used to look up
+  venue details and join to matches or city data. One row = one row per venue (stadium).
+  Freshness: static. Traffic: n/a. Columns: Venue_Id, Venue_Name, City_Id.'

@@ -1,0 +1,29 @@
+table: music_platform_2_podcasts
+description: Metadata for podcasts on the platform including internal and iTunes identifiers,
+  slug, iTunes URL, and title — used to identify, link to, and display podcast entries.
+grain: one row per podcast (one podcast_id / podcast record)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: podcast_id
+  type: TEXT
+- name: itunes_id
+  type: INT
+- name: slug
+  type: TEXT
+- name: itunes_url
+  type: TEXT
+- name: title
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: music_platform_2
+search_text: 'Table music_platform_2_podcasts. Metadata for podcasts on the platform
+  including internal and iTunes identifiers, slug, iTunes URL, and title — used to
+  identify, link to, and display podcast entries. One row = one row per podcast (one
+  podcast_id / podcast record). Freshness: static. Traffic: n/a. Columns: podcast_id,
+  itunes_id, slug, itunes_url, title.'

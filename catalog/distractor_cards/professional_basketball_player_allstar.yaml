@@ -1,0 +1,70 @@
+table: professional_basketball_player_allstar
+description: Box-score statistics for players in professional basketball All-Star
+  games by season and league, used to analyze individual performance in All-Star appearances.
+grain: one row per player per season All‑Star game (identified by season_id, league_id
+  and conference)
+freshness: static
+traffic: n/a
+joins:
+  playerID: professional_basketball_players
+lookalikes: []
+columns:
+- name: playerID
+  type: TEXT
+- name: last_name
+  type: TEXT
+- name: first_name
+  type: TEXT
+- name: season_id
+  type: INT
+- name: conference
+  type: TEXT
+- name: league_id
+  type: TEXT
+- name: games_played
+  type: INT
+- name: minutes
+  type: INT
+- name: points
+  type: INT
+- name: o_rebounds
+  type: INT
+- name: d_rebounds
+  type: INT
+- name: rebounds
+  type: INT
+- name: assists
+  type: INT
+- name: steals
+  type: INT
+- name: blocks
+  type: INT
+- name: turnovers
+  type: INT
+- name: personal_fouls
+  type: INT
+- name: fg_attempted
+  type: INT
+- name: fg_made
+  type: INT
+- name: ft_attempted
+  type: INT
+- name: ft_made
+  type: INT
+- name: three_attempted
+  type: INT
+- name: three_made
+  type: INT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: professional_basketball
+search_text: 'Table professional_basketball_player_allstar. Box-score statistics for
+  players in professional basketball All-Star games by season and league, used to
+  analyze individual performance in All-Star appearances. One row = one row per player
+  per season All‑Star game (identified by season_id, league_id and conference). Freshness:
+  static. Traffic: n/a. Columns: playerID, last_name, first_name, season_id, conference,
+  league_id, games_played, minutes, points, o_rebounds, d_rebounds, rebounds, assists,
+  steals, blocks, turnovers, personal_fouls, fg_attempted, fg_made, ft_attempted,
+  ft_made, three_attempted, three_made.'

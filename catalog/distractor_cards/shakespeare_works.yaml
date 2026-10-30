@@ -1,0 +1,29 @@
+table: shakespeare_works
+description: 'Metadata for Shakespeare''s works: identifiers, short and long titles,
+  year (when available), and genre, used to catalog and query plays and poems.'
+grain: one row per single Shakespeare work (play, poem, or other literary piece)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: id
+  type: INT
+- name: Title
+  type: TEXT
+- name: LongTitle
+  type: TEXT
+- name: Date
+  type: INT
+- name: GenreType
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: shakespeare
+search_text: 'Table shakespeare_works. Metadata for Shakespeare''s works: identifiers,
+  short and long titles, year (when available), and genre, used to catalog and query
+  plays and poems. One row = one row per single Shakespeare work (play, poem, or other
+  literary piece). Freshness: static. Traffic: n/a. Columns: id, Title, LongTitle,
+  Date, GenreType.'

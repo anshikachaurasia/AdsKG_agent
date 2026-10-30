@@ -1,0 +1,22 @@
+{
+  "config": {
+    "version": "A",
+    "model": "gpt-5-mini",
+    "reasoning_effort": "low",
+    "price_in_per_1m": 0.25,
+    "price_out_per_1m": 2.0
+  },
+  "split": "practice",
+  "n": 40,
+  "accuracy": 0.875,
+  "accuracy_easy": 1.0,
+  "accuracy_medium": 0.8462,
+  "accuracy_tricky": 0.7857,
+  "table_f1": 0.9542,
+  "gold_tables_shown": 1.0,
+  "sql_errors": 0,
+  "avg_seconds": 3.7472,
+  "avg_tokens_in": 3208.8,
+  "avg_cost_usd": 0.0012,
+  "total_cost_usd": 0.0493
+}

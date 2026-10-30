@@ -1,0 +1,32 @@
+table: formula_1_constructorResults
+description: Final points and result status for a single Formula 1 constructor in
+  a specific race, used for race-level standings and analytics.
+grain: one row per constructor per race (unique record of a constructor's result in
+  one race)
+freshness: static
+traffic: n/a
+joins:
+  constructorId: formula_1_constructors
+  raceId: formula_1_races
+lookalikes: []
+columns:
+- name: constructorResultsId
+  type: INT
+- name: raceId
+  type: INT
+- name: constructorId
+  type: INT
+- name: points
+  type: DOUBLE
+- name: status
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: formula_1
+search_text: 'Table formula_1_constructorResults. Final points and result status for
+  a single Formula 1 constructor in a specific race, used for race-level standings
+  and analytics. One row = one row per constructor per race (unique record of a constructor''s
+  result in one race). Freshness: static. Traffic: n/a. Columns: constructorResultsId,
+  raceId, constructorId, points, status.'

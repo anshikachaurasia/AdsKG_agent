@@ -1,0 +1,39 @@
+table: tpcds_customer_demographics
+description: Customer demographic records with gender, marital and education status,
+  estimated purchases, credit rating, and dependent counts used to profile and segment
+  customers for analysis.
+grain: one row per customer demographic record (cd_demo_sk)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: cd_demo_sk
+  type: BIGINT
+- name: cd_gender
+  type: VARCHAR
+- name: cd_marital_status
+  type: VARCHAR
+- name: cd_education_status
+  type: VARCHAR
+- name: cd_purchase_estimate
+  type: BIGINT
+- name: cd_credit_rating
+  type: VARCHAR
+- name: cd_dep_count
+  type: BIGINT
+- name: cd_dep_employed_count
+  type: BIGINT
+- name: cd_dep_college_count
+  type: INTEGER
+row_count: null
+date_range: null
+examples: []
+source: TPCDS
+database: tpcds
+search_text: 'Table tpcds_customer_demographics. Customer demographic records with
+  gender, marital and education status, estimated purchases, credit rating, and dependent
+  counts used to profile and segment customers for analysis. One row = one row per
+  customer demographic record (cd_demo_sk). Freshness: static. Traffic: n/a. Columns:
+  cd_demo_sk, cd_gender, cd_marital_status, cd_education_status, cd_purchase_estimate,
+  cd_credit_rating, cd_dep_count, cd_dep_employed_count, cd_dep_college_count.'

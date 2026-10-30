@@ -1,0 +1,32 @@
+table: works_cycles_ProductPhoto
+description: Product images for items, storing a thumbnail and a large image (binary),
+  their file names, and when they were last modified — used to display or manage product
+  photos.
+grain: one row per product photo
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: ProductPhotoID
+  type: INT
+- name: ThumbNailPhoto
+  type: VARBINARY
+- name: ThumbnailPhotoFileName
+  type: TEXT
+- name: LargePhoto
+  type: VARBINARY
+- name: LargePhotoFileName
+  type: TEXT
+- name: ModifiedDate
+  type: DATETIME
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: works_cycles
+search_text: 'Table works_cycles_ProductPhoto. Product images for items, storing a
+  thumbnail and a large image (binary), their file names, and when they were last
+  modified — used to display or manage product photos. One row = one row per product
+  photo. Freshness: static. Traffic: n/a. Columns: ProductPhotoID, ThumbNailPhoto,
+  ThumbnailPhotoFileName, LargePhoto, LargePhotoFileName, ModifiedDate.'

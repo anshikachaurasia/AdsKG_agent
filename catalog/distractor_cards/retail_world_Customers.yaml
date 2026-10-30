@@ -1,0 +1,34 @@
+table: retail_world_Customers
+description: Customer master list containing each customer's ID, name and contact
+  information (address, city, postal code, country) used for billing, shipping and
+  customer lookups.
+grain: one row per customer (unique CustomerID)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: CustomerID
+  type: INT
+- name: CustomerName
+  type: TEXT
+- name: ContactName
+  type: TEXT
+- name: Address
+  type: TEXT
+- name: City
+  type: TEXT
+- name: PostalCode
+  type: TEXT
+- name: Country
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: retail_world
+search_text: 'Table retail_world_Customers. Customer master list containing each customer''s
+  ID, name and contact information (address, city, postal code, country) used for
+  billing, shipping and customer lookups. One row = one row per customer (unique CustomerID).
+  Freshness: static. Traffic: n/a. Columns: CustomerID, CustomerName, ContactName,
+  Address, City, PostalCode, Country.'

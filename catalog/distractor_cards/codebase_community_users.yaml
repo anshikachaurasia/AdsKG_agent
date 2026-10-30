@@ -1,0 +1,51 @@
+table: codebase_community_users
+description: Profiles of community users including reputation, creation and last access
+  dates, profile details (name, about, location, website, profile image), activity
+  counts (views, upvotes, downvotes), account ID and age — used to analyze user behavior,
+  reputation and demographics.
+grain: one row per user account/profile.
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: Id
+  type: INT
+- name: Reputation
+  type: INT
+- name: CreationDate
+  type: DATETIME
+- name: DisplayName
+  type: TEXT
+- name: LastAccessDate
+  type: DATETIME
+- name: WebsiteUrl
+  type: TEXT
+- name: Location
+  type: TEXT
+- name: AboutMe
+  type: TEXT
+- name: Views
+  type: INT
+- name: UpVotes
+  type: INT
+- name: DownVotes
+  type: INT
+- name: AccountId
+  type: INT
+- name: Age
+  type: INT
+- name: ProfileImageUrl
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: codebase_community
+search_text: 'Table codebase_community_users. Profiles of community users including
+  reputation, creation and last access dates, profile details (name, about, location,
+  website, profile image), activity counts (views, upvotes, downvotes), account ID
+  and age — used to analyze user behavior, reputation and demographics. One row =
+  one row per user account/profile.. Freshness: static. Traffic: n/a. Columns: Id,
+  Reputation, CreationDate, DisplayName, LastAccessDate, WebsiteUrl, Location, AboutMe,
+  Views, UpVotes, DownVotes, AccountId, Age, ProfileImageUrl.'

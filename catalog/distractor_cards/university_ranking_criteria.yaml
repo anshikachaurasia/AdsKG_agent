@@ -1,0 +1,29 @@
+table: university_ranking_criteria
+description: List of criteria used by each university ranking system, storing the
+  names of evaluation factors (e.g., research output, teaching quality) for use in
+  ranking reports and calculations.
+grain: one row per single ranking criterion for a specific ranking system (i.e., one
+  criterion name tied to a ranking_system_id)
+freshness: static
+traffic: n/a
+joins:
+  ranking_system_id: university_ranking_system
+lookalikes: []
+columns:
+- name: id
+  type: INT
+- name: ranking_system_id
+  type: INT
+- name: criteria_name
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: university
+search_text: 'Table university_ranking_criteria. List of criteria used by each university
+  ranking system, storing the names of evaluation factors (e.g., research output,
+  teaching quality) for use in ranking reports and calculations. One row = one row
+  per single ranking criterion for a specific ranking system (i.e., one criterion
+  name tied to a ranking_system_id). Freshness: static. Traffic: n/a. Columns: id,
+  ranking_system_id, criteria_name.'

@@ -1,0 +1,27 @@
+table: codebase_comments_MethodParameter
+description: Method parameters extracted from code comments, listing each parameter's
+  name and type for a specific method.
+grain: one row per parameter of a specific method (parameter instance for a given
+  MethodId)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: Id
+  type: INT
+- name: MethodId
+  type: TEXT
+- name: Type
+  type: TEXT
+- name: Name
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: codebase_comments
+search_text: 'Table codebase_comments_MethodParameter. Method parameters extracted
+  from code comments, listing each parameter''s name and type for a specific method.
+  One row = one row per parameter of a specific method (parameter instance for a given
+  MethodId). Freshness: static. Traffic: n/a. Columns: Id, MethodId, Type, Name.'

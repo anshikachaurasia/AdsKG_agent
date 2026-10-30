@@ -1,0 +1,29 @@
+table: works_cycles_EmployeePayHistory
+description: Historical records of employees' pay rates and pay frequency, used to
+  track compensation changes and when they were modified.
+grain: one row per employee pay rate change (one employee + rate change date)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: BusinessEntityID
+  type: INT
+- name: RateChangeDate
+  type: DATETIME
+- name: Rate
+  type: DOUBLE
+- name: PayFrequency
+  type: INT
+- name: ModifiedDate
+  type: DATETIME
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: works_cycles
+search_text: 'Table works_cycles_EmployeePayHistory. Historical records of employees''
+  pay rates and pay frequency, used to track compensation changes and when they were
+  modified. One row = one row per employee pay rate change (one employee + rate change
+  date). Freshness: static. Traffic: n/a. Columns: BusinessEntityID, RateChangeDate,
+  Rate, PayFrequency, ModifiedDate.'

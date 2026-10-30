@@ -1,0 +1,33 @@
+table: sales_Sales
+description: Individual sales transactions linking salesperson, customer, product
+  and quantity sold, used to track who sold what to which customer and how many units.
+grain: one row per individual sales transaction (one sold quantity of a product by
+  a salesperson to a customer)
+freshness: static
+traffic: n/a
+joins:
+  SalesPersonID: sales_Employees
+  CustomerID: sales_Customers
+  ProductID: sales_Products
+lookalikes: []
+columns:
+- name: SalesID
+  type: INT
+- name: SalesPersonID
+  type: INT
+- name: CustomerID
+  type: INT
+- name: ProductID
+  type: INT
+- name: Quantity
+  type: INT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: sales
+search_text: 'Table sales_Sales. Individual sales transactions linking salesperson,
+  customer, product and quantity sold, used to track who sold what to which customer
+  and how many units. One row = one row per individual sales transaction (one sold
+  quantity of a product by a salesperson to a customer). Freshness: static. Traffic:
+  n/a. Columns: SalesID, SalesPersonID, CustomerID, ProductID, Quantity.'

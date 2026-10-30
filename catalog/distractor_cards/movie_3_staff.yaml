@@ -1,0 +1,42 @@
+table: movie_3_staff
+description: Directory of store staff including contact details, authentication fields,
+  store assignment and last update timestamp, used for staff lookup, contact, and
+  access management.
+grain: one row per staff member (staff_id)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: staff_id
+  type: INT
+- name: first_name
+  type: TEXT
+- name: last_name
+  type: TEXT
+- name: address_id
+  type: INT
+- name: picture
+  type: VARBINARY
+- name: email
+  type: TEXT
+- name: store_id
+  type: INT
+- name: active
+  type: INT
+- name: username
+  type: TEXT
+- name: password
+  type: TEXT
+- name: last_update
+  type: DATETIME
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: movie_3
+search_text: 'Table movie_3_staff. Directory of store staff including contact details,
+  authentication fields, store assignment and last update timestamp, used for staff
+  lookup, contact, and access management. One row = one row per staff member (staff_id).
+  Freshness: static. Traffic: n/a. Columns: staff_id, first_name, last_name, address_id,
+  picture, email, store_id, active, username, password, last_update.'

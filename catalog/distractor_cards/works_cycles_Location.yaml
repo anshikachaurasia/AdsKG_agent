@@ -1,0 +1,28 @@
+table: works_cycles_Location
+description: Master list of work locations including name, cost rate, availability
+  and last modified date, used for costing, scheduling and inventory of locations.
+grain: one row per location (one LocationID)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: LocationID
+  type: INT
+- name: Name
+  type: TEXT
+- name: CostRate
+  type: DOUBLE
+- name: Availability
+  type: DOUBLE
+- name: ModifiedDate
+  type: DATETIME
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: works_cycles
+search_text: 'Table works_cycles_Location. Master list of work locations including
+  name, cost rate, availability and last modified date, used for costing, scheduling
+  and inventory of locations. One row = one row per location (one LocationID). Freshness:
+  static. Traffic: n/a. Columns: LocationID, Name, CostRate, Availability, ModifiedDate.'

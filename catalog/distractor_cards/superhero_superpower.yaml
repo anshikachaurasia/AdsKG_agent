@@ -1,0 +1,21 @@
+table: superhero_superpower
+description: A catalog of distinct superpowers (names and IDs) used to reference and
+  categorize powers for superheroes.
+grain: one row per superpower
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: id
+  type: INT
+- name: power_name
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: superhero
+search_text: 'Table superhero_superpower. A catalog of distinct superpowers (names
+  and IDs) used to reference and categorize powers for superheroes. One row = one
+  row per superpower. Freshness: static. Traffic: n/a. Columns: id, power_name.'

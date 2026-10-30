@@ -1,0 +1,56 @@
+table: tpch_lineitem
+description: Detailed order line items from the TPC-H dataset containing part, supplier,
+  quantity, pricing, discount, tax, shipping and status info used for sales, fulfillment
+  and performance analysis.
+grain: one row per individual line item on an order (a specific part supplied for
+  a specific order with its quantity, price and shipping details)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: l_orderkey
+  type: BIGINT
+- name: l_partkey
+  type: BIGINT
+- name: l_suppkey
+  type: BIGINT
+- name: l_linenumber
+  type: BIGINT
+- name: l_quantity
+  type: DECIMAL(15,2)
+- name: l_extendedprice
+  type: DECIMAL(15,2)
+- name: l_discount
+  type: DECIMAL(15,2)
+- name: l_tax
+  type: DECIMAL(15,2)
+- name: l_returnflag
+  type: VARCHAR
+- name: l_linestatus
+  type: VARCHAR
+- name: l_shipdate
+  type: DATE
+- name: l_commitdate
+  type: DATE
+- name: l_receiptdate
+  type: DATE
+- name: l_shipinstruct
+  type: VARCHAR
+- name: l_shipmode
+  type: VARCHAR
+- name: l_comment
+  type: VARCHAR
+row_count: null
+date_range: null
+examples: []
+source: TPCH
+database: tpch
+search_text: 'Table tpch_lineitem. Detailed order line items from the TPC-H dataset
+  containing part, supplier, quantity, pricing, discount, tax, shipping and status
+  info used for sales, fulfillment and performance analysis. One row = one row per
+  individual line item on an order (a specific part supplied for a specific order
+  with its quantity, price and shipping details). Freshness: static. Traffic: n/a.
+  Columns: l_orderkey, l_partkey, l_suppkey, l_linenumber, l_quantity, l_extendedprice,
+  l_discount, l_tax, l_returnflag, l_linestatus, l_shipdate, l_commitdate, l_receiptdate,
+  l_shipinstruct, l_shipmode, l_comment.'

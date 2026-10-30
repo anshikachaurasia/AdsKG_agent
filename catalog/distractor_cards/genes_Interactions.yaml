@@ -1,0 +1,30 @@
+table: genes_Interactions
+description: 'Pairwise gene interaction records: which two genes interact, the interaction
+  type, and their expression correlation used for network analysis and functional
+  inference.'
+grain: one row per gene-gene interaction (pair of GeneID1 and GeneID2)
+freshness: static
+traffic: n/a
+joins:
+  GeneID1: genes_Classification
+  GeneID2: genes_Classification
+lookalikes: []
+columns:
+- name: GeneID1
+  type: TEXT
+- name: GeneID2
+  type: TEXT
+- name: Type
+  type: TEXT
+- name: Expression_Corr
+  type: DOUBLE
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: genes
+search_text: 'Table genes_Interactions. Pairwise gene interaction records: which two
+  genes interact, the interaction type, and their expression correlation used for
+  network analysis and functional inference. One row = one row per gene-gene interaction
+  (pair of GeneID1 and GeneID2). Freshness: static. Traffic: n/a. Columns: GeneID1,
+  GeneID2, Type, Expression_Corr.'

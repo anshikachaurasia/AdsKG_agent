@@ -1,0 +1,26 @@
+table: shakespeare_characters
+description: List of characters from Shakespeare's works with their identifiers, short
+  names/abbreviations and a brief description for reference and analysis.
+grain: one row per character (one character record)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: id
+  type: INT
+- name: CharName
+  type: TEXT
+- name: Abbrev
+  type: TEXT
+- name: Description
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: shakespeare
+search_text: 'Table shakespeare_characters. List of characters from Shakespeare''s
+  works with their identifiers, short names/abbreviations and a brief description
+  for reference and analysis. One row = one row per character (one character record).
+  Freshness: static. Traffic: n/a. Columns: id, CharName, Abbrev, Description.'

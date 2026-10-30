@@ -1,0 +1,78 @@
+table: legislator_historical
+description: Historical records of U.S. legislators containing personal details and
+  external identifier codes (Bioguide, GovTrack, FEC, Wikidata, etc.) used for tracking
+  past versions of legislator metadata.
+grain: one row per historical record/version of a legislator (one snapshot of a legislator's
+  biographical fields and identifier values)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: ballotpedia_id
+  type: TEXT
+- name: bioguide_id
+  type: TEXT
+- name: bioguide_previous_id
+  type: TEXT
+- name: birthday_bio
+  type: TEXT
+- name: cspan_id
+  type: TEXT
+- name: fec_id
+  type: TEXT
+- name: first_name
+  type: TEXT
+- name: gender_bio
+  type: TEXT
+- name: google_entity_id_id
+  type: TEXT
+- name: govtrack_id
+  type: INT
+- name: house_history_alternate_id
+  type: TEXT
+- name: house_history_id
+  type: DOUBLE
+- name: icpsr_id
+  type: DOUBLE
+- name: last_name
+  type: TEXT
+- name: lis_id
+  type: TEXT
+- name: maplight_id
+  type: TEXT
+- name: middle_name
+  type: TEXT
+- name: nickname_name
+  type: TEXT
+- name: official_full_name
+  type: TEXT
+- name: opensecrets_id
+  type: TEXT
+- name: religion_bio
+  type: TEXT
+- name: suffix_name
+  type: TEXT
+- name: thomas_id
+  type: TEXT
+- name: votesmart_id
+  type: TEXT
+- name: wikidata_id
+  type: TEXT
+- name: wikipedia_id
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: legislator
+search_text: 'Table legislator_historical. Historical records of U.S. legislators
+  containing personal details and external identifier codes (Bioguide, GovTrack, FEC,
+  Wikidata, etc.) used for tracking past versions of legislator metadata. One row
+  = one row per historical record/version of a legislator (one snapshot of a legislator''s
+  biographical fields and identifier values). Freshness: static. Traffic: n/a. Columns:
+  ballotpedia_id, bioguide_id, bioguide_previous_id, birthday_bio, cspan_id, fec_id,
+  first_name, gender_bio, google_entity_id_id, govtrack_id, house_history_alternate_id,
+  house_history_id, icpsr_id, last_name, lis_id, maplight_id, middle_name, nickname_name,
+  official_full_name, opensecrets_id, religion_bio, suffix_name, thomas_id, votesmart_id,
+  wikidata_id, wikipedia_id.'

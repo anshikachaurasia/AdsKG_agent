@@ -1,0 +1,24 @@
+table: movie_3_film_text
+description: 'Basic film metadata: film identifier, title and a short textual description
+  used for display and search within the movie_3 dataset.'
+grain: one row per film (film_id)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: film_id
+  type: INT
+- name: title
+  type: TEXT
+- name: description
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: movie_3
+search_text: 'Table movie_3_film_text. Basic film metadata: film identifier, title
+  and a short textual description used for display and search within the movie_3 dataset.
+  One row = one row per film (film_id). Freshness: static. Traffic: n/a. Columns:
+  film_id, title, description.'

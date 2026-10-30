@@ -1,0 +1,20 @@
+table: talkingdata_app_all
+description: List of all app identifiers tracked in the TalkingData dataset, used
+  to reference apps in analyses and join with other app-level data.
+grain: one row per app (app_id)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: app_id
+  type: INT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: talkingdata
+search_text: 'Table talkingdata_app_all. List of all app identifiers tracked in the
+  TalkingData dataset, used to reference apps in analyses and join with other app-level
+  data. One row = one row per app (app_id). Freshness: static. Traffic: n/a. Columns:
+  app_id.'

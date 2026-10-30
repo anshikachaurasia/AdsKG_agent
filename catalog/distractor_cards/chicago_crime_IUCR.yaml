@@ -1,0 +1,28 @@
+table: chicago_crime_IUCR
+description: Lookup table of Chicago Police IUCR offense codes with their primary
+  and secondary descriptions and an index code, used to map numeric/alpha IUCR codes
+  to human-readable offense details.
+grain: one row per IUCR code
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: iucr_no
+  type: TEXT
+- name: primary_description
+  type: TEXT
+- name: secondary_description
+  type: TEXT
+- name: index_code
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: chicago_crime
+search_text: 'Table chicago_crime_IUCR. Lookup table of Chicago Police IUCR offense
+  codes with their primary and secondary descriptions and an index code, used to map
+  numeric/alpha IUCR codes to human-readable offense details. One row = one row per
+  IUCR code. Freshness: static. Traffic: n/a. Columns: iucr_no, primary_description,
+  secondary_description, index_code.'

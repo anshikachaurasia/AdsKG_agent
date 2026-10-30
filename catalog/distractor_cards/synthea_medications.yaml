@@ -1,0 +1,42 @@
+table: synthea_medications
+description: Records of medications administered or prescribed to patients, including
+  start/stop dates, medication code and description, the reason code/description,
+  and associated patient and encounter identifiers, used for analyzing medication
+  exposure and indications.
+grain: one row per medication event (one medication order or administration instance
+  for a patient during a specific encounter)
+freshness: static
+traffic: n/a
+joins:
+  ENCOUNTER: synthea_encounters
+  PATIENT: synthea_patients
+lookalikes: []
+columns:
+- name: START
+  type: DATE
+- name: STOP
+  type: DATE
+- name: PATIENT
+  type: TEXT
+- name: ENCOUNTER
+  type: TEXT
+- name: CODE
+  type: INT
+- name: DESCRIPTION
+  type: TEXT
+- name: REASONCODE
+  type: INT
+- name: REASONDESCRIPTION
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: synthea
+search_text: 'Table synthea_medications. Records of medications administered or prescribed
+  to patients, including start/stop dates, medication code and description, the reason
+  code/description, and associated patient and encounter identifiers, used for analyzing
+  medication exposure and indications. One row = one row per medication event (one
+  medication order or administration instance for a patient during a specific encounter).
+  Freshness: static. Traffic: n/a. Columns: START, STOP, PATIENT, ENCOUNTER, CODE,
+  DESCRIPTION, REASONCODE, REASONDESCRIPTION.'

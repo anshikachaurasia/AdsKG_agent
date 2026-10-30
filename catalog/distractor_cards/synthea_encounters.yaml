@@ -1,0 +1,35 @@
+table: synthea_encounters
+description: 'Synthetic patient healthcare encounters: records of individual clinical
+  encounters with date, patient ID, encounter code and description, and the reason
+  code/description used for analysis or simulation.'
+grain: one row per clinical encounter (single visit) for a synthetic patient
+freshness: static
+traffic: n/a
+joins:
+  PATIENT: synthea_patients
+lookalikes: []
+columns:
+- name: ID
+  type: TEXT
+- name: DATE
+  type: DATE
+- name: PATIENT
+  type: TEXT
+- name: CODE
+  type: INT
+- name: DESCRIPTION
+  type: TEXT
+- name: REASONCODE
+  type: INT
+- name: REASONDESCRIPTION
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: synthea
+search_text: 'Table synthea_encounters. Synthetic patient healthcare encounters: records
+  of individual clinical encounters with date, patient ID, encounter code and description,
+  and the reason code/description used for analysis or simulation. One row = one row
+  per clinical encounter (single visit) for a synthetic patient. Freshness: static.
+  Traffic: n/a. Columns: ID, DATE, PATIENT, CODE, DESCRIPTION, REASONCODE, REASONDESCRIPTION.'

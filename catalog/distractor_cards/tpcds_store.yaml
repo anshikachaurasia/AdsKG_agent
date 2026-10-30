@@ -1,0 +1,84 @@
+table: tpcds_store
+description: Master list of retail stores and their attributes (location, manager,
+  size, market/division/company info, tax and hours), used to look up store details
+  and support analytics and reporting.
+grain: one row per store record (a specific store version/row for a store, valid for
+  the given s_rec_start_date–s_rec_end_date)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: s_store_sk
+  type: BIGINT
+- name: s_store_id
+  type: VARCHAR
+- name: s_rec_start_date
+  type: DATE
+- name: s_rec_end_date
+  type: DATE
+- name: s_closed_date_sk
+  type: BIGINT
+- name: s_store_name
+  type: VARCHAR
+- name: s_number_employees
+  type: BIGINT
+- name: s_floor_space
+  type: BIGINT
+- name: s_hours
+  type: VARCHAR
+- name: s_manager
+  type: VARCHAR
+- name: s_market_id
+  type: BIGINT
+- name: s_geography_class
+  type: VARCHAR
+- name: s_market_desc
+  type: VARCHAR
+- name: s_market_manager
+  type: VARCHAR
+- name: s_division_id
+  type: BIGINT
+- name: s_division_name
+  type: VARCHAR
+- name: s_company_id
+  type: BIGINT
+- name: s_company_name
+  type: VARCHAR
+- name: s_street_number
+  type: VARCHAR
+- name: s_street_name
+  type: VARCHAR
+- name: s_street_type
+  type: VARCHAR
+- name: s_suite_number
+  type: VARCHAR
+- name: s_city
+  type: VARCHAR
+- name: s_county
+  type: VARCHAR
+- name: s_state
+  type: VARCHAR
+- name: s_zip
+  type: VARCHAR
+- name: s_country
+  type: VARCHAR
+- name: s_gmt_offset
+  type: DECIMAL(5,2)
+- name: s_tax_percentage
+  type: DECIMAL(5,2)
+row_count: null
+date_range: null
+examples: []
+source: TPCDS
+database: tpcds
+search_text: 'Table tpcds_store. Master list of retail stores and their attributes
+  (location, manager, size, market/division/company info, tax and hours), used to
+  look up store details and support analytics and reporting. One row = one row per
+  store record (a specific store version/row for a store, valid for the given s_rec_start_date–s_rec_end_date).
+  Freshness: static. Traffic: n/a. Columns: s_store_sk, s_store_id, s_rec_start_date,
+  s_rec_end_date, s_closed_date_sk, s_store_name, s_number_employees, s_floor_space,
+  s_hours, s_manager, s_market_id, s_geography_class, s_market_desc, s_market_manager,
+  s_division_id, s_division_name, s_company_id, s_company_name, s_street_number, s_street_name,
+  s_street_type, s_suite_number, s_city, s_county, s_state, s_zip, s_country, s_gmt_offset,
+  s_tax_percentage.'

@@ -1,0 +1,29 @@
+table: olympics_games
+description: Metadata for each Olympic Games edition — year, official name, and season
+  (Summer or Winter) — used to reference and join Games information in analyses and
+  reports.
+grain: one row per Olympic Games edition (one edition = a specific year and season,
+  e.g., 2016 Summer)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: id
+  type: INT
+- name: games_year
+  type: INT
+- name: games_name
+  type: TEXT
+- name: season
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: olympics
+search_text: 'Table olympics_games. Metadata for each Olympic Games edition — year,
+  official name, and season (Summer or Winter) — used to reference and join Games
+  information in analyses and reports. One row = one row per Olympic Games edition
+  (one edition = a specific year and season, e.g., 2016 Summer). Freshness: static.
+  Traffic: n/a. Columns: id, games_year, games_name, season.'

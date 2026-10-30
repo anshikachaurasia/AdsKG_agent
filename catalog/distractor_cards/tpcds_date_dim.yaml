@@ -1,0 +1,80 @@
+table: tpcds_date_dim
+description: Calendar/date dimension containing one row per calendar day with numeric
+  keys, names, fiscal/week/month/quarter indicators, holiday/weekend flags and references
+  used to join and filter fact tables and support time-based reporting and aggregation.
+grain: one row per calendar date (one day)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: d_date_sk
+  type: BIGINT
+- name: d_date_id
+  type: VARCHAR
+- name: d_date
+  type: DATE
+- name: d_month_seq
+  type: BIGINT
+- name: d_week_seq
+  type: BIGINT
+- name: d_quarter_seq
+  type: BIGINT
+- name: d_year
+  type: BIGINT
+- name: d_dow
+  type: BIGINT
+- name: d_moy
+  type: BIGINT
+- name: d_dom
+  type: BIGINT
+- name: d_qoy
+  type: BIGINT
+- name: d_fy_year
+  type: BIGINT
+- name: d_fy_quarter_seq
+  type: BIGINT
+- name: d_fy_week_seq
+  type: BIGINT
+- name: d_day_name
+  type: VARCHAR
+- name: d_quarter_name
+  type: VARCHAR
+- name: d_holiday
+  type: VARCHAR
+- name: d_weekend
+  type: VARCHAR
+- name: d_following_holiday
+  type: VARCHAR
+- name: d_first_dom
+  type: BIGINT
+- name: d_last_dom
+  type: BIGINT
+- name: d_same_day_ly
+  type: BIGINT
+- name: d_same_day_lq
+  type: BIGINT
+- name: d_current_day
+  type: VARCHAR
+- name: d_current_week
+  type: VARCHAR
+- name: d_current_month
+  type: VARCHAR
+- name: d_current_quarter
+  type: VARCHAR
+- name: d_current_year
+  type: VARCHAR
+row_count: null
+date_range: null
+examples: []
+source: TPCDS
+database: tpcds
+search_text: 'Table tpcds_date_dim. Calendar/date dimension containing one row per
+  calendar day with numeric keys, names, fiscal/week/month/quarter indicators, holiday/weekend
+  flags and references used to join and filter fact tables and support time-based
+  reporting and aggregation. One row = one row per calendar date (one day). Freshness:
+  static. Traffic: n/a. Columns: d_date_sk, d_date_id, d_date, d_month_seq, d_week_seq,
+  d_quarter_seq, d_year, d_dow, d_moy, d_dom, d_qoy, d_fy_year, d_fy_quarter_seq,
+  d_fy_week_seq, d_day_name, d_quarter_name, d_holiday, d_weekend, d_following_holiday,
+  d_first_dom, d_last_dom, d_same_day_ly, d_same_day_lq, d_current_day, d_current_week,
+  d_current_month, d_current_quarter, d_current_year.'

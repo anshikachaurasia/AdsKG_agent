@@ -1,0 +1,22 @@
+table: mental_health_survey_Survey
+description: Metadata for each mental health survey including a unique survey ID and
+  a textual description of the survey (used to identify and document available surveys).
+grain: one row per survey (one survey ID and its description)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: SurveyID
+  type: INT
+- name: Description
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: mental_health_survey
+search_text: 'Table mental_health_survey_Survey. Metadata for each mental health survey
+  including a unique survey ID and a textual description of the survey (used to identify
+  and document available surveys). One row = one row per survey (one survey ID and
+  its description). Freshness: static. Traffic: n/a. Columns: SurveyID, Description.'

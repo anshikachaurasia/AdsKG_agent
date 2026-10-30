@@ -1,0 +1,36 @@
+table: movie_characters
+description: 'Cast and credit details for movie characters: links a movie and an actor
+  to the character they played and records billing order, pay, and screentime for
+  analysis and reporting.'
+grain: one row per single actor-character appearance in a specific movie (one actor
+  playing one character in one MovieID)
+freshness: static
+traffic: n/a
+joins:
+  ActorID: movie_actor
+  MovieID: movie_movie
+lookalikes: []
+columns:
+- name: MovieID
+  type: INT
+- name: ActorID
+  type: INT
+- name: Character Name
+  type: TEXT
+- name: creditOrder
+  type: INT
+- name: pay
+  type: TEXT
+- name: screentime
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: movie
+search_text: 'Table movie_characters. Cast and credit details for movie characters:
+  links a movie and an actor to the character they played and records billing order,
+  pay, and screentime for analysis and reporting. One row = one row per single actor-character
+  appearance in a specific movie (one actor playing one character in one MovieID).
+  Freshness: static. Traffic: n/a. Columns: MovieID, ActorID, Character Name, creditOrder,
+  pay, screentime.'

@@ -1,0 +1,61 @@
+table: tpcds_promotion
+description: Details of marketing promotions (IDs, start/end dates, linked item, cost,
+  response target, channels, purpose, and discount status) used to analyze and join
+  promotion information in sales and marketing reports.
+grain: one row per promotion (identified by p_promo_sk / p_promo_id)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: p_promo_sk
+  type: BIGINT
+- name: p_promo_id
+  type: VARCHAR
+- name: p_start_date_sk
+  type: BIGINT
+- name: p_end_date_sk
+  type: BIGINT
+- name: p_item_sk
+  type: BIGINT
+- name: p_cost
+  type: DECIMAL(15,2)
+- name: p_response_target
+  type: BIGINT
+- name: p_promo_name
+  type: VARCHAR
+- name: p_channel_dmail
+  type: VARCHAR
+- name: p_channel_email
+  type: VARCHAR
+- name: p_channel_catalog
+  type: VARCHAR
+- name: p_channel_tv
+  type: VARCHAR
+- name: p_channel_radio
+  type: VARCHAR
+- name: p_channel_press
+  type: VARCHAR
+- name: p_channel_event
+  type: VARCHAR
+- name: p_channel_demo
+  type: VARCHAR
+- name: p_channel_details
+  type: VARCHAR
+- name: p_purpose
+  type: VARCHAR
+- name: p_discount_active
+  type: VARCHAR
+row_count: null
+date_range: null
+examples: []
+source: TPCDS
+database: tpcds
+search_text: 'Table tpcds_promotion. Details of marketing promotions (IDs, start/end
+  dates, linked item, cost, response target, channels, purpose, and discount status)
+  used to analyze and join promotion information in sales and marketing reports. One
+  row = one row per promotion (identified by p_promo_sk / p_promo_id). Freshness:
+  static. Traffic: n/a. Columns: p_promo_sk, p_promo_id, p_start_date_sk, p_end_date_sk,
+  p_item_sk, p_cost, p_response_target, p_promo_name, p_channel_dmail, p_channel_email,
+  p_channel_catalog, p_channel_tv, p_channel_radio, p_channel_press, p_channel_event,
+  p_channel_demo, p_channel_details, p_purpose, p_discount_active.'

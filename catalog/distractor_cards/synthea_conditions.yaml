@@ -1,0 +1,37 @@
+table: synthea_conditions
+description: Diagnosed or observed medical conditions for synthetic patients, with
+  diagnosis code and description, start and stop dates, and the related patient and
+  encounter identifiers; used to analyze condition histories and timing.
+grain: one row per condition occurrence for a patient (a single diagnosis/event with
+  start/stop dates and linked patient and encounter)
+freshness: static
+traffic: n/a
+joins:
+  ENCOUNTER: synthea_encounters
+  PATIENT: synthea_patients
+  DESCRIPTION: synthea_all_prevalences
+lookalikes: []
+columns:
+- name: START
+  type: DATE
+- name: STOP
+  type: DATE
+- name: PATIENT
+  type: TEXT
+- name: ENCOUNTER
+  type: TEXT
+- name: CODE
+  type: INT
+- name: DESCRIPTION
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: synthea
+search_text: 'Table synthea_conditions. Diagnosed or observed medical conditions for
+  synthetic patients, with diagnosis code and description, start and stop dates, and
+  the related patient and encounter identifiers; used to analyze condition histories
+  and timing. One row = one row per condition occurrence for a patient (a single diagnosis/event
+  with start/stop dates and linked patient and encounter). Freshness: static. Traffic:
+  n/a. Columns: START, STOP, PATIENT, ENCOUNTER, CODE, DESCRIPTION.'

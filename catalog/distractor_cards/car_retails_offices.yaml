@@ -1,0 +1,38 @@
+table: car_retails_offices
+description: Contact and location information for each retail office/dealership (city,
+  address, phone, territory, etc.), used for contacting, mapping and assigning sales
+  operations.
+grain: one row per single retail office/dealership location (unique officeCode)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: officeCode
+  type: TEXT
+- name: city
+  type: TEXT
+- name: phone
+  type: TEXT
+- name: addressLine1
+  type: TEXT
+- name: addressLine2
+  type: TEXT
+- name: state
+  type: TEXT
+- name: country
+  type: TEXT
+- name: postalCode
+  type: TEXT
+- name: territory
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: car_retails
+search_text: 'Table car_retails_offices. Contact and location information for each
+  retail office/dealership (city, address, phone, territory, etc.), used for contacting,
+  mapping and assigning sales operations. One row = one row per single retail office/dealership
+  location (unique officeCode). Freshness: static. Traffic: n/a. Columns: officeCode,
+  city, phone, addressLine1, addressLine2, state, country, postalCode, territory.'

@@ -1,0 +1,49 @@
+table: tpcds_warehouse
+description: Details about each warehouse including identifiers, name, square footage,
+  full address and GMT offset, used as the warehouse master record for analytics and
+  joins.
+grain: one row per warehouse (warehouse master record)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: w_warehouse_sk
+  type: BIGINT
+- name: w_warehouse_id
+  type: VARCHAR
+- name: w_warehouse_name
+  type: VARCHAR
+- name: w_warehouse_sq_ft
+  type: BIGINT
+- name: w_street_number
+  type: VARCHAR
+- name: w_street_name
+  type: VARCHAR
+- name: w_street_type
+  type: VARCHAR
+- name: w_suite_number
+  type: VARCHAR
+- name: w_city
+  type: VARCHAR
+- name: w_county
+  type: VARCHAR
+- name: w_state
+  type: VARCHAR
+- name: w_zip
+  type: VARCHAR
+- name: w_country
+  type: VARCHAR
+- name: w_gmt_offset
+  type: DECIMAL(5,2)
+row_count: null
+date_range: null
+examples: []
+source: TPCDS
+database: tpcds
+search_text: 'Table tpcds_warehouse. Details about each warehouse including identifiers,
+  name, square footage, full address and GMT offset, used as the warehouse master
+  record for analytics and joins. One row = one row per warehouse (warehouse master
+  record). Freshness: static. Traffic: n/a. Columns: w_warehouse_sk, w_warehouse_id,
+  w_warehouse_name, w_warehouse_sq_ft, w_street_number, w_street_name, w_street_type,
+  w_suite_number, w_city, w_county, w_state, w_zip, w_country, w_gmt_offset.'

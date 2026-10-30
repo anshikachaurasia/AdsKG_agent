@@ -1,0 +1,26 @@
+table: music_platform_2_runs
+description: 'Each row records one run of the reviews ingestion process: when it ran
+  (run_at), the highest review row id processed (max_rowid), and how many new reviews
+  were added (reviews_added).'
+grain: one row per execution (run) of the reviews ingestion job
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: run_at
+  type: TEXT
+- name: max_rowid
+  type: INT
+- name: reviews_added
+  type: INT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: music_platform_2
+search_text: 'Table music_platform_2_runs. Each row records one run of the reviews
+  ingestion process: when it ran (run_at), the highest review row id processed (max_rowid),
+  and how many new reviews were added (reviews_added). One row = one row per execution
+  (run) of the reviews ingestion job. Freshness: static. Traffic: n/a. Columns: run_at,
+  max_rowid, reviews_added.'

@@ -1,0 +1,42 @@
+table: car_retails_products
+description: Catalog of car-related products (SKUs) with their names, category/line,
+  scale, vendor, description, current stock level, purchase cost and list price used
+  for product listing, pricing and inventory management.
+grain: one row per product SKU (unique product code) with its attributes, current
+  quantity in stock, buy price and MSRP
+freshness: static
+traffic: n/a
+joins:
+  productLine: car_retails_productlines
+lookalikes: []
+columns:
+- name: productCode
+  type: TEXT
+- name: productName
+  type: TEXT
+- name: productLine
+  type: TEXT
+- name: productScale
+  type: TEXT
+- name: productVendor
+  type: TEXT
+- name: productDescription
+  type: TEXT
+- name: quantityInStock
+  type: INT
+- name: buyPrice
+  type: DOUBLE
+- name: MSRP
+  type: DOUBLE
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: car_retails
+search_text: 'Table car_retails_products. Catalog of car-related products (SKUs) with
+  their names, category/line, scale, vendor, description, current stock level, purchase
+  cost and list price used for product listing, pricing and inventory management.
+  One row = one row per product SKU (unique product code) with its attributes, current
+  quantity in stock, buy price and MSRP. Freshness: static. Traffic: n/a. Columns:
+  productCode, productName, productLine, productScale, productVendor, productDescription,
+  quantityInStock, buyPrice, MSRP.'

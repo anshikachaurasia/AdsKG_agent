@@ -1,0 +1,32 @@
+table: works_cycles_ShipMethod
+description: List of shipping methods with their identifiers, display name, base charge
+  and per-unit rate (plus GUID and last modified timestamp) used to calculate shipping
+  costs.
+grain: one row per shipping method
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: ShipMethodID
+  type: INT
+- name: Name
+  type: TEXT
+- name: ShipBase
+  type: DOUBLE
+- name: ShipRate
+  type: DOUBLE
+- name: rowguid
+  type: TEXT
+- name: ModifiedDate
+  type: DATETIME
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: works_cycles
+search_text: 'Table works_cycles_ShipMethod. List of shipping methods with their identifiers,
+  display name, base charge and per-unit rate (plus GUID and last modified timestamp)
+  used to calculate shipping costs. One row = one row per shipping method. Freshness:
+  static. Traffic: n/a. Columns: ShipMethodID, Name, ShipBase, ShipRate, rowguid,
+  ModifiedDate.'

@@ -1,0 +1,36 @@
+table: works_cycles_BusinessEntityContact
+description: Associates business entities with contact persons and the type of contact
+  (e.g., sales, support), including a unique row ID and last modified timestamp; used
+  to look up who to contact for a given business and why.
+grain: one row per association of a business entity, a person, and a contact type
+  (i.e., one business–person–contact-type link)
+freshness: static
+traffic: n/a
+joins:
+  BusinessEntityID: works_cycles_BusinessEntity
+  ContactTypeID: works_cycles_ContactType
+  PersonID: works_cycles_Person
+lookalikes: []
+columns:
+- name: BusinessEntityID
+  type: INT
+- name: PersonID
+  type: INT
+- name: ContactTypeID
+  type: INT
+- name: rowguid
+  type: TEXT
+- name: ModifiedDate
+  type: DATETIME
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: works_cycles
+search_text: 'Table works_cycles_BusinessEntityContact. Associates business entities
+  with contact persons and the type of contact (e.g., sales, support), including a
+  unique row ID and last modified timestamp; used to look up who to contact for a
+  given business and why. One row = one row per association of a business entity,
+  a person, and a contact type (i.e., one business–person–contact-type link). Freshness:
+  static. Traffic: n/a. Columns: BusinessEntityID, PersonID, ContactTypeID, rowguid,
+  ModifiedDate.'

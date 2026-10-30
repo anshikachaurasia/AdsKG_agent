@@ -1,0 +1,22 @@
+table: mondial_geo_mergesWith
+description: Pairs of seas that merge or are directly connected, used to record which
+  bodies of water meet or are considered merged.
+grain: one row per pair of seas that merge or are directly connected (Sea1, Sea2)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: Sea1
+  type: TEXT
+- name: Sea2
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: mondial_geo
+search_text: 'Table mondial_geo_mergesWith. Pairs of seas that merge or are directly
+  connected, used to record which bodies of water meet or are considered merged. One
+  row = one row per pair of seas that merge or are directly connected (Sea1, Sea2).
+  Freshness: static. Traffic: n/a. Columns: Sea1, Sea2.'

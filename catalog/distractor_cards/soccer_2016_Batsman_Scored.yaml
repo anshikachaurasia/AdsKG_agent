@@ -1,0 +1,31 @@
+table: soccer_2016_Batsman_Scored
+description: Ball-by-ball records of runs scored by the batsman in each match and
+  innings, used to analyze scoring on each delivery (match, over, ball, runs).
+grain: one row per single ball delivery in a specific match and innings (Match_Id
+  + Innings_No + Over_Id + Ball_Id)
+freshness: static
+traffic: n/a
+joins:
+  Match_Id: soccer_2016_Match
+lookalikes: []
+columns:
+- name: Match_Id
+  type: INT
+- name: Over_Id
+  type: INT
+- name: Ball_Id
+  type: INT
+- name: Runs_Scored
+  type: INT
+- name: Innings_No
+  type: INT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: soccer_2016
+search_text: 'Table soccer_2016_Batsman_Scored. Ball-by-ball records of runs scored
+  by the batsman in each match and innings, used to analyze scoring on each delivery
+  (match, over, ball, runs). One row = one row per single ball delivery in a specific
+  match and innings (Match_Id + Innings_No + Over_Id + Ball_Id). Freshness: static.
+  Traffic: n/a. Columns: Match_Id, Over_Id, Ball_Id, Runs_Scored, Innings_No.'

@@ -1,0 +1,22 @@
+table: superhero_race
+description: List of superhero races (e.g., Human, Kryptonian) used to categorize
+  and filter superheroes and aggregate counts by race.
+grain: one row per race record (a single race identifier)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: id
+  type: INT
+- name: race
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: superhero
+search_text: 'Table superhero_race. List of superhero races (e.g., Human, Kryptonian)
+  used to categorize and filter superheroes and aggregate counts by race. One row
+  = one row per race record (a single race identifier). Freshness: static. Traffic:
+  n/a. Columns: id, race.'

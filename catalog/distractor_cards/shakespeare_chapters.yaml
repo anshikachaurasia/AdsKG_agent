@@ -1,0 +1,29 @@
+table: shakespeare_chapters
+description: Descriptions of individual act/scene chapters from Shakespeare works,
+  used for indexing, searching, or referencing specific parts of each play.
+grain: one row per act/scene chapter of a Shakespeare work (identified by work_id)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: id
+  type: INT
+- name: Act
+  type: INT
+- name: Scene
+  type: INT
+- name: Description
+  type: TEXT
+- name: work_id
+  type: INT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: shakespeare
+search_text: 'Table shakespeare_chapters. Descriptions of individual act/scene chapters
+  from Shakespeare works, used for indexing, searching, or referencing specific parts
+  of each play. One row = one row per act/scene chapter of a Shakespeare work (identified
+  by work_id). Freshness: static. Traffic: n/a. Columns: id, Act, Scene, Description,
+  work_id.'

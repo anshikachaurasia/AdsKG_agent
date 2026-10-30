@@ -1,0 +1,32 @@
+table: music_platform_2_reviews
+description: User-written reviews for podcasts on the music platform, including review
+  title, full text, numeric rating, author, and creation timestamp used for display,
+  moderation, and analytics.
+grain: one row per single podcast review (one user’s review for one podcast)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: podcast_id
+  type: TEXT
+- name: title
+  type: TEXT
+- name: content
+  type: TEXT
+- name: rating
+  type: INT
+- name: author_id
+  type: TEXT
+- name: created_at
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: music_platform_2
+search_text: 'Table music_platform_2_reviews. User-written reviews for podcasts on
+  the music platform, including review title, full text, numeric rating, author, and
+  creation timestamp used for display, moderation, and analytics. One row = one row
+  per single podcast review (one user’s review for one podcast). Freshness: static.
+  Traffic: n/a. Columns: podcast_id, title, content, rating, author_id, created_at.'

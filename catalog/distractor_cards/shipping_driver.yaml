@@ -1,0 +1,36 @@
+table: shipping_driver
+description: Contact and address details for each delivery driver, used for dispatching,
+  assignment, and driver management.
+grain: one row per driver, containing the driver's ID, name, phone number, and mailing
+  address
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: driver_id
+  type: INT
+- name: first_name
+  type: TEXT
+- name: last_name
+  type: TEXT
+- name: address
+  type: TEXT
+- name: city
+  type: TEXT
+- name: state
+  type: TEXT
+- name: zip_code
+  type: INT
+- name: phone
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: shipping
+search_text: 'Table shipping_driver. Contact and address details for each delivery
+  driver, used for dispatching, assignment, and driver management. One row = one row
+  per driver, containing the driver''s ID, name, phone number, and mailing address.
+  Freshness: static. Traffic: n/a. Columns: driver_id, first_name, last_name, address,
+  city, state, zip_code, phone.'

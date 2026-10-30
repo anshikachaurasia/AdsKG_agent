@@ -1,0 +1,35 @@
+table: soccer_2016_Extra_Runs
+description: Extra runs recorded for a specific ball in a match (type and number of
+  extra runs like wides, no-balls, byes) used to track and analyze non-scoring deliveries
+  per match and innings.
+grain: one row per extra-run event on a specific ball (Match_Id + Innings_No + Over_Id
+  + Ball_Id)
+freshness: static
+traffic: n/a
+joins:
+  Extra_Type_Id: soccer_2016_Extra_Type
+lookalikes: []
+columns:
+- name: Match_Id
+  type: INT
+- name: Over_Id
+  type: INT
+- name: Ball_Id
+  type: INT
+- name: Extra_Type_Id
+  type: INT
+- name: Extra_Runs
+  type: INT
+- name: Innings_No
+  type: INT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: soccer_2016
+search_text: 'Table soccer_2016_Extra_Runs. Extra runs recorded for a specific ball
+  in a match (type and number of extra runs like wides, no-balls, byes) used to track
+  and analyze non-scoring deliveries per match and innings. One row = one row per
+  extra-run event on a specific ball (Match_Id + Innings_No + Over_Id + Ball_Id).
+  Freshness: static. Traffic: n/a. Columns: Match_Id, Over_Id, Ball_Id, Extra_Type_Id,
+  Extra_Runs, Innings_No.'

@@ -1,0 +1,30 @@
+table: talkingdata_app_events_relevant
+description: Records relevant app events linking an event to an app, with flags indicating
+  whether the app was installed and whether it was active at that event — used for
+  analytics of installation and activity per event.
+grain: one row per relevant event-app pair (one event_id + app_id instance)
+freshness: static
+traffic: n/a
+joins:
+  event_id: talkingdata_events_relevant
+  app_id: talkingdata_app_all
+lookalikes: []
+columns:
+- name: event_id
+  type: INT
+- name: app_id
+  type: INT
+- name: is_installed
+  type: INT
+- name: is_active
+  type: INT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: talkingdata
+search_text: 'Table talkingdata_app_events_relevant. Records relevant app events linking
+  an event to an app, with flags indicating whether the app was installed and whether
+  it was active at that event — used for analytics of installation and activity per
+  event. One row = one row per relevant event-app pair (one event_id + app_id instance).
+  Freshness: static. Traffic: n/a. Columns: event_id, app_id, is_installed, is_active.'

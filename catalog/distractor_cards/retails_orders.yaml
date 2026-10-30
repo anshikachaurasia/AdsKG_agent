@@ -1,0 +1,40 @@
+table: retails_orders
+description: Retail orders table with one record per customer order, including order
+  date, customer, status and priority, assigned clerk, total price and optional comment
+  for sales and fulfillment analysis.
+grain: one row per individual customer order (unique order identified by o_orderkey)
+freshness: static
+traffic: n/a
+joins:
+  o_custkey: retails_customer
+lookalikes: []
+columns:
+- name: o_orderdate
+  type: DATE
+- name: o_orderkey
+  type: INT
+- name: o_custkey
+  type: INT
+- name: o_orderpriority
+  type: TEXT
+- name: o_shippriority
+  type: INT
+- name: o_clerk
+  type: TEXT
+- name: o_orderstatus
+  type: TEXT
+- name: o_totalprice
+  type: DOUBLE
+- name: o_comment
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: retails
+search_text: 'Table retails_orders. Retail orders table with one record per customer
+  order, including order date, customer, status and priority, assigned clerk, total
+  price and optional comment for sales and fulfillment analysis. One row = one row
+  per individual customer order (unique order identified by o_orderkey). Freshness:
+  static. Traffic: n/a. Columns: o_orderdate, o_orderkey, o_custkey, o_orderpriority,
+  o_shippriority, o_clerk, o_orderstatus, o_totalprice, o_comment.'

@@ -1,0 +1,66 @@
+table: professional_basketball_teams
+description: Season-level records and identifiers for professional basketball teams,
+  including conference/division, rankings, playoff status, scoring totals, home/away
+  and overall win–loss, used for standings, performance analysis and reporting.
+grain: one row per team for a given season (year)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: year
+  type: INT
+- name: lgID
+  type: TEXT
+- name: tmID
+  type: TEXT
+- name: franchID
+  type: TEXT
+- name: confID
+  type: TEXT
+- name: divID
+  type: TEXT
+- name: rank
+  type: INT
+- name: confRank
+  type: INT
+- name: playoff
+  type: TEXT
+- name: name
+  type: TEXT
+- name: o_fgm
+  type: INT
+- name: o_ftm
+  type: INT
+- name: o_pts
+  type: INT
+- name: d_pts
+  type: INT
+- name: homeWon
+  type: INT
+- name: homeLost
+  type: INT
+- name: awayWon
+  type: INT
+- name: awayLost
+  type: INT
+- name: won
+  type: INT
+- name: lost
+  type: INT
+- name: games
+  type: INT
+- name: arena
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: professional_basketball
+search_text: 'Table professional_basketball_teams. Season-level records and identifiers
+  for professional basketball teams, including conference/division, rankings, playoff
+  status, scoring totals, home/away and overall win–loss, used for standings, performance
+  analysis and reporting. One row = one row per team for a given season (year). Freshness:
+  static. Traffic: n/a. Columns: year, lgID, tmID, franchID, confID, divID, rank,
+  confRank, playoff, name, o_fgm, o_ftm, o_pts, d_pts, homeWon, homeLost, awayWon,
+  awayLost, won, lost, games, arena.'

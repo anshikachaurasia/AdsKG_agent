@@ -1,0 +1,34 @@
+table: works_cycles_Store
+description: Master list of retail stores including store ID, name, assigned salesperson,
+  demographic details, GUID and last-modified timestamp, used to look up store attributes
+  and assignments.
+grain: one row per store (BusinessEntityID)
+freshness: static
+traffic: n/a
+joins:
+  BusinessEntityID: works_cycles_BusinessEntity
+  SalesPersonID: works_cycles_SalesPerson
+lookalikes: []
+columns:
+- name: BusinessEntityID
+  type: INT
+- name: Name
+  type: TEXT
+- name: SalesPersonID
+  type: INT
+- name: Demographics
+  type: TEXT
+- name: rowguid
+  type: TEXT
+- name: ModifiedDate
+  type: DATETIME
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: works_cycles
+search_text: 'Table works_cycles_Store. Master list of retail stores including store
+  ID, name, assigned salesperson, demographic details, GUID and last-modified timestamp,
+  used to look up store attributes and assignments. One row = one row per store (BusinessEntityID).
+  Freshness: static. Traffic: n/a. Columns: BusinessEntityID, Name, SalesPersonID,
+  Demographics, rowguid, ModifiedDate.'

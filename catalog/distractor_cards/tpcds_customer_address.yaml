@@ -1,0 +1,49 @@
+table: tpcds_customer_address
+description: Customer address dimension containing street, city, county, state, zip,
+  country, GMT offset and location type information used to join and enrich customer/location
+  data in analytic queries.
+grain: one row per unique customer address (one address record identified by ca_address_sk
+  / ca_address_id)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: ca_address_sk
+  type: BIGINT
+- name: ca_address_id
+  type: VARCHAR
+- name: ca_street_number
+  type: VARCHAR
+- name: ca_street_name
+  type: VARCHAR
+- name: ca_street_type
+  type: VARCHAR
+- name: ca_suite_number
+  type: VARCHAR
+- name: ca_city
+  type: VARCHAR
+- name: ca_county
+  type: VARCHAR
+- name: ca_state
+  type: VARCHAR
+- name: ca_zip
+  type: VARCHAR
+- name: ca_country
+  type: VARCHAR
+- name: ca_gmt_offset
+  type: DECIMAL(5,2)
+- name: ca_location_type
+  type: VARCHAR
+row_count: null
+date_range: null
+examples: []
+source: TPCDS
+database: tpcds
+search_text: 'Table tpcds_customer_address. Customer address dimension containing
+  street, city, county, state, zip, country, GMT offset and location type information
+  used to join and enrich customer/location data in analytic queries. One row = one
+  row per unique customer address (one address record identified by ca_address_sk
+  / ca_address_id). Freshness: static. Traffic: n/a. Columns: ca_address_sk, ca_address_id,
+  ca_street_number, ca_street_name, ca_street_type, ca_suite_number, ca_city, ca_county,
+  ca_state, ca_zip, ca_country, ca_gmt_offset, ca_location_type.'

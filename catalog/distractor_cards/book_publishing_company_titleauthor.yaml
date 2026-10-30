@@ -1,0 +1,29 @@
+table: book_publishing_company_titleauthor
+description: Links authors to book titles and records each author's order on the title
+  and their royalty percentage, used for tracking contributor roles and pay splits.
+grain: one row per author–title pairing (one author for one specific title)
+freshness: static
+traffic: n/a
+joins:
+  au_id: book_publishing_company_authors
+  title_id: book_publishing_company_titles
+lookalikes: []
+columns:
+- name: au_id
+  type: TEXT
+- name: title_id
+  type: TEXT
+- name: au_ord
+  type: INT
+- name: royaltyper
+  type: INT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: book_publishing_company
+search_text: 'Table book_publishing_company_titleauthor. Links authors to book titles
+  and records each author''s order on the title and their royalty percentage, used
+  for tracking contributor roles and pay splits. One row = one row per author–title
+  pairing (one author for one specific title). Freshness: static. Traffic: n/a. Columns:
+  au_id, title_id, au_ord, royaltyper.'

@@ -1,0 +1,78 @@
+table: tpcds_web_site
+description: 'Catalog of websites in the TPC-DS dataset: contains identifiers, operational
+  start/end dates, management and marketing attributes, company and address details,
+  timezone offset and tax percentage; used to analyze or join website-level attributes
+  with sales, traffic, and marketing data.'
+grain: one row per website (one site catalog entry)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: web_site_sk
+  type: BIGINT
+- name: web_site_id
+  type: VARCHAR
+- name: web_rec_start_date
+  type: DATE
+- name: web_rec_end_date
+  type: DATE
+- name: web_name
+  type: VARCHAR
+- name: web_open_date_sk
+  type: BIGINT
+- name: web_close_date_sk
+  type: BIGINT
+- name: web_class
+  type: VARCHAR
+- name: web_manager
+  type: VARCHAR
+- name: web_mkt_id
+  type: BIGINT
+- name: web_mkt_class
+  type: VARCHAR
+- name: web_mkt_desc
+  type: VARCHAR
+- name: web_market_manager
+  type: VARCHAR
+- name: web_company_id
+  type: BIGINT
+- name: web_company_name
+  type: VARCHAR
+- name: web_street_number
+  type: VARCHAR
+- name: web_street_name
+  type: VARCHAR
+- name: web_street_type
+  type: VARCHAR
+- name: web_suite_number
+  type: VARCHAR
+- name: web_city
+  type: VARCHAR
+- name: web_county
+  type: VARCHAR
+- name: web_state
+  type: VARCHAR
+- name: web_zip
+  type: VARCHAR
+- name: web_country
+  type: VARCHAR
+- name: web_gmt_offset
+  type: DECIMAL(5,2)
+- name: web_tax_percentage
+  type: DECIMAL(5,2)
+row_count: null
+date_range: null
+examples: []
+source: TPCDS
+database: tpcds
+search_text: 'Table tpcds_web_site. Catalog of websites in the TPC-DS dataset: contains
+  identifiers, operational start/end dates, management and marketing attributes, company
+  and address details, timezone offset and tax percentage; used to analyze or join
+  website-level attributes with sales, traffic, and marketing data. One row = one
+  row per website (one site catalog entry). Freshness: static. Traffic: n/a. Columns:
+  web_site_sk, web_site_id, web_rec_start_date, web_rec_end_date, web_name, web_open_date_sk,
+  web_close_date_sk, web_class, web_manager, web_mkt_id, web_mkt_class, web_mkt_desc,
+  web_market_manager, web_company_id, web_company_name, web_street_number, web_street_name,
+  web_street_type, web_suite_number, web_city, web_county, web_state, web_zip, web_country,
+  web_gmt_offset, web_tax_percentage.'

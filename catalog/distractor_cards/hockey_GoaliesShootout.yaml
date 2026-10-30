@@ -1,0 +1,37 @@
+table: hockey_GoaliesShootout
+description: 'Shootout results for goalies by season and team stint: number of shootout
+  wins, losses, shots faced and goals allowed used to evaluate shootout performance.'
+grain: one row per goalie per year per stint (team)
+freshness: static
+traffic: n/a
+joins:
+  year: hockey_Teams
+  playerID: hockey_Master
+lookalikes: []
+columns:
+- name: playerID
+  type: TEXT
+- name: year
+  type: INT
+- name: stint
+  type: INT
+- name: tmID
+  type: TEXT
+- name: W
+  type: INT
+- name: L
+  type: INT
+- name: SA
+  type: INT
+- name: GA
+  type: INT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: hockey
+search_text: 'Table hockey_GoaliesShootout. Shootout results for goalies by season
+  and team stint: number of shootout wins, losses, shots faced and goals allowed used
+  to evaluate shootout performance. One row = one row per goalie per year per stint
+  (team). Freshness: static. Traffic: n/a. Columns: playerID, year, stint, tmID, W,
+  L, SA, GA.'

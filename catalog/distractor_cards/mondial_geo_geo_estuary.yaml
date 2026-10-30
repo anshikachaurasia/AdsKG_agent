@@ -1,0 +1,24 @@
+table: mondial_geo_geo_estuary
+description: Locations of river estuaries around the world, listing the river and
+  the country and province where its estuary is located.
+grain: one row per river estuary (a river’s estuary in a specific province and country)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: River
+  type: TEXT
+- name: Country
+  type: TEXT
+- name: Province
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: mondial_geo
+search_text: 'Table mondial_geo_geo_estuary. Locations of river estuaries around the
+  world, listing the river and the country and province where its estuary is located.
+  One row = one row per river estuary (a river’s estuary in a specific province and
+  country). Freshness: static. Traffic: n/a. Columns: River, Country, Province.'

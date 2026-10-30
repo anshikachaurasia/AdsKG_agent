@@ -1,0 +1,26 @@
+table: movielens_directors
+description: 'Per-director metrics: director ID with a quality score and the director''s
+  average movie revenue, used to evaluate and compare director performance.'
+grain: one row per director (directorid) with that director's quality score (d_quality)
+  and their average revenue (avg_revenue)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: directorid
+  type: INT
+- name: d_quality
+  type: INT
+- name: avg_revenue
+  type: INT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: movielens
+search_text: 'Table movielens_directors. Per-director metrics: director ID with a
+  quality score and the director''s average movie revenue, used to evaluate and compare
+  director performance. One row = one row per director (directorid) with that director''s
+  quality score (d_quality) and their average revenue (avg_revenue). Freshness: static.
+  Traffic: n/a. Columns: directorid, d_quality, avg_revenue.'

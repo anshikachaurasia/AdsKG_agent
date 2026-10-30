@@ -1,0 +1,33 @@
+table: beer_factory_rootbeerreview
+description: Customer reviews of root beer brands including star rating, review text,
+  and review date — used to analyze ratings, sentiment, and trends by customer and
+  brand.
+grain: one row per single customer review of a specific root beer brand (one customer's
+  review on a given date)
+freshness: static
+traffic: n/a
+joins:
+  CustomerID: beer_factory_customers
+  BrandID: beer_factory_rootbeerbrand
+lookalikes: []
+columns:
+- name: CustomerID
+  type: INT
+- name: BrandID
+  type: INT
+- name: StarRating
+  type: INT
+- name: ReviewDate
+  type: DATE
+- name: Review
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: beer_factory
+search_text: 'Table beer_factory_rootbeerreview. Customer reviews of root beer brands
+  including star rating, review text, and review date — used to analyze ratings, sentiment,
+  and trends by customer and brand. One row = one row per single customer review of
+  a specific root beer brand (one customer''s review on a given date). Freshness:
+  static. Traffic: n/a. Columns: CustomerID, BrandID, StarRating, ReviewDate, Review.'

@@ -1,0 +1,20 @@
+table: talkingdata_gender_age_test
+description: List of device IDs included in the TalkingData gender & age prediction
+  test set, used to identify devices for evaluation or prediction scoring.
+grain: one row per device ID in the test set
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: device_id
+  type: INT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: talkingdata
+search_text: 'Table talkingdata_gender_age_test. List of device IDs included in the
+  TalkingData gender & age prediction test set, used to identify devices for evaluation
+  or prediction scoring. One row = one row per device ID in the test set. Freshness:
+  static. Traffic: n/a. Columns: device_id.'

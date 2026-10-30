@@ -1,0 +1,40 @@
+table: tpcds_catalog_page
+description: Metadata about catalog pages (department, page number, catalog number,
+  active date range, type and description) used for reporting and joining catalog
+  pages to sales and promotions.
+grain: one row per catalog page (a single catalog page identified by cp_catalog_page_sk/cp_catalog_page_id)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: cp_catalog_page_sk
+  type: BIGINT
+- name: cp_catalog_page_id
+  type: VARCHAR
+- name: cp_start_date_sk
+  type: BIGINT
+- name: cp_end_date_sk
+  type: BIGINT
+- name: cp_department
+  type: VARCHAR
+- name: cp_catalog_number
+  type: BIGINT
+- name: cp_catalog_page_number
+  type: BIGINT
+- name: cp_description
+  type: VARCHAR
+- name: cp_type
+  type: VARCHAR
+row_count: null
+date_range: null
+examples: []
+source: TPCDS
+database: tpcds
+search_text: 'Table tpcds_catalog_page. Metadata about catalog pages (department,
+  page number, catalog number, active date range, type and description) used for reporting
+  and joining catalog pages to sales and promotions. One row = one row per catalog
+  page (a single catalog page identified by cp_catalog_page_sk/cp_catalog_page_id).
+  Freshness: static. Traffic: n/a. Columns: cp_catalog_page_sk, cp_catalog_page_id,
+  cp_start_date_sk, cp_end_date_sk, cp_department, cp_catalog_number, cp_catalog_page_number,
+  cp_description, cp_type.'

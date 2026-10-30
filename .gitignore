@@ -1,0 +1,10 @@
+.env
+.venv/
+data/
+__pycache__/
+.ipynb_checkpoints/
+.DS_Store
+logs/
+~$*
+.idea/
+.ruff_cache/

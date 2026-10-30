@@ -1,0 +1,26 @@
+table: european_football_1_divisions
+description: List of European football divisions (leagues) with their identifier,
+  official name, and country; used to reference leagues in match and team data.
+grain: one row per football division/league (one league identifier and its name and
+  country)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: division
+  type: TEXT
+- name: name
+  type: TEXT
+- name: country
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: european_football_1
+search_text: 'Table european_football_1_divisions. List of European football divisions
+  (leagues) with their identifier, official name, and country; used to reference leagues
+  in match and team data. One row = one row per football division/league (one league
+  identifier and its name and country). Freshness: static. Traffic: n/a. Columns:
+  division, name, country.'

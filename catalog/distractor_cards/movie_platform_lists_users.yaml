@@ -1,0 +1,44 @@
+table: movie_platform_lists_users
+description: Membership records linking users to platform lists, storing when the
+  list was created/updated for that user plus user status flags (trial/subscriber/eligibility/payment)
+  and avatar/cover image URLs.
+grain: one row per user per list association (one user tied to one list)
+freshness: static
+traffic: n/a
+joins:
+  list_id: movie_platform_lists
+  user_id: movie_platform_lists
+lookalikes: []
+columns:
+- name: user_id
+  type: INT
+- name: list_id
+  type: INT
+- name: list_update_date_utc
+  type: TEXT
+- name: list_creation_date_utc
+  type: TEXT
+- name: user_trialist
+  type: INT
+- name: user_subscriber
+  type: INT
+- name: user_avatar_image_url
+  type: TEXT
+- name: user_cover_image_url
+  type: TEXT
+- name: user_eligible_for_trial
+  type: TEXT
+- name: user_has_payment_method
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: movie_platform
+search_text: 'Table movie_platform_lists_users. Membership records linking users to
+  platform lists, storing when the list was created/updated for that user plus user
+  status flags (trial/subscriber/eligibility/payment) and avatar/cover image URLs.
+  One row = one row per user per list association (one user tied to one list). Freshness:
+  static. Traffic: n/a. Columns: user_id, list_id, list_update_date_utc, list_creation_date_utc,
+  user_trialist, user_subscriber, user_avatar_image_url, user_cover_image_url, user_eligible_for_trial,
+  user_has_payment_method.'

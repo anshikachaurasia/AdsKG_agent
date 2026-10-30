@@ -1,0 +1,25 @@
+table: book_publishing_company_pub_info
+description: Publisher profile information including publisher identifier, logo image,
+  and public relations/about text used to display publisher details in apps and reports.
+grain: one row per publisher (publisher profile)
+freshness: static
+traffic: n/a
+joins:
+  pub_id: book_publishing_company_publishers
+lookalikes: []
+columns:
+- name: pub_id
+  type: TEXT
+- name: logo
+  type: VARBINARY
+- name: pr_info
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: book_publishing_company
+search_text: 'Table book_publishing_company_pub_info. Publisher profile information
+  including publisher identifier, logo image, and public relations/about text used
+  to display publisher details in apps and reports. One row = one row per publisher
+  (publisher profile). Freshness: static. Traffic: n/a. Columns: pub_id, logo, pr_info.'

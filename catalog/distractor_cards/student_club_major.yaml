@@ -1,0 +1,28 @@
+table: student_club_major
+description: Lookup of academic majors including their identifier, name, department,
+  and college; used to map students or clubs to the appropriate major and organizational
+  unit.
+grain: one row per academic major (one major_id)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: major_id
+  type: TEXT
+- name: major_name
+  type: TEXT
+- name: department
+  type: TEXT
+- name: college
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: student_club
+search_text: 'Table student_club_major. Lookup of academic majors including their
+  identifier, name, department, and college; used to map students or clubs to the
+  appropriate major and organizational unit. One row = one row per academic major
+  (one major_id). Freshness: static. Traffic: n/a. Columns: major_id, major_name,
+  department, college.'

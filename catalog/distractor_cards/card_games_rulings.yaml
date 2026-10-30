@@ -1,0 +1,28 @@
+table: card_games_rulings
+description: Official rulings and clarifications for individual cards (text of the
+  ruling, the date it was issued, and identifiers).
+grain: one row per single ruling/clarification for a specific card (identified by
+  uuid)
+freshness: static
+traffic: n/a
+joins:
+  uuid: card_games_cards
+lookalikes: []
+columns:
+- name: id
+  type: INT
+- name: date
+  type: DATE
+- name: text
+  type: TEXT
+- name: uuid
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: card_games
+search_text: 'Table card_games_rulings. Official rulings and clarifications for individual
+  cards (text of the ruling, the date it was issued, and identifiers). One row = one
+  row per single ruling/clarification for a specific card (identified by uuid). Freshness:
+  static. Traffic: n/a. Columns: id, date, text, uuid.'

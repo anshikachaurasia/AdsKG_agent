@@ -1,0 +1,35 @@
+table: soccer_2016_Player
+description: Roster of players for the 2016 season with basic personal details (name,
+  DOB, country) and playing attributes (batting hand, bowling skill); used for player
+  lookup and joining to match and performance data.
+grain: one row per player (one player record)
+freshness: static
+traffic: n/a
+joins:
+  Batting_hand: soccer_2016_Batting_Style
+  Bowling_skill: soccer_2016_Bowling_Style
+  Country_Name: soccer_2016_Country
+lookalikes: []
+columns:
+- name: Player_Id
+  type: INT
+- name: Player_Name
+  type: TEXT
+- name: DOB
+  type: DATE
+- name: Batting_hand
+  type: INT
+- name: Bowling_skill
+  type: INT
+- name: Country_Name
+  type: INT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: soccer_2016
+search_text: 'Table soccer_2016_Player. Roster of players for the 2016 season with
+  basic personal details (name, DOB, country) and playing attributes (batting hand,
+  bowling skill); used for player lookup and joining to match and performance data.
+  One row = one row per player (one player record). Freshness: static. Traffic: n/a.
+  Columns: Player_Id, Player_Name, DOB, Batting_hand, Bowling_skill, Country_Name.'

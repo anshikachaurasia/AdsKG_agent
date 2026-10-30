@@ -1,0 +1,43 @@
+table: trains_cars
+description: Details of individual railcars on each train, including their position
+  on the train, physical attributes (shape, length, sides, roof, number of wheels)
+  and what type and quantity of load they carry, used for train composition, capacity
+  and routing decisions.
+grain: one row per railcar on a train (a specific car instance with its attributes)
+freshness: static
+traffic: n/a
+joins:
+  train_id: trains_trains
+lookalikes: []
+columns:
+- name: id
+  type: INT
+- name: train_id
+  type: INT
+- name: position
+  type: INT
+- name: shape
+  type: TEXT
+- name: len
+  type: TEXT
+- name: sides
+  type: TEXT
+- name: roof
+  type: TEXT
+- name: wheels
+  type: INT
+- name: load_shape
+  type: TEXT
+- name: load_num
+  type: INT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: trains
+search_text: 'Table trains_cars. Details of individual railcars on each train, including
+  their position on the train, physical attributes (shape, length, sides, roof, number
+  of wheels) and what type and quantity of load they carry, used for train composition,
+  capacity and routing decisions. One row = one row per railcar on a train (a specific
+  car instance with its attributes). Freshness: static. Traffic: n/a. Columns: id,
+  train_id, position, shape, len, sides, roof, wheels, load_shape, load_num.'

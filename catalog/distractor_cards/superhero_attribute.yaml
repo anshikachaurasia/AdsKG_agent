@@ -1,0 +1,22 @@
+table: superhero_attribute
+description: Lookup of superhero attributes (e.g., strength, intelligence, origin)
+  used to classify and link attributes to superheroes.
+grain: one row per distinct superhero attribute (id and attribute_name)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: id
+  type: INT
+- name: attribute_name
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: superhero
+search_text: 'Table superhero_attribute. Lookup of superhero attributes (e.g., strength,
+  intelligence, origin) used to classify and link attributes to superheroes. One row
+  = one row per distinct superhero attribute (id and attribute_name). Freshness: static.
+  Traffic: n/a. Columns: id, attribute_name.'

@@ -1,0 +1,73 @@
+table: bike_share_1_weather
+description: Daily weather measurements (temperatures, humidity, pressure, wind, precipitation,
+  visibility, cloud cover, and notable events) for a given ZIP code, used to analyze
+  how weather affects bike-share usage and operations.
+grain: one row per date and zip code
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: date
+  type: TEXT
+- name: max_temperature_f
+  type: INT
+- name: mean_temperature_f
+  type: INT
+- name: min_temperature_f
+  type: INT
+- name: max_dew_point_f
+  type: INT
+- name: mean_dew_point_f
+  type: INT
+- name: min_dew_point_f
+  type: INT
+- name: max_humidity
+  type: INT
+- name: mean_humidity
+  type: INT
+- name: min_humidity
+  type: INT
+- name: max_sea_level_pressure_inches
+  type: DOUBLE
+- name: mean_sea_level_pressure_inches
+  type: DOUBLE
+- name: min_sea_level_pressure_inches
+  type: DOUBLE
+- name: max_visibility_miles
+  type: INT
+- name: mean_visibility_miles
+  type: INT
+- name: min_visibility_miles
+  type: INT
+- name: max_wind_Speed_mph
+  type: INT
+- name: mean_wind_speed_mph
+  type: INT
+- name: max_gust_speed_mph
+  type: INT
+- name: precipitation_inches
+  type: TEXT
+- name: cloud_cover
+  type: INT
+- name: events
+  type: TEXT
+- name: wind_dir_degrees
+  type: INT
+- name: zip_code
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: bike_share_1
+search_text: 'Table bike_share_1_weather. Daily weather measurements (temperatures,
+  humidity, pressure, wind, precipitation, visibility, cloud cover, and notable events)
+  for a given ZIP code, used to analyze how weather affects bike-share usage and operations.
+  One row = one row per date and zip code. Freshness: static. Traffic: n/a. Columns:
+  date, max_temperature_f, mean_temperature_f, min_temperature_f, max_dew_point_f,
+  mean_dew_point_f, min_dew_point_f, max_humidity, mean_humidity, min_humidity, max_sea_level_pressure_inches,
+  mean_sea_level_pressure_inches, min_sea_level_pressure_inches, max_visibility_miles,
+  mean_visibility_miles, min_visibility_miles, max_wind_Speed_mph, mean_wind_speed_mph,
+  max_gust_speed_mph, precipitation_inches, cloud_cover, events, wind_dir_degrees,
+  zip_code.'

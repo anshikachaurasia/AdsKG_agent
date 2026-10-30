@@ -1,0 +1,32 @@
+table: donor_essays
+description: Teacher-written project essays and descriptions for fundraising projects,
+  used to display project details to potential donors and support search/filtering
+  and donation decisions.
+grain: one row per teacher-submitted project (project essay)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: projectid
+  type: TEXT
+- name: teacher_acctid
+  type: TEXT
+- name: title
+  type: TEXT
+- name: short_description
+  type: TEXT
+- name: need_statement
+  type: TEXT
+- name: essay
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: donor
+search_text: 'Table donor_essays. Teacher-written project essays and descriptions
+  for fundraising projects, used to display project details to potential donors and
+  support search/filtering and donation decisions. One row = one row per teacher-submitted
+  project (project essay). Freshness: static. Traffic: n/a. Columns: projectid, teacher_acctid,
+  title, short_description, need_statement, essay.'

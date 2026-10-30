@@ -1,0 +1,23 @@
+table: debit_card_specializing_products
+description: List of debit card specialization products with their identifiers and
+  text descriptions; used to look up product details for debit card specialization
+  features.
+grain: one row per product (ProductID)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: ProductID
+  type: INT
+- name: Description
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: debit_card_specializing
+search_text: 'Table debit_card_specializing_products. List of debit card specialization
+  products with their identifiers and text descriptions; used to look up product details
+  for debit card specialization features. One row = one row per product (ProductID).
+  Freshness: static. Traffic: n/a. Columns: ProductID, Description.'

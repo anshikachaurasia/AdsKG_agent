@@ -1,0 +1,28 @@
+table: works_cycles_ProductCategory
+description: 'Lookup of product categories: each row stores a category ID, its name,
+  a row GUID, and the last modified timestamp, used to classify products and support
+  joins/lookups.'
+grain: one row per product category
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: ProductCategoryID
+  type: INT
+- name: Name
+  type: TEXT
+- name: rowguid
+  type: TEXT
+- name: ModifiedDate
+  type: DATETIME
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: works_cycles
+search_text: 'Table works_cycles_ProductCategory. Lookup of product categories: each
+  row stores a category ID, its name, a row GUID, and the last modified timestamp,
+  used to classify products and support joins/lookups. One row = one row per product
+  category. Freshness: static. Traffic: n/a. Columns: ProductCategoryID, Name, rowguid,
+  ModifiedDate.'

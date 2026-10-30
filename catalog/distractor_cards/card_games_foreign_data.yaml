@@ -1,0 +1,39 @@
+table: card_games_foreign_data
+description: Localized card metadata and copy (name, rules text, flavor text, type)
+  for card-game cards in various languages, used for displaying or searching card
+  information in a specific language.
+grain: one row per card-language combination (a specific card/printing in a particular
+  language)
+freshness: static
+traffic: n/a
+joins:
+  uuid: card_games_cards
+lookalikes: []
+columns:
+- name: id
+  type: INT
+- name: flavorText
+  type: TEXT
+- name: language
+  type: TEXT
+- name: multiverseid
+  type: INT
+- name: name
+  type: TEXT
+- name: text
+  type: TEXT
+- name: type
+  type: TEXT
+- name: uuid
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: card_games
+search_text: 'Table card_games_foreign_data. Localized card metadata and copy (name,
+  rules text, flavor text, type) for card-game cards in various languages, used for
+  displaying or searching card information in a specific language. One row = one row
+  per card-language combination (a specific card/printing in a particular language).
+  Freshness: static. Traffic: n/a. Columns: id, flavorText, language, multiverseid,
+  name, text, type, uuid.'

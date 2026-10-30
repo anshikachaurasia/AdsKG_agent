@@ -1,0 +1,32 @@
+table: mondial_geo_economy
+description: 'Country-level economic indicators: total GDP, sector shares for agriculture,
+  services and industry, and inflation — used to compare and analyze national economic
+  structure and performance.'
+grain: one row per country
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: Country
+  type: TEXT
+- name: GDP
+  type: DOUBLE
+- name: Agriculture
+  type: DOUBLE
+- name: Service
+  type: DOUBLE
+- name: Industry
+  type: DOUBLE
+- name: Inflation
+  type: DOUBLE
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: mondial_geo
+search_text: 'Table mondial_geo_economy. Country-level economic indicators: total
+  GDP, sector shares for agriculture, services and industry, and inflation — used
+  to compare and analyze national economic structure and performance. One row = one
+  row per country. Freshness: static. Traffic: n/a. Columns: Country, GDP, Agriculture,
+  Service, Industry, Inflation.'

@@ -1,0 +1,27 @@
+{
+  "config": {
+    "version": "E",
+    "chat_memory": false,
+    "example_memory": false,
+    "model": "gpt-5-mini",
+    "reasoning_effort": "low",
+    "price_in_per_1m": 0.25,
+    "price_out_per_1m": 2.0
+  },
+  "split": "practice",
+  "kind": "conversations",
+  "n": 15,
+  "accuracy": 0.2667,
+  "accuracy_turn1": 0.8,
+  "accuracy_turn2": 0.0,
+  "accuracy_turn3": 0.0,
+  "table_f1": 0.2667,
+  "gold_tables_shown": 0.7333,
+  "sql_errors": 5,
+  "not_sure": 5,
+  "avg_steps": 3.3333,
+  "avg_seconds": 7.132,
+  "avg_tokens_in": 3869.2,
+  "avg_cost_usd": 0.0016,
+  "total_cost_usd": 0.0239
+}

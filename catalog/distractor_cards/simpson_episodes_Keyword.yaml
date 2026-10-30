@@ -1,0 +1,23 @@
+table: simpson_episodes_Keyword
+description: Keywords assigned to Simpsons episodes (tags or extracted keywords used
+  for search, filtering and content analysis).
+grain: one row per episode-keyword pair (one keyword for a specific episode)
+freshness: static
+traffic: n/a
+joins:
+  episode_id: simpson_episodes_Episode
+lookalikes: []
+columns:
+- name: episode_id
+  type: TEXT
+- name: keyword
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: simpson_episodes
+search_text: 'Table simpson_episodes_Keyword. Keywords assigned to Simpsons episodes
+  (tags or extracted keywords used for search, filtering and content analysis). One
+  row = one row per episode-keyword pair (one keyword for a specific episode). Freshness:
+  static. Traffic: n/a. Columns: episode_id, keyword.'

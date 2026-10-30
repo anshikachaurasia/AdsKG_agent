@@ -1,0 +1,47 @@
+table: works_cycles_SalesOrderDetail
+description: Line-level records for sales orders containing product, quantity, unit
+  price, discount, line total, carrier tracking and modification timestamp — used
+  to analyze order line revenue, discounts and fulfillment.
+grain: one row per sales order line item (a specific product on a specific SalesOrderID,
+  identified by SalesOrderDetailID).
+freshness: static
+traffic: n/a
+joins:
+  SalesOrderID: works_cycles_SalesOrderHeader
+  SpecialOfferID: works_cycles_SpecialOfferProduct
+lookalikes: []
+columns:
+- name: SalesOrderID
+  type: INT
+- name: SalesOrderDetailID
+  type: INT
+- name: CarrierTrackingNumber
+  type: TEXT
+- name: OrderQty
+  type: INT
+- name: ProductID
+  type: INT
+- name: SpecialOfferID
+  type: INT
+- name: UnitPrice
+  type: DOUBLE
+- name: UnitPriceDiscount
+  type: DOUBLE
+- name: LineTotal
+  type: DOUBLE
+- name: rowguid
+  type: TEXT
+- name: ModifiedDate
+  type: DATETIME
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: works_cycles
+search_text: 'Table works_cycles_SalesOrderDetail. Line-level records for sales orders
+  containing product, quantity, unit price, discount, line total, carrier tracking
+  and modification timestamp — used to analyze order line revenue, discounts and fulfillment.
+  One row = one row per sales order line item (a specific product on a specific SalesOrderID,
+  identified by SalesOrderDetailID).. Freshness: static. Traffic: n/a. Columns: SalesOrderID,
+  SalesOrderDetailID, CarrierTrackingNumber, OrderQty, ProductID, SpecialOfferID,
+  UnitPrice, UnitPriceDiscount, LineTotal, rowguid, ModifiedDate.'

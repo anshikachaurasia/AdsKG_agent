@@ -1,0 +1,28 @@
+table: software_company_mailings3
+description: Records responses to company mailings, storing the reference ID of the
+  mailing, when the response was received, and the response text for tracking and
+  analysis of mailing engagement.
+grain: one row per single response to a specific mailing (REFID) with timestamp (REF_DATE)
+  and the response content
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: REFID
+  type: INT
+- name: REF_DATE
+  type: DATETIME
+- name: RESPONSE
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: software_company
+search_text: 'Table software_company_mailings3. Records responses to company mailings,
+  storing the reference ID of the mailing, when the response was received, and the
+  response text for tracking and analysis of mailing engagement. One row = one row
+  per single response to a specific mailing (REFID) with timestamp (REF_DATE) and
+  the response content. Freshness: static. Traffic: n/a. Columns: REFID, REF_DATE,
+  RESPONSE.'

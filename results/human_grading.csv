@@ -1,0 +1,256 @@
+item,question,sql,result_first_rows,written_answer,your_acceptable (yes/no),your_note
+1,Reach among men for campaign 226431 on 8 May 2017?,"select count(distinct f.user_id) as reach_men
+from fact_ad_events f
+join dim_user u on f.user_id = u.user_id
+where f.event_date = date '2017-05-08'
+  and f.campaign_id = 226431
+  and u.gender = 'male';","[[""23""]]","Reach (unique men who saw campaign 226431) on 2017-05-08 = 23 men.
+
+Caveats: data is final for 2017-05-08 (the dataset covers 2017-05-06 to 2017-05-13). I counted distinct user_id in fact_ad_events joined to dim_user gender = 'male'.
+
+SQL used:
+```sql
+select count(distinct f.user_id) as reach_men
+from fact_ad_events f
+join dim_user u on f.user_id = u.user_id
+where f.event_date = date '2017-05-08'
+  and f.campaign_id = 226431
+  and u.gender = 'male';
+```",yes,
+2,Campaign 141116: clicks at 23:00-23:59 on 8 May 2017 after removing bot traffic?,"SELECT clicks
+FROM agg_campaign_hourly_valid
+WHERE campaign_id = 141116
+  AND event_hour = TIMESTAMP '2017-05-08 23:00:00'","[[""3""]]",,yes,
+3,How many unique people saw brand 406642's ads yesterday?,"SELECT unique_users
+FROM reach_brand_daily
+WHERE brand_id = 406642
+  AND event_date = DATE '2017-05-12'","[[""235""]]",,yes,
+4,Number of clicks for ad 650916 on 11 May 2017?,"SELECT clicks
+FROM agg_ad_daily
+WHERE ad_id = 650916
+  AND event_date = DATE '2017-05-11'","[[""12""]]",,yes,
+5,How many unique people saw brand 406642's ads yesterday?,"SELECT event_date, brand_id, unique_users
+FROM reach_brand_daily
+WHERE event_date = DATE '2017-05-12'
+  AND brand_id = 406642;","[[""2017-05-12"", ""406642"", ""235""]]","235 unique people saw brand 406642's ads yesterday (2017-05-12).
+
+SQL used:
+```sql
+SELECT event_date, brand_id, unique_users
+FROM reach_brand_daily
+WHERE event_date = DATE '2017-05-12'
+  AND brand_id = 406642;
+```",yes,
+6,How many ads does campaign 116859 have?,"SELECT num_ads
+FROM dim_campaign
+WHERE campaign_id = 116859","[[""21""]]",,yes,
+7,Campaign 141116: clicks at 23:00-23:59 on 8 May 2017 after removing bot traffic?,"SELECT event_hour, campaign_id, impressions, clicks, ctr
+FROM agg_campaign_hourly_valid
+WHERE campaign_id = 141116
+  AND event_hour = TIMESTAMP '2017-05-08 23:00:00';","[[""2017-05-08 23:00:00"", ""141116"", ""56"", ""3"", ""0.05357142857142857""]]","Campaign 141116 had 3 clicks (56 impressions, CTR = 3/56 = 0.05357142857142857) during 23:00–23:59 on 2017-05-08 after bot/suspicious traffic was removed.
+
+SQL:
+```sql
+SELECT event_hour, campaign_id, impressions, clicks, ctr
+FROM agg_campaign_hourly_valid
+WHERE campaign_id = 141116
+  AND event_hour = TIMESTAMP '2017-05-08 23:00:00';
+```
+",yes,
+8,Number of campaigns for advertiser 125660?,"SELECT advertiser_id, num_campaigns, num_ads
+FROM dim_advertiser
+WHERE advertiser_id = 125660;","[[""125660"", ""9"", ""10""]]","Advertiser 125660 has 9 campaigns (and 10 ads).
+
+SQL used:
+```sql
+SELECT advertiser_id, num_campaigns, num_ads
+FROM dim_advertiser
+WHERE advertiser_id = 125660;
+```",yes,
+9,How much does the product in ad 748949 cost?,"SELECT price
+FROM dim_ad
+WHERE ad_id = 748949","[[""339.0""]]",,yes,
+10,What was the CTR of campaign 112525 on 7 May 2017?,"SELECT event_date, campaign_id, impressions, clicks, ctr, CASE WHEN impressions=0 THEN NULL ELSE clicks::DOUBLE / impressions END AS ctr_calc
+FROM agg_campaign_daily
+WHERE campaign_id = 112525
+  AND event_date = DATE '2017-05-07';","[[""2017-05-07"", ""112525"", ""161"", ""10"", ""0.062111801242236024"", ""0.062111801242236024""]]","Campaign 112525 on 2017-05-07: impressions = 161, clicks = 10, CTR = 0.062111801242236024.
+
+Caveats: this is the final daily table (all traffic, up to yesterday). If you want bot-filtered CTR use agg_campaign_daily_valid instead.
+
+SQL used:
+```sql
+SELECT event_date, campaign_id, impressions, clicks, ctr, CASE WHEN impressions=0 THEN NULL ELSE clicks::DOUBLE / impressions END AS ctr_calc
+FROM agg_campaign_daily
+WHERE campaign_id = 112525
+  AND event_date = DATE '2017-05-07';
+```",yes,
+11,"Yesterday's clicks for advertiser 179351, only ads in category 8973?","SELECT
+  a.event_date,
+  d.advertiser_id,
+  d.category_id,
+  SUM(a.clicks) AS clicks
+FROM agg_ad_daily a
+JOIN dim_ad d USING (ad_id)
+WHERE a.event_date = DATE '2017-05-12'
+  AND d.advertiser_id = 179351
+  AND d.category_id = 8973
+GROUP BY a.event_date, d.advertiser_id, d.category_id","[[""2017-05-12"", ""179351"", ""8973"", ""3""]]",,yes,
+12,Top category by clicks on 11 May 2017?,"SELECT category_id, clicks
+FROM agg_category_daily
+WHERE event_date = DATE '2017-05-11'
+ORDER BY clicks DESC
+LIMIT 1","[[""6261"", ""23099""]]",,yes,
+13,How many clicks did brand 166215 get from high-spending users (spending level 3) from 6 to 12 May?,"SELECT SUM(f.is_click) AS clicks
+FROM fact_ad_events f
+JOIN dim_user u ON f.user_id = u.user_id
+WHERE f.brand_id = 166215
+  AND u.spending_level = 3
+  AND f.event_date BETWEEN DATE '2017-05-06' AND DATE '2017-05-12';","[[""4""]]","Brand 166215 received 4 clicks from high-spending users (spending_level = 3) between 2017-05-06 and 2017-05-12 inclusive.
+
+SQL used:
+```sql
+SELECT SUM(f.is_click) AS clicks
+FROM fact_ad_events f
+JOIN dim_user u ON f.user_id = u.user_id
+WHERE f.brand_id = 166215
+  AND u.spending_level = 3
+  AND f.event_date BETWEEN DATE '2017-05-06' AND DATE '2017-05-12';
+```
+
+Caveats: data covers 2017-05-06 to 2017-05-13 and includes today; I used May 6–12 as requested (yesterday is May 12). Users without a profile (no dim_user row) were excluded.",yes,
+14,How many clicks has campaign 390070 had today so far?,"SELECT
+  (
+    COALESCE(
+      (SELECT SUM(clicks) FROM agg_campaign_hourly
+       WHERE campaign_id = 390070
+         AND event_hour >= TIMESTAMP '2017-05-13 00:00:00'
+         AND event_hour <  TIMESTAMP '2017-05-13 18:00:00'
+      ), 0
+    )
+    +
+    COALESCE(
+      (SELECT clicks FROM live_campaign_last6h WHERE campaign_id = 390070), 0
+    )
+  ) AS clicks_today","[[""11""]]",,yes,
+15,Campaign 58231: clicks at 18:00-18:59 on 10 May 2017 after removing bot traffic?,"SELECT clicks
+FROM agg_campaign_hourly_valid
+WHERE campaign_id = 58231
+  AND event_hour = '2017-05-10 18:00:00'","[[""13""]]",,yes,
+16,"Yesterday's clicks for advertiser 56581, only ads in category 6957?","SELECT SUM(is_click) AS clicks
+FROM fact_ad_events
+WHERE event_date = DATE '2017-05-12'
+  AND advertiser_id = 56581
+  AND category_id = 6957","[[""4""]]",,yes,
+17,Number of clicks for ad 650916 on 11 May 2017?,"SELECT clicks
+FROM agg_ad_daily
+WHERE ad_id = 650916
+  AND event_date = DATE '2017-05-11'","[[""12""]]",,yes,
+18,Estimated value (clicks x price) for advertiser 155304 on 8 May 2017?,"SELECT event_date, advertiser_id, clicks, est_value
+FROM agg_advertiser_daily
+WHERE advertiser_id = 155304
+  AND event_date = DATE '2017-05-08';","[[""2017-05-08"", ""155304"", ""159"", ""20902.0""]]","Advertiser 155304 on 2017-05-08: clicks = 159 and estimated value (clicks × price) = 20902.0.
+
+Caveats: agg_advertiser_daily is final data through 2017-05-12; 2017-05-08 is within the final range.
+
+SQL used:
+```sql
+SELECT event_date, advertiser_id, clicks, est_value
+FROM agg_advertiser_daily
+WHERE advertiser_id = 155304
+  AND event_date = DATE '2017-05-08';
+```",yes,
+19,"What was the CTR for campaign 101417 on 7 May 2017, split by gender?","SELECT
+  gender,
+  ctr
+FROM agg_campaign_daily_by_audience
+WHERE campaign_id = 101417
+  AND event_date = DATE '2017-05-07'
+ORDER BY gender","[[""female"", ""0.07894736842105263""], [""female"", ""0.10256410256410256""], [""female"", ""0.0""], [""female"", ""0.0""], [""female"", ""0.0""], [""female"", ""0.024390243902439025""], [""male"", ""0.0""], [""male"", ""0.1111111111111111""], [""male"", ""0.10526315789473684""], [""male"", ""0.0""]]",,no,
+20,How many clicks did ad 779234 get on 10 May 2017?,"SELECT COALESCE(SUM(clicks), 0) AS clicks
+FROM agg_ad_daily
+WHERE event_date = DATE '2017-05-10'
+  AND ad_id = 779234","[[""11""]]",,yes,
+21,How many clicks did advertiser 215611's ads in category 4385 get yesterday?,"SELECT
+  SUM(is_click) AS clicks
+FROM
+  fact_ad_events
+WHERE
+  event_date = DATE '2017-05-12'
+  AND advertiser_id = 215611
+  AND category_id = 4385;","[[""3""]]","Advertiser 215611's ads in category 4385 received 3 clicks yesterday (2017-05-12).
+
+SQL used:
+```sql
+SELECT
+  SUM(is_click) AS clicks
+FROM
+  fact_ad_events
+WHERE
+  event_date = DATE '2017-05-12'
+  AND advertiser_id = 215611
+  AND category_id = 4385;
+```
+
+Caveats: data comes from the raw impression-level table (fact_ad_events) which includes all traffic and is complete through 2017-05-12.",yes,
+22,Number of clicks for ad 650916 on 11 May 2017?,"SELECT clicks
+FROM agg_ad_daily
+WHERE ad_id = 650916
+  AND event_date = DATE '2017-05-11'","[[""12""]]",,yes,
+23,How many clicks did brand 166215 get from high-spending users (spending level 3) from 6 to 12 May?,"SELECT SUM(fe.is_click) AS clicks
+FROM fact_ad_events AS fe
+JOIN dim_user AS u ON fe.user_id = u.user_id
+WHERE fe.event_date BETWEEN DATE '2017-05-06' AND DATE '2017-05-12'
+  AND fe.brand_id = 166215
+  AND u.spending_level = 3","[[""4""]]",,yes,
+24,"For campaign 94399 yesterday, what CTR did heavy shoppers have?","SELECT
+  CASE WHEN impressions = 0 THEN 0.0 ELSE clicks::DOUBLE / impressions::DOUBLE END AS ctr
+FROM (
+  SELECT
+    COUNT(*) AS impressions,
+    SUM(is_click) AS clicks
+  FROM fact_ad_events e
+  JOIN dim_user u ON e.user_id = u.user_id
+  WHERE e.event_date = DATE '2017-05-12'
+    AND e.campaign_id = 94399
+    AND u.shopping_depth = 5
+) t","[[""0.0""]]",,no,
+25,"What was campaign 143747's CTR yesterday, excluding suspicious clicks?","SELECT event_date, campaign_id, impressions, clicks, ctr, CASE WHEN impressions=0 THEN NULL ELSE clicks::DOUBLE / impressions END AS ctr_calc
+FROM agg_campaign_daily_valid
+WHERE campaign_id = 143747
+  AND event_date = DATE '2017-05-12';","[[""2017-05-12"", ""143747"", ""142"", ""8"", ""0.056338028169014086"", ""0.056338028169014086""]]","Campaign 143747's CTR yesterday (2017-05-12), with suspicious clicks removed, was 0.056338028169014086 (clicks / impressions = 8 / 142).
+
+SQL used:
+```sql
+SELECT event_date, campaign_id, impressions, clicks, ctr, CASE WHEN impressions=0 THEN NULL ELSE clicks::DOUBLE / impressions END AS ctr_calc
+FROM agg_campaign_daily_valid
+WHERE campaign_id = 143747
+  AND event_date = DATE '2017-05-12';
+```",yes,
+26,Total reach (unique users) of campaign 207957 over the final period?,"SELECT campaign_id, unique_users
+FROM reach_campaign_total
+WHERE campaign_id = 207957;","[[""207957"", ""1411""]]","Campaign 207957 reached 1,411 unique users over the final period (May 6–12, finalised data).
+
+SQL used:
+```sql
+SELECT campaign_id, unique_users
+FROM reach_campaign_total
+WHERE campaign_id = 207957;
+```",yes,
+27,Which advertiser runs campaign 234670?,"SELECT advertiser_id
+FROM dim_campaign
+WHERE campaign_id = 234670","[[""159990""]]",,yes,
+28,How many clicks did advertiser 215611's ads in category 4385 get yesterday?,"SELECT COALESCE(SUM(a.clicks), 0) AS clicks
+FROM agg_ad_daily a
+JOIN dim_ad d ON a.ad_id = d.ad_id
+WHERE a.event_date = DATE '2017-05-12'
+  AND d.advertiser_id = 215611
+  AND d.category_id = 4385","[[""3""]]",,yes,
+29,Top category by clicks on 11 May 2017?,"SELECT category_id, clicks
+FROM agg_category_daily
+WHERE event_date = DATE '2017-05-11'
+ORDER BY clicks DESC
+LIMIT 1","[[""6261"", ""23099""]]",,yes,
+30,"What was campaign 143747's CTR yesterday, excluding suspicious clicks?","SELECT ctr
+FROM agg_campaign_daily_valid
+WHERE event_date = DATE '2017-05-12'
+  AND campaign_id = 143747","[[""0.056338028169014086""]]",,yes,

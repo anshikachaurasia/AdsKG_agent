@@ -1,0 +1,22 @@
+table: toxicology_molecule
+description: Reference list of molecules used in toxicology studies, with each molecule's
+  unique identifier and human-readable name.
+grain: one row per molecule (a single molecule ID and its label)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: molecule_id
+  type: TEXT
+- name: label
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: toxicology
+search_text: 'Table toxicology_molecule. Reference list of molecules used in toxicology
+  studies, with each molecule''s unique identifier and human-readable name. One row
+  = one row per molecule (a single molecule ID and its label). Freshness: static.
+  Traffic: n/a. Columns: molecule_id, label.'

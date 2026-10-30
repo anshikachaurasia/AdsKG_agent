@@ -1,0 +1,32 @@
+table: works_cycles_SalesPersonQuotaHistory
+description: 'Historical sales quota records: stores a salesperson''s quota amount
+  for a given quota date along with a GUID and last-modified timestamp, used to track
+  quota assignments and changes over time.'
+grain: one row per salesperson (BusinessEntityID) per quota date (QuotaDate)
+freshness: static
+traffic: n/a
+joins:
+  BusinessEntityID: works_cycles_SalesPerson
+lookalikes: []
+columns:
+- name: BusinessEntityID
+  type: INT
+- name: QuotaDate
+  type: DATETIME
+- name: SalesQuota
+  type: DOUBLE
+- name: rowguid
+  type: TEXT
+- name: ModifiedDate
+  type: DATETIME
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: works_cycles
+search_text: 'Table works_cycles_SalesPersonQuotaHistory. Historical sales quota records:
+  stores a salesperson''s quota amount for a given quota date along with a GUID and
+  last-modified timestamp, used to track quota assignments and changes over time.
+  One row = one row per salesperson (BusinessEntityID) per quota date (QuotaDate).
+  Freshness: static. Traffic: n/a. Columns: BusinessEntityID, QuotaDate, SalesQuota,
+  rowguid, ModifiedDate.'

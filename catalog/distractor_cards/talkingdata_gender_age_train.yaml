@@ -1,0 +1,26 @@
+table: talkingdata_gender_age_train
+description: Labeled training set mapping each device ID to the user’s gender, age
+  and age group, used to train or evaluate demographic prediction models.
+grain: one row per device (one labeled device instance)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: device_id
+  type: INT
+- name: gender
+  type: TEXT
+- name: age
+  type: INT
+- name: group
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: talkingdata
+search_text: 'Table talkingdata_gender_age_train. Labeled training set mapping each
+  device ID to the user’s gender, age and age group, used to train or evaluate demographic
+  prediction models. One row = one row per device (one labeled device instance). Freshness:
+  static. Traffic: n/a. Columns: device_id, gender, age, group.'

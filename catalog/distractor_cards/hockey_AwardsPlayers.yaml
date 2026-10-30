@@ -1,0 +1,31 @@
+table: hockey_AwardsPlayers
+description: Records of awards received by hockey players, listing which player won
+  which award in which year, league, position and any note.
+grain: one row per award instance for a player (player + award + year)
+freshness: static
+traffic: n/a
+joins:
+  playerID: hockey_Master
+lookalikes: []
+columns:
+- name: playerID
+  type: TEXT
+- name: award
+  type: TEXT
+- name: year
+  type: INT
+- name: lgID
+  type: TEXT
+- name: note
+  type: TEXT
+- name: pos
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: hockey
+search_text: 'Table hockey_AwardsPlayers. Records of awards received by hockey players,
+  listing which player won which award in which year, league, position and any note.
+  One row = one row per award instance for a player (player + award + year). Freshness:
+  static. Traffic: n/a. Columns: playerID, award, year, lgID, note, pos.'

@@ -1,0 +1,38 @@
+table: soccer_2016_Wicket_Taken
+description: 'Records every wicket (dismissal) in the 2016 matches: which match/innings/over/ball
+  the dismissal occurred on, which player was out, how they were out, and any fielder(s)
+  involved.'
+grain: one row per single wicket (one dismissal event)
+freshness: static
+traffic: n/a
+joins:
+  Match_Id: soccer_2016_Match
+  Player_Out: soccer_2016_Player
+  Kind_Out: soccer_2016_Out_Type
+  Fielders: soccer_2016_Player
+lookalikes: []
+columns:
+- name: Match_Id
+  type: INT
+- name: Over_Id
+  type: INT
+- name: Ball_Id
+  type: INT
+- name: Player_Out
+  type: INT
+- name: Kind_Out
+  type: INT
+- name: Fielders
+  type: INT
+- name: Innings_No
+  type: INT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: soccer_2016
+search_text: 'Table soccer_2016_Wicket_Taken. Records every wicket (dismissal) in
+  the 2016 matches: which match/innings/over/ball the dismissal occurred on, which
+  player was out, how they were out, and any fielder(s) involved. One row = one row
+  per single wicket (one dismissal event). Freshness: static. Traffic: n/a. Columns:
+  Match_Id, Over_Id, Ball_Id, Player_Out, Kind_Out, Fielders, Innings_No.'

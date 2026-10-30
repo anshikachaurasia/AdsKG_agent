@@ -1,0 +1,25 @@
+table: sales_in_weather_relation
+description: Mapping of stores to their associated weather stations, used to link
+  store-level sales with weather data for analysis.
+grain: one row per mapping of a single store to a single weather station (store_nbr
+  → station_nbr)
+freshness: static
+traffic: n/a
+joins:
+  store_nbr: sales_in_weather_sales_in_weather
+  station_nbr: sales_in_weather_weather
+lookalikes: []
+columns:
+- name: store_nbr
+  type: INT
+- name: station_nbr
+  type: INT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: sales_in_weather
+search_text: 'Table sales_in_weather_relation. Mapping of stores to their associated
+  weather stations, used to link store-level sales with weather data for analysis.
+  One row = one row per mapping of a single store to a single weather station (store_nbr
+  → station_nbr). Freshness: static. Traffic: n/a. Columns: store_nbr, station_nbr.'

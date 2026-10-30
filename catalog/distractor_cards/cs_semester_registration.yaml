@@ -1,0 +1,31 @@
+table: cs_semester_registration
+description: 'Student course registrations for the semester: each record stores which
+  student is enrolled in which course, the student''s grade in that course, and the
+  student''s SAT score; used to track enrollments and student performance.'
+grain: one row per student registration in a specific course (one student-course pair)
+freshness: static
+traffic: n/a
+joins:
+  course_id: cs_semester_course
+  student_id: cs_semester_student
+lookalikes: []
+columns:
+- name: course_id
+  type: INT
+- name: student_id
+  type: INT
+- name: grade
+  type: TEXT
+- name: sat
+  type: INT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: cs_semester
+search_text: 'Table cs_semester_registration. Student course registrations for the
+  semester: each record stores which student is enrolled in which course, the student''s
+  grade in that course, and the student''s SAT score; used to track enrollments and
+  student performance. One row = one row per student registration in a specific course
+  (one student-course pair). Freshness: static. Traffic: n/a. Columns: course_id,
+  student_id, grade, sat.'

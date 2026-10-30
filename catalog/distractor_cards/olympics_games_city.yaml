@@ -1,0 +1,26 @@
+table: olympics_games_city
+description: Mapping of Olympic Games editions to host cities, used to identify the
+  host city for a given Games or to list Games hosted by a city.
+grain: one row per association of an Olympic Games edition (games_id) with a host
+  city (city_id)
+freshness: static
+traffic: n/a
+joins:
+  city_id: olympics_city
+  games_id: olympics_games
+lookalikes: []
+columns:
+- name: games_id
+  type: INT
+- name: city_id
+  type: INT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: olympics
+search_text: 'Table olympics_games_city. Mapping of Olympic Games editions to host
+  cities, used to identify the host city for a given Games or to list Games hosted
+  by a city. One row = one row per association of an Olympic Games edition (games_id)
+  with a host city (city_id). Freshness: static. Traffic: n/a. Columns: games_id,
+  city_id.'

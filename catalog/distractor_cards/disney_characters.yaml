@@ -1,0 +1,31 @@
+table: disney_characters
+description: A table of Disney movies listing each movie's title, release date, main
+  hero, main villain, and a notable song — used to look up character and song details
+  for each film.
+grain: one row per Disney movie (one record for each movie_title)
+freshness: static
+traffic: n/a
+joins:
+  hero: disney_voice-actors
+lookalikes: []
+columns:
+- name: movie_title
+  type: TEXT
+- name: release_date
+  type: TEXT
+- name: hero
+  type: TEXT
+- name: villian
+  type: TEXT
+- name: song
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: disney
+search_text: 'Table disney_characters. A table of Disney movies listing each movie''s
+  title, release date, main hero, main villain, and a notable song — used to look
+  up character and song details for each film. One row = one row per Disney movie
+  (one record for each movie_title). Freshness: static. Traffic: n/a. Columns: movie_title,
+  release_date, hero, villian, song.'

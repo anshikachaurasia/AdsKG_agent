@@ -1,0 +1,29 @@
+table: world_development_indicators_SeriesNotes
+description: Explanatory notes for World Development Indicators series, providing
+  definitions, caveats, and year-specific or general commentary to help interpret
+  each indicator series.
+grain: one row per series note (a descriptive note tied to a specific series code
+  and year — or a general note if year is blank)
+freshness: static
+traffic: n/a
+joins:
+  Seriescode: world_development_indicators_Series
+lookalikes: []
+columns:
+- name: Seriescode
+  type: TEXT
+- name: Year
+  type: TEXT
+- name: Description
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: world_development_indicators
+search_text: 'Table world_development_indicators_SeriesNotes. Explanatory notes for
+  World Development Indicators series, providing definitions, caveats, and year-specific
+  or general commentary to help interpret each indicator series. One row = one row
+  per series note (a descriptive note tied to a specific series code and year — or
+  a general note if year is blank). Freshness: static. Traffic: n/a. Columns: Seriescode,
+  Year, Description.'

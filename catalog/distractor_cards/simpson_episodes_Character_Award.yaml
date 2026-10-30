@@ -1,0 +1,24 @@
+table: simpson_episodes_Character_Award
+description: Mapping of awards in The Simpsons episodes to the character who received
+  each award; used to look up which character was associated with a specific award.
+grain: one row per award-to-character association (one award given to one character)
+freshness: static
+traffic: n/a
+joins:
+  award_id: simpson_episodes_Award
+lookalikes: []
+columns:
+- name: award_id
+  type: INT
+- name: character
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: simpson_episodes
+search_text: 'Table simpson_episodes_Character_Award. Mapping of awards in The Simpsons
+  episodes to the character who received each award; used to look up which character
+  was associated with a specific award. One row = one row per award-to-character association
+  (one award given to one character). Freshness: static. Traffic: n/a. Columns: award_id,
+  character.'

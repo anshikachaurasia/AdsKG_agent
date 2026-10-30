@@ -1,0 +1,22 @@
+table: mondial_geo_sea
+description: List of named seas with an associated depth value, used to reference
+  sea features and their depth information for mapping and geographic analyses.
+grain: one row per named sea (one depth value per sea)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: Name
+  type: TEXT
+- name: Depth
+  type: DOUBLE
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: mondial_geo
+search_text: 'Table mondial_geo_sea. List of named seas with an associated depth value,
+  used to reference sea features and their depth information for mapping and geographic
+  analyses. One row = one row per named sea (one depth value per sea). Freshness:
+  static. Traffic: n/a. Columns: Name, Depth.'

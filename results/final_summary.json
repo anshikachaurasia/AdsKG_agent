@@ -1,0 +1,538 @@
+{
+  "questions": {
+    "A": {
+      "runs": 3,
+      "questions": 80,
+      "accuracy": 0.904,
+      "ci_low": 0.842,
+      "ci_high": 0.958,
+      "run_accuracies": [
+        0.9,
+        0.912,
+        0.9
+      ],
+      "accuracy_easy": 1.0,
+      "accuracy_medium": 0.877,
+      "accuracy_tricky": 0.833,
+      "accuracy_hard": 0.855,
+      "table_f1": 0.965,
+      "gold_tables_shown": 1.0,
+      "not_sure": 0.0,
+      "median_seconds": 3.2,
+      "median_cost_usd": 0.0012,
+      "avg_cost_usd": 0.00127
+    },
+    "B": {
+      "runs": 3,
+      "questions": 80,
+      "accuracy": 0.758,
+      "ci_low": 0.667,
+      "ci_high": 0.846,
+      "run_accuracies": [
+        0.762,
+        0.762,
+        0.75
+      ],
+      "accuracy_easy": 1.0,
+      "accuracy_medium": 0.481,
+      "accuracy_tricky": 0.795,
+      "accuracy_hard": 0.635,
+      "table_f1": 0.67,
+      "gold_tables_shown": 0.625,
+      "not_sure": 0.0,
+      "median_seconds": 3.3,
+      "median_cost_usd": 0.0006,
+      "avg_cost_usd": 0.00073
+    },
+    "C": {
+      "runs": 3,
+      "questions": 80,
+      "accuracy": 0.683,
+      "ci_low": 0.592,
+      "ci_high": 0.771,
+      "run_accuracies": [
+        0.713,
+        0.65,
+        0.688
+      ],
+      "accuracy_easy": 0.914,
+      "accuracy_medium": 0.383,
+      "accuracy_tricky": 0.756,
+      "accuracy_hard": 0.566,
+      "table_f1": 0.669,
+      "gold_tables_shown": 0.575,
+      "not_sure": 0.0,
+      "median_seconds": 9.4,
+      "median_cost_usd": 0.0011,
+      "avg_cost_usd": 0.00125
+    },
+    "D": {
+      "runs": 3,
+      "questions": 80,
+      "accuracy": 0.767,
+      "ci_low": 0.675,
+      "ci_high": 0.854,
+      "run_accuracies": [
+        0.787,
+        0.762,
+        0.75
+      ],
+      "accuracy_easy": 0.975,
+      "accuracy_medium": 0.519,
+      "accuracy_tricky": 0.808,
+      "accuracy_hard": 0.66,
+      "table_f1": 0.789,
+      "gold_tables_shown": 0.787,
+      "not_sure": 0.0,
+      "median_seconds": 3.3,
+      "median_cost_usd": 0.0006,
+      "avg_cost_usd": 0.0008
+    },
+    "E": {
+      "runs": 3,
+      "questions": 80,
+      "accuracy": 0.8,
+      "ci_low": 0.725,
+      "ci_high": 0.871,
+      "run_accuracies": [
+        0.787,
+        0.787,
+        0.825
+      ],
+      "accuracy_easy": 0.938,
+      "accuracy_medium": 0.543,
+      "accuracy_tricky": 0.923,
+      "accuracy_hard": 0.73,
+      "table_f1": 0.813,
+      "gold_tables_shown": 0.821,
+      "not_sure": 5.0,
+      "median_seconds": 8.2,
+      "median_cost_usd": 0.0019,
+      "avg_cost_usd": 0.00249
+    },
+    "E_memory": {
+      "runs": 3,
+      "questions": 80,
+      "accuracy": 0.925,
+      "ci_low": 0.879,
+      "ci_high": 0.963,
+      "run_accuracies": [
+        0.912,
+        0.95,
+        0.912
+      ],
+      "accuracy_easy": 0.963,
+      "accuracy_medium": 0.827,
+      "accuracy_tricky": 0.987,
+      "accuracy_hard": 0.906,
+      "table_f1": 0.852,
+      "gold_tables_shown": 0.808,
+      "not_sure": 4.0,
+      "median_seconds": 8.6,
+      "median_cost_usd": 0.0019,
+      "avg_cost_usd": 0.00222
+    }
+  },
+  "pairs": [
+    {
+      "a": "A",
+      "b": "B",
+      "only_a": 11,
+      "only_b": 1,
+      "p": 0.0063
+    },
+    {
+      "a": "B",
+      "b": "C",
+      "only_a": 6,
+      "only_b": 2,
+      "p": 0.2891
+    },
+    {
+      "a": "C",
+      "b": "D",
+      "only_a": 4,
+      "only_b": 7,
+      "p": 0.5488
+    },
+    {
+      "a": "D",
+      "b": "E",
+      "only_a": 7,
+      "only_b": 9,
+      "p": 0.8036
+    },
+    {
+      "a": "B",
+      "b": "D",
+      "only_a": 4,
+      "only_b": 3,
+      "p": 1.0
+    },
+    {
+      "a": "A",
+      "b": "D",
+      "only_a": 11,
+      "only_b": 0,
+      "p": 0.001
+    },
+    {
+      "a": "A",
+      "b": "E",
+      "only_a": 14,
+      "only_b": 5,
+      "p": 0.0636
+    },
+    {
+      "a": "E",
+      "b": "E_memory",
+      "only_a": 0,
+      "only_b": 15,
+      "p": 0.0001
+    }
+  ],
+  "conversations": {
+    "E": {
+      "runs": 3,
+      "accuracy": 0.896,
+      "turns": [
+        0.867,
+        0.933,
+        0.889
+      ],
+      "ci_low": 0.837,
+      "ci_high": 0.948
+    },
+    "E_nochat": {
+      "runs": 3,
+      "accuracy": 0.281,
+      "turns": [
+        0.844,
+        0.0,
+        0.0
+      ],
+      "ci_low": 0.163,
+      "ci_high": 0.407
+    }
+  },
+  "ablation": {
+    "C_no_rewrite": {
+      "runs": 1,
+      "questions": 80,
+      "accuracy": 0.775,
+      "ci_low": 0.688,
+      "ci_high": 0.863,
+      "run_accuracies": [
+        0.775
+      ],
+      "accuracy_easy": 0.963,
+      "accuracy_medium": 0.556,
+      "accuracy_tricky": 0.808,
+      "accuracy_hard": 0.679,
+      "table_f1": 0.749,
+      "gold_tables_shown": 0.713,
+      "not_sure": 0.0,
+      "median_seconds": 4.9,
+      "median_cost_usd": 0.0006,
+      "avg_cost_usd": 0.00075
+    },
+    "C_no_hybrid": {
+      "runs": 1,
+      "questions": 80,
+      "accuracy": 0.725,
+      "ci_low": 0.625,
+      "ci_high": 0.812,
+      "run_accuracies": [
+        0.725
+      ],
+      "accuracy_easy": 1.0,
+      "accuracy_medium": 0.444,
+      "accuracy_tricky": 0.731,
+      "accuracy_hard": 0.585,
+      "table_f1": 0.734,
+      "gold_tables_shown": 0.613,
+      "not_sure": 0.0,
+      "median_seconds": 8.8,
+      "median_cost_usd": 0.0011,
+      "avg_cost_usd": 0.00128
+    },
+    "C_no_rerank": {
+      "runs": 1,
+      "questions": 80,
+      "accuracy": 0.762,
+      "ci_low": 0.675,
+      "ci_high": 0.85,
+      "run_accuracies": [
+        0.762
+      ],
+      "accuracy_easy": 1.0,
+      "accuracy_medium": 0.444,
+      "accuracy_tricky": 0.846,
+      "accuracy_hard": 0.642,
+      "table_f1": 0.785,
+      "gold_tables_shown": 0.713,
+      "not_sure": 0.0,
+      "median_seconds": 5.6,
+      "median_cost_usd": 0.0011,
+      "avg_cost_usd": 0.00122
+    }
+  },
+  "catalog": {
+    "A": {
+      "28": {
+        "runs": 3,
+        "questions": 80,
+        "accuracy": 0.904,
+        "ci_low": 0.842,
+        "ci_high": 0.958,
+        "run_accuracies": [
+          0.9,
+          0.912,
+          0.9
+        ],
+        "accuracy_easy": 1.0,
+        "accuracy_medium": 0.877,
+        "accuracy_tricky": 0.833,
+        "accuracy_hard": 0.855,
+        "table_f1": 0.965,
+        "gold_tables_shown": 1.0,
+        "not_sure": 0.0,
+        "median_seconds": 3.2,
+        "median_cost_usd": 0.0012,
+        "avg_cost_usd": 0.00127
+      },
+      "100": {
+        "runs": 1,
+        "questions": 80,
+        "accuracy": 0.9,
+        "ci_low": 0.825,
+        "ci_high": 0.963,
+        "run_accuracies": [
+          0.9
+        ],
+        "accuracy_easy": 1.0,
+        "accuracy_medium": 0.815,
+        "accuracy_tricky": 0.885,
+        "accuracy_hard": 0.849,
+        "table_f1": 0.946,
+        "gold_tables_shown": 1.0,
+        "not_sure": 0.0,
+        "median_seconds": 3.0,
+        "median_cost_usd": 0.0036,
+        "avg_cost_usd": 0.00369
+      },
+      "250": {
+        "runs": 1,
+        "questions": 80,
+        "accuracy": 0.9,
+        "ci_low": 0.825,
+        "ci_high": 0.963,
+        "run_accuracies": [
+          0.9
+        ],
+        "accuracy_easy": 1.0,
+        "accuracy_medium": 0.815,
+        "accuracy_tricky": 0.885,
+        "accuracy_hard": 0.849,
+        "table_f1": 0.929,
+        "gold_tables_shown": 1.0,
+        "not_sure": 0.0,
+        "median_seconds": 3.3,
+        "median_cost_usd": 0.0077,
+        "avg_cost_usd": 0.00771
+      }
+    },
+    "B": {
+      "28": {
+        "runs": 3,
+        "questions": 80,
+        "accuracy": 0.758,
+        "ci_low": 0.667,
+        "ci_high": 0.846,
+        "run_accuracies": [
+          0.762,
+          0.762,
+          0.75
+        ],
+        "accuracy_easy": 1.0,
+        "accuracy_medium": 0.481,
+        "accuracy_tricky": 0.795,
+        "accuracy_hard": 0.635,
+        "table_f1": 0.67,
+        "gold_tables_shown": 0.625,
+        "not_sure": 0.0,
+        "median_seconds": 3.3,
+        "median_cost_usd": 0.0006,
+        "avg_cost_usd": 0.00073
+      },
+      "100": {
+        "runs": 1,
+        "questions": 80,
+        "accuracy": 0.775,
+        "ci_low": 0.688,
+        "ci_high": 0.863,
+        "run_accuracies": [
+          0.775
+        ],
+        "accuracy_easy": 0.963,
+        "accuracy_medium": 0.556,
+        "accuracy_tricky": 0.808,
+        "accuracy_hard": 0.679,
+        "table_f1": 0.652,
+        "gold_tables_shown": 0.625,
+        "not_sure": 0.0,
+        "median_seconds": 3.7,
+        "median_cost_usd": 0.0006,
+        "avg_cost_usd": 0.00074
+      },
+      "250": {
+        "runs": 1,
+        "questions": 80,
+        "accuracy": 0.725,
+        "ci_low": 0.625,
+        "ci_high": 0.825,
+        "run_accuracies": [
+          0.725
+        ],
+        "accuracy_easy": 0.963,
+        "accuracy_medium": 0.444,
+        "accuracy_tricky": 0.769,
+        "accuracy_hard": 0.604,
+        "table_f1": 0.66,
+        "gold_tables_shown": 0.625,
+        "not_sure": 0.0,
+        "median_seconds": 3.1,
+        "median_cost_usd": 0.0006,
+        "avg_cost_usd": 0.00075
+      }
+    },
+    "C": {
+      "28": {
+        "runs": 3,
+        "questions": 80,
+        "accuracy": 0.683,
+        "ci_low": 0.592,
+        "ci_high": 0.771,
+        "run_accuracies": [
+          0.713,
+          0.65,
+          0.688
+        ],
+        "accuracy_easy": 0.914,
+        "accuracy_medium": 0.383,
+        "accuracy_tricky": 0.756,
+        "accuracy_hard": 0.566,
+        "table_f1": 0.669,
+        "gold_tables_shown": 0.575,
+        "not_sure": 0.0,
+        "median_seconds": 9.4,
+        "median_cost_usd": 0.0011,
+        "avg_cost_usd": 0.00125
+      },
+      "100": {
+        "runs": 1,
+        "questions": 80,
+        "accuracy": 0.7,
+        "ci_low": 0.6,
+        "ci_high": 0.8,
+        "run_accuracies": [
+          0.7
+        ],
+        "accuracy_easy": 0.963,
+        "accuracy_medium": 0.407,
+        "accuracy_tricky": 0.731,
+        "accuracy_hard": 0.566,
+        "table_f1": 0.698,
+        "gold_tables_shown": 0.6,
+        "not_sure": 0.0,
+        "median_seconds": 10.6,
+        "median_cost_usd": 0.0011,
+        "avg_cost_usd": 0.00123
+      },
+      "250": {
+        "runs": 1,
+        "questions": 80,
+        "accuracy": 0.725,
+        "ci_low": 0.625,
+        "ci_high": 0.825,
+        "run_accuracies": [
+          0.725
+        ],
+        "accuracy_easy": 1.0,
+        "accuracy_medium": 0.407,
+        "accuracy_tricky": 0.769,
+        "accuracy_hard": 0.585,
+        "table_f1": 0.74,
+        "gold_tables_shown": 0.65,
+        "not_sure": 0.0,
+        "median_seconds": 9.6,
+        "median_cost_usd": 0.0012,
+        "avg_cost_usd": 0.00122
+      }
+    },
+    "D": {
+      "28": {
+        "runs": 3,
+        "questions": 80,
+        "accuracy": 0.767,
+        "ci_low": 0.675,
+        "ci_high": 0.854,
+        "run_accuracies": [
+          0.787,
+          0.762,
+          0.75
+        ],
+        "accuracy_easy": 0.975,
+        "accuracy_medium": 0.519,
+        "accuracy_tricky": 0.808,
+        "accuracy_hard": 0.66,
+        "table_f1": 0.789,
+        "gold_tables_shown": 0.787,
+        "not_sure": 0.0,
+        "median_seconds": 3.3,
+        "median_cost_usd": 0.0006,
+        "avg_cost_usd": 0.0008
+      },
+      "100": {
+        "runs": 1,
+        "questions": 80,
+        "accuracy": 0.775,
+        "ci_low": 0.688,
+        "ci_high": 0.863,
+        "run_accuracies": [
+          0.775
+        ],
+        "accuracy_easy": 0.963,
+        "accuracy_medium": 0.519,
+        "accuracy_tricky": 0.846,
+        "accuracy_hard": 0.679,
+        "table_f1": 0.796,
+        "gold_tables_shown": 0.787,
+        "not_sure": 0.0,
+        "median_seconds": 2.9,
+        "median_cost_usd": 0.0006,
+        "avg_cost_usd": 0.00078
+      },
+      "250": {
+        "runs": 1,
+        "questions": 80,
+        "accuracy": 0.738,
+        "ci_low": 0.637,
+        "ci_high": 0.825,
+        "run_accuracies": [
+          0.738
+        ],
+        "accuracy_easy": 1.0,
+        "accuracy_medium": 0.444,
+        "accuracy_tricky": 0.769,
+        "accuracy_hard": 0.604,
+        "table_f1": 0.804,
+        "gold_tables_shown": 0.787,
+        "not_sure": 0.0,
+        "median_seconds": 3.2,
+        "median_cost_usd": 0.0007,
+        "avg_cost_usd": 0.00081
+      }
+    }
+  }
+}

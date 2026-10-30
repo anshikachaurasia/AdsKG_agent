@@ -1,0 +1,50 @@
+table: thrombosis_prediction_Examination
+description: Clinical and laboratory results from a thrombosis-related examination
+  (antiphospholipid antibody levels, ANA, coagulation tests, symptoms and diagnosis)
+  used to assess or predict thrombosis risk.
+grain: one row per individual examination/test session for a patient (recording date
+  and measured test results)
+freshness: static
+traffic: n/a
+joins:
+  ID: thrombosis_prediction_Patient
+lookalikes: []
+columns:
+- name: ID
+  type: INT
+- name: Examination Date
+  type: DATE
+- name: aCL IgG
+  type: DOUBLE
+- name: aCL IgM
+  type: DOUBLE
+- name: ANA
+  type: INT
+- name: ANA Pattern
+  type: TEXT
+- name: aCL IgA
+  type: INT
+- name: Diagnosis
+  type: TEXT
+- name: KCT
+  type: TEXT
+- name: RVVT
+  type: TEXT
+- name: LAC
+  type: TEXT
+- name: Symptoms
+  type: TEXT
+- name: Thrombosis
+  type: INT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: thrombosis_prediction
+search_text: 'Table thrombosis_prediction_Examination. Clinical and laboratory results
+  from a thrombosis-related examination (antiphospholipid antibody levels, ANA, coagulation
+  tests, symptoms and diagnosis) used to assess or predict thrombosis risk. One row
+  = one row per individual examination/test session for a patient (recording date
+  and measured test results). Freshness: static. Traffic: n/a. Columns: ID, Examination
+  Date, aCL IgG, aCL IgM, ANA, ANA Pattern, aCL IgA, Diagnosis, KCT, RVVT, LAC, Symptoms,
+  Thrombosis.'

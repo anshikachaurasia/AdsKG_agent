@@ -1,0 +1,41 @@
+table: app_store_playstore
+description: Metadata about Android apps from the Google Play Store including name,
+  category, user rating, number of reviews, app size, install range, free/paid type,
+  price, content rating, and genres; used for analytics, app comparison, and cataloging.
+grain: one row per distinct Play Store app (one record per app listing)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: App
+  type: TEXT
+- name: Category
+  type: TEXT
+- name: Rating
+  type: DOUBLE
+- name: Reviews
+  type: INT
+- name: Size
+  type: TEXT
+- name: Installs
+  type: TEXT
+- name: Type
+  type: TEXT
+- name: Price
+  type: TEXT
+- name: Content Rating
+  type: TEXT
+- name: Genres
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: app_store
+search_text: 'Table app_store_playstore. Metadata about Android apps from the Google
+  Play Store including name, category, user rating, number of reviews, app size, install
+  range, free/paid type, price, content rating, and genres; used for analytics, app
+  comparison, and cataloging. One row = one row per distinct Play Store app (one record
+  per app listing). Freshness: static. Traffic: n/a. Columns: App, Category, Rating,
+  Reviews, Size, Installs, Type, Price, Content Rating, Genres.'

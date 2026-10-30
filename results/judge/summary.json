@@ -1,0 +1,44 @@
+{
+  "A": {
+    "acceptable": 0.963,
+    "relevance": 4.86,
+    "caveats": 4.99,
+    "faithfulness": null,
+    "kappa_vs_exec_accuracy": 0.52
+  },
+  "B": {
+    "acceptable": 0.762,
+    "relevance": 4.17,
+    "caveats": 4.8,
+    "faithfulness": null,
+    "kappa_vs_exec_accuracy": 0.79
+  },
+  "C": {
+    "acceptable": 0.738,
+    "relevance": 4.14,
+    "caveats": 4.86,
+    "faithfulness": null,
+    "kappa_vs_exec_accuracy": 0.87
+  },
+  "D": {
+    "acceptable": 0.787,
+    "relevance": 4.29,
+    "caveats": 4.75,
+    "faithfulness": null,
+    "kappa_vs_exec_accuracy": 0.7
+  },
+  "E": {
+    "acceptable": 0.925,
+    "relevance": 4.81,
+    "caveats": 4.94,
+    "faithfulness": 4.95,
+    "kappa_vs_exec_accuracy": 0.46
+  },
+  "E_memory": {
+    "acceptable": 0.925,
+    "relevance": 4.89,
+    "caveats": 4.96,
+    "faithfulness": 4.83,
+    "kappa_vs_exec_accuracy": 0.92
+  }
+}

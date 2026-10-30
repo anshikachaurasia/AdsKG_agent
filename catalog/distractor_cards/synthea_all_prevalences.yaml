@@ -1,0 +1,35 @@
+table: synthea_all_prevalences
+description: Counts and rates showing how common each ITEM is within each POPULATION
+  TYPE in the Synthea synthetic population (used to measure prevalence of conditions,
+  procedures, medications, etc.).
+grain: one row per ITEM and POPULATION TYPE combination (occurrences, population count,
+  prevalence rate and percentage for that item in that population)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: ITEM
+  type: TEXT
+- name: POPULATION TYPE
+  type: TEXT
+- name: OCCURRENCES
+  type: INT
+- name: POPULATION COUNT
+  type: INT
+- name: PREVALENCE RATE
+  type: DOUBLE
+- name: PREVALENCE PERCENTAGE
+  type: DOUBLE
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: synthea
+search_text: 'Table synthea_all_prevalences. Counts and rates showing how common each
+  ITEM is within each POPULATION TYPE in the Synthea synthetic population (used to
+  measure prevalence of conditions, procedures, medications, etc.). One row = one
+  row per ITEM and POPULATION TYPE combination (occurrences, population count, prevalence
+  rate and percentage for that item in that population). Freshness: static. Traffic:
+  n/a. Columns: ITEM, POPULATION TYPE, OCCURRENCES, POPULATION COUNT, PREVALENCE RATE,
+  PREVALENCE PERCENTAGE.'

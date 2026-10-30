@@ -1,0 +1,24 @@
+table: shipping_truck
+description: List of trucks used by the shipping operation with their identifier,
+  manufacturer and model year, used to track fleet assets and their attributes.
+grain: one row per individual truck (one record for each truck in the fleet).
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: truck_id
+  type: INT
+- name: make
+  type: TEXT
+- name: model_year
+  type: INT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: shipping
+search_text: 'Table shipping_truck. List of trucks used by the shipping operation
+  with their identifier, manufacturer and model year, used to track fleet assets and
+  their attributes. One row = one row per individual truck (one record for each truck
+  in the fleet).. Freshness: static. Traffic: n/a. Columns: truck_id, make, model_year.'

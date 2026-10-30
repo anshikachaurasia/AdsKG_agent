@@ -1,0 +1,61 @@
+table: agg_campaign_weekly
+description: Final weekly impressions, clicks, CTR and estimated value per campaign
+  (weeks start Monday; days_in_week shows partial weeks).
+grain: one row per campaign per week
+freshness: final
+traffic: all
+joins:
+  campaign_id: dim_campaign
+  advertiser_id: dim_advertiser
+lookalikes:
+- agg_campaign_daily
+- agg_campaign_hourly
+columns:
+- name: week_start
+  type: TIMESTAMP
+- name: campaign_id
+  type: BIGINT
+- name: advertiser_id
+  type: BIGINT
+- name: days_in_week
+  type: BIGINT
+- name: impressions
+  type: BIGINT
+- name: clicks
+  type: HUGEINT
+- name: ctr
+  type: DOUBLE
+- name: est_value
+  type: DOUBLE
+row_count: 657256
+date_range: 2017-05-01 00:00:00 to 2017-05-08 00:00:00
+examples:
+- week_start: '2017-05-01 00:00:00'
+  campaign_id: '340554'
+  advertiser_id: '142701'
+  days_in_week: '1'
+  impressions: '1'
+  clicks: '0'
+  ctr: '0.0'
+  est_value: '0.0'
+- week_start: '2017-05-01 00:00:00'
+  campaign_id: '399657'
+  advertiser_id: '53670'
+  days_in_week: '2'
+  impressions: '5'
+  clicks: '0'
+  ctr: '0.0'
+  est_value: '0.0'
+- week_start: '2017-05-08 00:00:00'
+  campaign_id: '104437'
+  advertiser_id: '44189'
+  days_in_week: '5'
+  impressions: '721'
+  clicks: '36'
+  ctr: '0.049930651872399444'
+  est_value: '2523.2'
+search_text: 'Table agg_campaign_weekly. Final weekly impressions, clicks, CTR and
+  estimated value per campaign (weeks start Monday; days_in_week shows partial weeks).
+  One row = one row per campaign per week. Freshness: final. Traffic: all. Columns:
+  week_start, campaign_id, advertiser_id, days_in_week, impressions, clicks, ctr,
+  est_value.'

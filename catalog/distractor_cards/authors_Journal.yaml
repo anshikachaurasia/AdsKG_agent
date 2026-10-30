@@ -1,0 +1,26 @@
+table: authors_Journal
+description: Metadata for academic journals (ID, short name, full name and homepage)
+  used to reference journal details for authors and publications.
+grain: one row per journal
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: Id
+  type: INT
+- name: ShortName
+  type: TEXT
+- name: FullName
+  type: TEXT
+- name: HomePage
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: authors
+search_text: 'Table authors_Journal. Metadata for academic journals (ID, short name,
+  full name and homepage) used to reference journal details for authors and publications.
+  One row = one row per journal. Freshness: static. Traffic: n/a. Columns: Id, ShortName,
+  FullName, HomePage.'

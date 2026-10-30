@@ -1,0 +1,25 @@
+table: authors_Author
+description: List of authors with their unique identifier, full name, and institutional
+  affiliation; used to look up author details and link authors to publications or
+  other records.
+grain: one row per author (one author record)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: Id
+  type: INT
+- name: Name
+  type: TEXT
+- name: Affiliation
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: authors
+search_text: 'Table authors_Author. List of authors with their unique identifier,
+  full name, and institutional affiliation; used to look up author details and link
+  authors to publications or other records. One row = one row per author (one author
+  record). Freshness: static. Traffic: n/a. Columns: Id, Name, Affiliation.'

@@ -1,0 +1,31 @@
+table: cs_semester_RA
+description: 'Records CS semester research assistant assignments: which student is
+  assigned as an RA to which professor, including the student''s capability score
+  and the RA salary.'
+grain: one row per student RA assignment to a professor in the CS semester (one student–professor
+  RA record)
+freshness: static
+traffic: n/a
+joins:
+  prof_id: cs_semester_prof
+  student_id: cs_semester_student
+lookalikes: []
+columns:
+- name: student_id
+  type: INT
+- name: capability
+  type: INT
+- name: prof_id
+  type: INT
+- name: salary
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: cs_semester
+search_text: 'Table cs_semester_RA. Records CS semester research assistant assignments:
+  which student is assigned as an RA to which professor, including the student''s
+  capability score and the RA salary. One row = one row per student RA assignment
+  to a professor in the CS semester (one student–professor RA record). Freshness:
+  static. Traffic: n/a. Columns: student_id, capability, prof_id, salary.'

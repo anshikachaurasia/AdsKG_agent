@@ -1,0 +1,31 @@
+table: shakespeare_paragraphs
+description: Paragraph-level text from Shakespeare's works with paragraph number and
+  references to the speaking character and chapter, used for text search, analysis,
+  or rendering.
+grain: one row per paragraph (a single paragraph of text tied to a character and a
+  chapter).
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: id
+  type: INT
+- name: ParagraphNum
+  type: INT
+- name: PlainText
+  type: TEXT
+- name: character_id
+  type: INT
+- name: chapter_id
+  type: INT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: shakespeare
+search_text: 'Table shakespeare_paragraphs. Paragraph-level text from Shakespeare''s
+  works with paragraph number and references to the speaking character and chapter,
+  used for text search, analysis, or rendering. One row = one row per paragraph (a
+  single paragraph of text tied to a character and a chapter).. Freshness: static.
+  Traffic: n/a. Columns: id, ParagraphNum, PlainText, character_id, chapter_id.'

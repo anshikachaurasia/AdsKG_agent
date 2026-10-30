@@ -1,0 +1,38 @@
+table: works_cycles_Address
+description: Stores address records (street lines, city, postal code, state/province,
+  spatial coordinates and metadata) used by the works_cycles application for location
+  lookup and contact information.
+grain: one row per unique address record
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: AddressID
+  type: INT
+- name: AddressLine1
+  type: TEXT
+- name: AddressLine2
+  type: TEXT
+- name: City
+  type: TEXT
+- name: StateProvinceID
+  type: INT
+- name: PostalCode
+  type: TEXT
+- name: SpatialLocation
+  type: TEXT
+- name: rowguid
+  type: TEXT
+- name: ModifiedDate
+  type: DATETIME
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: works_cycles
+search_text: 'Table works_cycles_Address. Stores address records (street lines, city,
+  postal code, state/province, spatial coordinates and metadata) used by the works_cycles
+  application for location lookup and contact information. One row = one row per unique
+  address record. Freshness: static. Traffic: n/a. Columns: AddressID, AddressLine1,
+  AddressLine2, City, StateProvinceID, PostalCode, SpatialLocation, rowguid, ModifiedDate.'

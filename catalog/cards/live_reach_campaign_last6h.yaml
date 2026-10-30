@@ -1,0 +1,34 @@
+table: live_reach_campaign_last6h
+description: Live reach for the last 6 hours only (13 May 18:00-23:59) - unique users
+  who saw and clicked each campaign right now.
+grain: one row per campaign (last 6 hours total)
+freshness: live_last_6h
+traffic: all
+joins:
+  campaign_id: dim_campaign
+lookalikes:
+- reach_campaign_daily
+- live_campaign_last6h
+columns:
+- name: campaign_id
+  type: BIGINT
+- name: unique_users
+  type: BIGINT
+- name: unique_clickers
+  type: BIGINT
+row_count: 135149
+date_range: null
+examples:
+- campaign_id: '151395'
+  unique_users: '10'
+  unique_clickers: '0'
+- campaign_id: '392903'
+  unique_users: '116'
+  unique_clickers: '3'
+- campaign_id: '74173'
+  unique_users: '28'
+  unique_clickers: '1'
+search_text: 'Table live_reach_campaign_last6h. Live reach for the last 6 hours only
+  (13 May 18:00-23:59) - unique users who saw and clicked each campaign right now.
+  One row = one row per campaign (last 6 hours total). Freshness: live_last_6h. Traffic:
+  all. Columns: campaign_id, unique_users, unique_clickers.'

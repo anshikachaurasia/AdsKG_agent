@@ -1,0 +1,41 @@
+table: dim_date
+description: Calendar of the 8 days in the data with weekday, week start (Monday),
+  and flags for today and final days.
+grain: one row per day
+freshness: static
+traffic: n/a
+joins:
+  date: agg_campaign_daily.event_date
+lookalikes: []
+columns:
+- name: date
+  type: DATE
+- name: weekday
+  type: VARCHAR
+- name: week_start
+  type: TIMESTAMP
+- name: is_today
+  type: BOOLEAN
+- name: is_final
+  type: BOOLEAN
+row_count: 8
+date_range: 2017-05-01 00:00:00 to 2017-05-08 00:00:00
+examples:
+- date: '2017-05-06'
+  weekday: Saturday
+  week_start: '2017-05-01 00:00:00'
+  is_today: 'False'
+  is_final: 'True'
+- date: '2017-05-07'
+  weekday: Sunday
+  week_start: '2017-05-01 00:00:00'
+  is_today: 'False'
+  is_final: 'True'
+- date: '2017-05-08'
+  weekday: Monday
+  week_start: '2017-05-08 00:00:00'
+  is_today: 'False'
+  is_final: 'True'
+search_text: 'Table dim_date. Calendar of the 8 days in the data with weekday, week
+  start (Monday), and flags for today and final days. One row = one row per day. Freshness:
+  static. Traffic: n/a. Columns: date, weekday, week_start, is_today, is_final.'

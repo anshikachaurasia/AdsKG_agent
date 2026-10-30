@@ -1,0 +1,25 @@
+table: mondial_geo_geo_desert
+description: List of deserts with the country and province where each desert area
+  is located, used to map desert names to their national and provincial locations.
+grain: one row per desert location (a specific desert in a given country and province)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: Desert
+  type: TEXT
+- name: Country
+  type: TEXT
+- name: Province
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: mondial_geo
+search_text: 'Table mondial_geo_geo_desert. List of deserts with the country and province
+  where each desert area is located, used to map desert names to their national and
+  provincial locations. One row = one row per desert location (a specific desert in
+  a given country and province). Freshness: static. Traffic: n/a. Columns: Desert,
+  Country, Province.'

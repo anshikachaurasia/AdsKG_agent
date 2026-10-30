@@ -1,0 +1,37 @@
+table: shipping_customer
+description: Customer contact and business records used for shipping, billing, routing,
+  and revenue reporting (name, address, phone, type, and annual revenue).
+grain: one row per customer (one customer account)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: cust_id
+  type: INT
+- name: cust_name
+  type: TEXT
+- name: annual_revenue
+  type: INT
+- name: cust_type
+  type: TEXT
+- name: address
+  type: TEXT
+- name: city
+  type: TEXT
+- name: state
+  type: TEXT
+- name: zip
+  type: DOUBLE
+- name: phone
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: shipping
+search_text: 'Table shipping_customer. Customer contact and business records used
+  for shipping, billing, routing, and revenue reporting (name, address, phone, type,
+  and annual revenue). One row = one row per customer (one customer account). Freshness:
+  static. Traffic: n/a. Columns: cust_id, cust_name, annual_revenue, cust_type, address,
+  city, state, zip, phone.'

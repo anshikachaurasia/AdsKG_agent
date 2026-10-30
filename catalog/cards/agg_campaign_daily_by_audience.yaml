@@ -1,0 +1,55 @@
+table: agg_campaign_daily_by_audience
+description: Final daily impressions, clicks and CTR per campaign split by user gender
+  and age level (audience breakdown / demographics). Users without a profile are 'unknown'.
+grain: one row per campaign per day per gender per age level
+freshness: final
+traffic: all
+joins:
+  campaign_id: dim_campaign
+lookalikes:
+- agg_campaign_daily
+- dim_user
+columns:
+- name: event_date
+  type: DATE
+- name: campaign_id
+  type: BIGINT
+- name: gender
+  type: VARCHAR
+- name: age_level
+  type: VARCHAR
+- name: impressions
+  type: BIGINT
+- name: clicks
+  type: HUGEINT
+- name: ctr
+  type: DOUBLE
+row_count: 5742256
+date_range: 2017-05-06 to 2017-05-12
+examples:
+- event_date: '2017-05-06'
+  campaign_id: '404347'
+  gender: male
+  age_level: '3'
+  impressions: '121'
+  clicks: '11'
+  ctr: '0.09090909090909091'
+- event_date: '2017-05-11'
+  campaign_id: '404347'
+  gender: male
+  age_level: '6'
+  impressions: '11'
+  clicks: '1'
+  ctr: '0.09090909090909091'
+- event_date: '2017-05-12'
+  campaign_id: '122859'
+  gender: female
+  age_level: '4'
+  impressions: '6'
+  clicks: '0'
+  ctr: '0.0'
+search_text: 'Table agg_campaign_daily_by_audience. Final daily impressions, clicks
+  and CTR per campaign split by user gender and age level (audience breakdown / demographics).
+  Users without a profile are ''unknown''. One row = one row per campaign per day
+  per gender per age level. Freshness: final. Traffic: all. Columns: event_date, campaign_id,
+  gender, age_level, impressions, clicks, ctr.'

@@ -1,0 +1,26 @@
+table: movielens_actors
+description: List of actors in the MovieLens dataset with their gender and a numeric
+  quality score, used to analyze or join actor demographic and quality information
+  to movies or ratings.
+grain: one row per actor (actorid) containing that actor's gender and quality score.
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: actorid
+  type: INT
+- name: a_gender
+  type: TEXT
+- name: a_quality
+  type: INT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: movielens
+search_text: 'Table movielens_actors. List of actors in the MovieLens dataset with
+  their gender and a numeric quality score, used to analyze or join actor demographic
+  and quality information to movies or ratings. One row = one row per actor (actorid)
+  containing that actor''s gender and quality score.. Freshness: static. Traffic:
+  n/a. Columns: actorid, a_gender, a_quality.'

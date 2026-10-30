@@ -1,0 +1,29 @@
+table: mondial_geo_desert
+description: Basic list of deserts with their names, land area and approximate geographic
+  coordinates (longitude and latitude), used to map or analyze desert locations and
+  sizes globally.
+grain: one row per desert, giving its name, total area (square units), and representative
+  longitude/latitude coordinates
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: Name
+  type: TEXT
+- name: Area
+  type: DOUBLE
+- name: Longitude
+  type: DOUBLE
+- name: Latitude
+  type: DOUBLE
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: mondial_geo
+search_text: 'Table mondial_geo_desert. Basic list of deserts with their names, land
+  area and approximate geographic coordinates (longitude and latitude), used to map
+  or analyze desert locations and sizes globally. One row = one row per desert, giving
+  its name, total area (square units), and representative longitude/latitude coordinates.
+  Freshness: static. Traffic: n/a. Columns: Name, Area, Longitude, Latitude.'

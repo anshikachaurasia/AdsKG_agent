@@ -1,0 +1,59 @@
+table: tpcds_customer
+description: Customer master table with demographic, contact, and lifecycle attributes
+  for each TPC-DS customer used to join sales and marketing analyses (demographics,
+  login/email, birth info, and key date/link keys).
+grain: one row per customer (one record per unique customer)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: c_customer_sk
+  type: BIGINT
+- name: c_customer_id
+  type: VARCHAR
+- name: c_current_cdemo_sk
+  type: BIGINT
+- name: c_current_hdemo_sk
+  type: BIGINT
+- name: c_current_addr_sk
+  type: BIGINT
+- name: c_first_shipto_date_sk
+  type: BIGINT
+- name: c_first_sales_date_sk
+  type: BIGINT
+- name: c_salutation
+  type: VARCHAR
+- name: c_first_name
+  type: VARCHAR
+- name: c_last_name
+  type: VARCHAR
+- name: c_preferred_cust_flag
+  type: VARCHAR
+- name: c_birth_day
+  type: BIGINT
+- name: c_birth_month
+  type: BIGINT
+- name: c_birth_year
+  type: BIGINT
+- name: c_birth_country
+  type: VARCHAR
+- name: c_login
+  type: VARCHAR
+- name: c_email_address
+  type: VARCHAR
+- name: c_last_review_date_sk
+  type: INTEGER
+row_count: null
+date_range: null
+examples: []
+source: TPCDS
+database: tpcds
+search_text: 'Table tpcds_customer. Customer master table with demographic, contact,
+  and lifecycle attributes for each TPC-DS customer used to join sales and marketing
+  analyses (demographics, login/email, birth info, and key date/link keys). One row
+  = one row per customer (one record per unique customer). Freshness: static. Traffic:
+  n/a. Columns: c_customer_sk, c_customer_id, c_current_cdemo_sk, c_current_hdemo_sk,
+  c_current_addr_sk, c_first_shipto_date_sk, c_first_sales_date_sk, c_salutation,
+  c_first_name, c_last_name, c_preferred_cust_flag, c_birth_day, c_birth_month, c_birth_year,
+  c_birth_country, c_login, c_email_address, c_last_review_date_sk.'

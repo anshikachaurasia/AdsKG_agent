@@ -1,0 +1,26 @@
+table: movie_3_category
+description: Lookup table of movie categories (e.g., Action, Comedy) storing each
+  category's name and when the record was last updated; used to classify movies and
+  join to movie-category relationships.
+grain: one row per movie category (category_id)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: category_id
+  type: INT
+- name: name
+  type: TEXT
+- name: last_update
+  type: DATETIME
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: movie_3
+search_text: 'Table movie_3_category. Lookup table of movie categories (e.g., Action,
+  Comedy) storing each category''s name and when the record was last updated; used
+  to classify movies and join to movie-category relationships. One row = one row per
+  movie category (category_id). Freshness: static. Traffic: n/a. Columns: category_id,
+  name, last_update.'

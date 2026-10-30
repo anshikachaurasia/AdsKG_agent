@@ -1,0 +1,39 @@
+table: hockey_TeamsSC
+description: Season totals for each hockey team (games, wins, losses, ties, goals
+  for/against and penalty minutes) used for standings and performance analysis.
+grain: one row per team per year per league
+freshness: static
+traffic: n/a
+joins:
+  year: hockey_Teams
+lookalikes: []
+columns:
+- name: year
+  type: INT
+- name: lgID
+  type: TEXT
+- name: tmID
+  type: TEXT
+- name: G
+  type: INT
+- name: W
+  type: INT
+- name: L
+  type: INT
+- name: T
+  type: INT
+- name: GF
+  type: INT
+- name: GA
+  type: INT
+- name: PIM
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: hockey
+search_text: 'Table hockey_TeamsSC. Season totals for each hockey team (games, wins,
+  losses, ties, goals for/against and penalty minutes) used for standings and performance
+  analysis. One row = one row per team per year per league. Freshness: static. Traffic:
+  n/a. Columns: year, lgID, tmID, G, W, L, T, GF, GA, PIM.'

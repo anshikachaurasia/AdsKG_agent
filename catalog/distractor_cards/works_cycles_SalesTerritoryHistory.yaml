@@ -1,0 +1,36 @@
+table: works_cycles_SalesTerritoryHistory
+description: Historical records of which sales territory each business entity (salesperson)
+  was assigned to and the time range of that assignment, used to track territory assignments
+  and changes over time.
+grain: one row per business entity × territory assignment (one assignment with a StartDate
+  and EndDate)
+freshness: static
+traffic: n/a
+joins:
+  BusinessEntityID: works_cycles_SalesPerson
+  TerritoryID: works_cycles_SalesTerritory
+lookalikes: []
+columns:
+- name: BusinessEntityID
+  type: INT
+- name: TerritoryID
+  type: INT
+- name: StartDate
+  type: DATETIME
+- name: EndDate
+  type: DATETIME
+- name: rowguid
+  type: TEXT
+- name: ModifiedDate
+  type: DATETIME
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: works_cycles
+search_text: 'Table works_cycles_SalesTerritoryHistory. Historical records of which
+  sales territory each business entity (salesperson) was assigned to and the time
+  range of that assignment, used to track territory assignments and changes over time.
+  One row = one row per business entity × territory assignment (one assignment with
+  a StartDate and EndDate). Freshness: static. Traffic: n/a. Columns: BusinessEntityID,
+  TerritoryID, StartDate, EndDate, rowguid, ModifiedDate.'

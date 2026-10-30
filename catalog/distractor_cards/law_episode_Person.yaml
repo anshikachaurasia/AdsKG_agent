@@ -1,0 +1,38 @@
+table: law_episode_Person
+description: Personal details for people referenced in the law_episode dataset — includes
+  identifiers, names, birth information, physical attributes and nicknames used for
+  linking or display.
+grain: one row per person (person_id)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: person_id
+  type: TEXT
+- name: name
+  type: TEXT
+- name: birthdate
+  type: DATE
+- name: birth_name
+  type: TEXT
+- name: birth_place
+  type: TEXT
+- name: birth_region
+  type: TEXT
+- name: birth_country
+  type: TEXT
+- name: height_meters
+  type: DOUBLE
+- name: nickname
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: law_episode
+search_text: 'Table law_episode_Person. Personal details for people referenced in
+  the law_episode dataset — includes identifiers, names, birth information, physical
+  attributes and nicknames used for linking or display. One row = one row per person
+  (person_id). Freshness: static. Traffic: n/a. Columns: person_id, name, birthdate,
+  birth_name, birth_place, birth_region, birth_country, height_meters, nickname.'

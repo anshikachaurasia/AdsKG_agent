@@ -1,0 +1,36 @@
+table: movie_3_rental
+description: Records of each movie rental transaction including when the item was
+  rented and returned, which inventory item and customer were involved, and which
+  staff handled it.
+grain: one row per rental transaction (one inventory item rented to one customer at
+  one rental time)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: rental_id
+  type: INT
+- name: rental_date
+  type: DATETIME
+- name: inventory_id
+  type: INT
+- name: customer_id
+  type: INT
+- name: return_date
+  type: DATETIME
+- name: staff_id
+  type: INT
+- name: last_update
+  type: DATETIME
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: movie_3
+search_text: 'Table movie_3_rental. Records of each movie rental transaction including
+  when the item was rented and returned, which inventory item and customer were involved,
+  and which staff handled it. One row = one row per rental transaction (one inventory
+  item rented to one customer at one rental time). Freshness: static. Traffic: n/a.
+  Columns: rental_id, rental_date, inventory_id, customer_id, return_date, staff_id,
+  last_update.'

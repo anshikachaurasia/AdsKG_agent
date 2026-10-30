@@ -1,0 +1,32 @@
+table: tpcds_ship_mode
+description: Reference table of shipping modes including their surrogate key, natural
+  ID, type, code, carrier and contract information used to categorize and join shipment-related
+  facts.
+grain: one row per distinct shipping mode (a single shipping method/option)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: sm_ship_mode_sk
+  type: BIGINT
+- name: sm_ship_mode_id
+  type: VARCHAR
+- name: sm_type
+  type: VARCHAR
+- name: sm_code
+  type: VARCHAR
+- name: sm_carrier
+  type: VARCHAR
+- name: sm_contract
+  type: VARCHAR
+row_count: null
+date_range: null
+examples: []
+source: TPCDS
+database: tpcds
+search_text: 'Table tpcds_ship_mode. Reference table of shipping modes including their
+  surrogate key, natural ID, type, code, carrier and contract information used to
+  categorize and join shipment-related facts. One row = one row per distinct shipping
+  mode (a single shipping method/option). Freshness: static. Traffic: n/a. Columns:
+  sm_ship_mode_sk, sm_ship_mode_id, sm_type, sm_code, sm_carrier, sm_contract.'

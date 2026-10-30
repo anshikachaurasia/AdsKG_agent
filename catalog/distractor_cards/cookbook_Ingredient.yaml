@@ -1,0 +1,26 @@
+table: cookbook_Ingredient
+description: Master list of cooking ingredients with their category and plural form,
+  used to standardize ingredient names in recipes and UI.
+grain: one row per distinct ingredient (unique ingredient_id)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: ingredient_id
+  type: INT
+- name: category
+  type: TEXT
+- name: name
+  type: TEXT
+- name: plural
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: cookbook
+search_text: 'Table cookbook_Ingredient. Master list of cooking ingredients with their
+  category and plural form, used to standardize ingredient names in recipes and UI.
+  One row = one row per distinct ingredient (unique ingredient_id). Freshness: static.
+  Traffic: n/a. Columns: ingredient_id, category, name, plural.'

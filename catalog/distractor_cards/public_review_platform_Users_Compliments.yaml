@@ -1,0 +1,28 @@
+table: public_review_platform_Users_Compliments
+description: Counts of each compliment type given to a user in the review platform;
+  used to track how many times a user received specific compliments (count stored
+  as text).
+grain: one row per user per compliment type (one compliment_id and user_id pair, with
+  number_of_compliments as the stored count)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: compliment_id
+  type: INT
+- name: user_id
+  type: INT
+- name: number_of_compliments
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: public_review_platform
+search_text: 'Table public_review_platform_Users_Compliments. Counts of each compliment
+  type given to a user in the review platform; used to track how many times a user
+  received specific compliments (count stored as text). One row = one row per user
+  per compliment type (one compliment_id and user_id pair, with number_of_compliments
+  as the stored count). Freshness: static. Traffic: n/a. Columns: compliment_id, user_id,
+  number_of_compliments.'

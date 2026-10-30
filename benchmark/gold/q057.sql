@@ -1,0 +1,1 @@
+SELECT a.brand_id, SUM(d.clicks) AS clicks FROM agg_ad_daily d JOIN dim_ad a ON a.ad_id = d.ad_id WHERE a.category_id = 4357 AND a.brand_id IS NOT NULL AND d.event_date = '2017-05-12' GROUP BY a.brand_id ORDER BY clicks DESC LIMIT 1

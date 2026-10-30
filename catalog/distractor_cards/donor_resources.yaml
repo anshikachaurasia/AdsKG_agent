@@ -1,0 +1,41 @@
+table: donor_resources
+description: List of resources (items) tied to donor-funded projects with vendor,
+  quantity and price details, used to track what was procured/provided for each project
+  and its cost.
+grain: one row per specific resource line item for a project (a given vendor’s item
+  with its quantity and unit price)
+freshness: static
+traffic: n/a
+joins:
+  projectid: donor_projects
+lookalikes: []
+columns:
+- name: resourceid
+  type: TEXT
+- name: projectid
+  type: TEXT
+- name: vendorid
+  type: INT
+- name: vendor_name
+  type: TEXT
+- name: project_resource_type
+  type: TEXT
+- name: item_name
+  type: TEXT
+- name: item_number
+  type: TEXT
+- name: item_unit_price
+  type: DOUBLE
+- name: item_quantity
+  type: INT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: donor
+search_text: 'Table donor_resources. List of resources (items) tied to donor-funded
+  projects with vendor, quantity and price details, used to track what was procured/provided
+  for each project and its cost. One row = one row per specific resource line item
+  for a project (a given vendor’s item with its quantity and unit price). Freshness:
+  static. Traffic: n/a. Columns: resourceid, projectid, vendorid, vendor_name, project_resource_type,
+  item_name, item_number, item_unit_price, item_quantity.'

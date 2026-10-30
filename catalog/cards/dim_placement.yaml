@@ -1,0 +1,24 @@
+table: dim_placement
+description: The two ad placements (positions on the site where ads are shown) with
+  total impressions each.
+grain: one row per placement
+freshness: static
+traffic: n/a
+joins:
+  placement_id: agg_placement_daily
+lookalikes: []
+columns:
+- name: placement_id
+  type: VARCHAR
+- name: total_impressions
+  type: BIGINT
+row_count: 2
+date_range: null
+examples:
+- placement_id: '430539_1007'
+  total_impressions: '10085063'
+- placement_id: '430548_1007'
+  total_impressions: '16472898'
+search_text: 'Table dim_placement. The two ad placements (positions on the site where
+  ads are shown) with total impressions each. One row = one row per placement. Freshness:
+  static. Traffic: n/a. Columns: placement_id, total_impressions.'

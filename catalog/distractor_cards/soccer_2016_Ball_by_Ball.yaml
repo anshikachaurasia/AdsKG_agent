@@ -1,0 +1,44 @@
+table: soccer_2016_Ball_by_Ball
+description: 'Ball-by-ball recording of every delivery in 2016 matches: identifies
+  match, over and ball, which innings and teams were batting/bowling, and the players
+  involved — used for sequence-based match analysis and per-ball statistics.'
+grain: one row per single delivery (one ball) in a specific over and innings of a
+  match
+freshness: static
+traffic: n/a
+joins:
+  Match_Id: soccer_2016_Match
+lookalikes: []
+columns:
+- name: Match_Id
+  type: INT
+- name: Over_Id
+  type: INT
+- name: Ball_Id
+  type: INT
+- name: Innings_No
+  type: INT
+- name: Team_Batting
+  type: INT
+- name: Team_Bowling
+  type: INT
+- name: Striker_Batting_Position
+  type: INT
+- name: Striker
+  type: INT
+- name: Non_Striker
+  type: INT
+- name: Bowler
+  type: INT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: soccer_2016
+search_text: 'Table soccer_2016_Ball_by_Ball. Ball-by-ball recording of every delivery
+  in 2016 matches: identifies match, over and ball, which innings and teams were batting/bowling,
+  and the players involved — used for sequence-based match analysis and per-ball statistics.
+  One row = one row per single delivery (one ball) in a specific over and innings
+  of a match. Freshness: static. Traffic: n/a. Columns: Match_Id, Over_Id, Ball_Id,
+  Innings_No, Team_Batting, Team_Bowling, Striker_Batting_Position, Striker, Non_Striker,
+  Bowler.'

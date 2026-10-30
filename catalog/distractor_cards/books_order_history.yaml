@@ -1,0 +1,26 @@
+table: books_order_history
+description: History of status changes for book orders, recording each status and
+  when it occurred (used to track order progress over time).
+grain: one row per single status change for an order (order + status + timestamp)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: history_id
+  type: INT
+- name: order_id
+  type: INT
+- name: status_id
+  type: INT
+- name: status_date
+  type: DATETIME
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: books
+search_text: 'Table books_order_history. History of status changes for book orders,
+  recording each status and when it occurred (used to track order progress over time).
+  One row = one row per single status change for an order (order + status + timestamp).
+  Freshness: static. Traffic: n/a. Columns: history_id, order_id, status_id, status_date.'

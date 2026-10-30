@@ -1,0 +1,26 @@
+table: debit_card_specializing_yearmonth
+description: Monthly debit card consumption per customer—total amount spent on debit
+  card in a given year-month, used for tracking spending patterns and monthly aggregates.
+grain: one row per customer per year-month (CustomerID + Date representing year-month)
+freshness: static
+traffic: n/a
+joins:
+  CustomerID: debit_card_specializing_customers
+lookalikes: []
+columns:
+- name: CustomerID
+  type: INT
+- name: Date
+  type: TEXT
+- name: Consumption
+  type: DOUBLE
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: debit_card_specializing
+search_text: 'Table debit_card_specializing_yearmonth. Monthly debit card consumption
+  per customer—total amount spent on debit card in a given year-month, used for tracking
+  spending patterns and monthly aggregates. One row = one row per customer per year-month
+  (CustomerID + Date representing year-month). Freshness: static. Traffic: n/a. Columns:
+  CustomerID, Date, Consumption.'

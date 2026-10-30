@@ -1,0 +1,31 @@
+table: dim_campaign
+description: Lookup of every campaign with its advertiser and how many ads it has.
+grain: one row per campaign
+freshness: static
+traffic: n/a
+joins:
+  campaign_id: agg_campaign_daily
+  advertiser_id: dim_advertiser
+lookalikes: []
+columns:
+- name: campaign_id
+  type: BIGINT
+- name: advertiser_id
+  type: BIGINT
+- name: num_ads
+  type: BIGINT
+row_count: 423436
+date_range: null
+examples:
+- campaign_id: '395195'
+  advertiser_id: '13'
+  num_ads: '4'
+- campaign_id: '155966'
+  advertiser_id: '54'
+  num_ads: '3'
+- campaign_id: '77444'
+  advertiser_id: '69'
+  num_ads: '1'
+search_text: 'Table dim_campaign. Lookup of every campaign with its advertiser and
+  how many ads it has. One row = one row per campaign. Freshness: static. Traffic:
+  n/a. Columns: campaign_id, advertiser_id, num_ads.'

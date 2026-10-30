@@ -1,0 +1,41 @@
+table: chicago_crime_District
+description: Contact and location details for each Chicago police district — used
+  to look up district number, name, mailing address, ZIP code and station contact
+  info (commander, phone, fax, TTY, email, Twitter).
+grain: one row per Chicago police district
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: district_no
+  type: INT
+- name: district_name
+  type: TEXT
+- name: address
+  type: TEXT
+- name: zip_code
+  type: INT
+- name: commander
+  type: TEXT
+- name: email
+  type: TEXT
+- name: phone
+  type: TEXT
+- name: fax
+  type: TEXT
+- name: tty
+  type: TEXT
+- name: twitter
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: chicago_crime
+search_text: 'Table chicago_crime_District. Contact and location details for each
+  Chicago police district — used to look up district number, name, mailing address,
+  ZIP code and station contact info (commander, phone, fax, TTY, email, Twitter).
+  One row = one row per Chicago police district. Freshness: static. Traffic: n/a.
+  Columns: district_no, district_name, address, zip_code, commander, email, phone,
+  fax, tty, twitter.'

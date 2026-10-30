@@ -1,0 +1,39 @@
+table: tpcds_time_dim
+description: Lookup of every time-of-day value with hour, minute, second, AM/PM, shift,
+  sub-shift and meal period used for time-based reporting and joins.
+grain: one row per time-of-day value (one second of the day)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: t_time_sk
+  type: BIGINT
+- name: t_time_id
+  type: VARCHAR
+- name: t_time
+  type: BIGINT
+- name: t_hour
+  type: BIGINT
+- name: t_minute
+  type: BIGINT
+- name: t_second
+  type: BIGINT
+- name: t_am_pm
+  type: VARCHAR
+- name: t_shift
+  type: VARCHAR
+- name: t_sub_shift
+  type: VARCHAR
+- name: t_meal_time
+  type: VARCHAR
+row_count: null
+date_range: null
+examples: []
+source: TPCDS
+database: tpcds
+search_text: 'Table tpcds_time_dim. Lookup of every time-of-day value with hour, minute,
+  second, AM/PM, shift, sub-shift and meal period used for time-based reporting and
+  joins. One row = one row per time-of-day value (one second of the day). Freshness:
+  static. Traffic: n/a. Columns: t_time_sk, t_time_id, t_time, t_hour, t_minute, t_second,
+  t_am_pm, t_shift, t_sub_shift, t_meal_time.'

@@ -1,0 +1,26 @@
+table: tpcds_reason
+description: Lookup table of reason codes and their descriptions used to classify
+  events or transactions (e.g., return reasons) in the TPC-DS dataset.
+grain: one row per distinct reason code, containing a surrogate key, business identifier,
+  and text description
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: r_reason_sk
+  type: BIGINT
+- name: r_reason_id
+  type: VARCHAR
+- name: r_reason_desc
+  type: VARCHAR
+row_count: null
+date_range: null
+examples: []
+source: TPCDS
+database: tpcds
+search_text: 'Table tpcds_reason. Lookup table of reason codes and their descriptions
+  used to classify events or transactions (e.g., return reasons) in the TPC-DS dataset.
+  One row = one row per distinct reason code, containing a surrogate key, business
+  identifier, and text description. Freshness: static. Traffic: n/a. Columns: r_reason_sk,
+  r_reason_id, r_reason_desc.'

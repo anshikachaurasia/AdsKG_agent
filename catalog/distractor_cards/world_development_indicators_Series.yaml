@@ -1,0 +1,64 @@
+table: world_development_indicators_Series
+description: Metadata for each World Development Indicators indicator series, containing
+  the series code, name, short and long definitions, units, periodicity, source, methodology,
+  aggregation and links used to document and interpret the indicator.
+grain: one row per indicator series (one SeriesCode / IndicatorName)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: SeriesCode
+  type: TEXT
+- name: Topic
+  type: TEXT
+- name: IndicatorName
+  type: TEXT
+- name: ShortDefinition
+  type: TEXT
+- name: LongDefinition
+  type: TEXT
+- name: UnitOfMeasure
+  type: TEXT
+- name: Periodicity
+  type: TEXT
+- name: BasePeriod
+  type: TEXT
+- name: OtherNotes
+  type: INT
+- name: AggregationMethod
+  type: TEXT
+- name: LimitationsAndExceptions
+  type: TEXT
+- name: NotesFromOriginalSource
+  type: TEXT
+- name: GeneralComments
+  type: TEXT
+- name: Source
+  type: TEXT
+- name: StatisticalConceptAndMethodology
+  type: TEXT
+- name: DevelopmentRelevance
+  type: TEXT
+- name: RelatedSourceLinks
+  type: TEXT
+- name: OtherWebLinks
+  type: INT
+- name: RelatedIndicators
+  type: INT
+- name: LicenseType
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: world_development_indicators
+search_text: 'Table world_development_indicators_Series. Metadata for each World Development
+  Indicators indicator series, containing the series code, name, short and long definitions,
+  units, periodicity, source, methodology, aggregation and links used to document
+  and interpret the indicator. One row = one row per indicator series (one SeriesCode
+  / IndicatorName). Freshness: static. Traffic: n/a. Columns: SeriesCode, Topic, IndicatorName,
+  ShortDefinition, LongDefinition, UnitOfMeasure, Periodicity, BasePeriod, OtherNotes,
+  AggregationMethod, LimitationsAndExceptions, NotesFromOriginalSource, GeneralComments,
+  Source, StatisticalConceptAndMethodology, DevelopmentRelevance, RelatedSourceLinks,
+  OtherWebLinks, RelatedIndicators, LicenseType.'

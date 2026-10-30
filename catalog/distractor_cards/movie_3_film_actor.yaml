@@ -1,0 +1,24 @@
+table: movie_3_film_actor
+description: Mappings of which actors appear in which films, with a timestamp of when
+  the record was last updated.
+grain: one row per actor-film association (one actor linked to one film, with last_update)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: actor_id
+  type: INT
+- name: film_id
+  type: INT
+- name: last_update
+  type: DATETIME
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: movie_3
+search_text: 'Table movie_3_film_actor. Mappings of which actors appear in which films,
+  with a timestamp of when the record was last updated. One row = one row per actor-film
+  association (one actor linked to one film, with last_update). Freshness: static.
+  Traffic: n/a. Columns: actor_id, film_id, last_update.'

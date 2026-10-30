@@ -1,0 +1,24 @@
+table: soccer_2016_City
+description: Cities used in the 2016 soccer dataset, listing each city's name and
+  the country it belongs to for use in location lookups and joins.
+grain: one row per city (City_Id) with City_Name and Country_id
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: City_Id
+  type: INT
+- name: City_Name
+  type: TEXT
+- name: Country_id
+  type: INT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: soccer_2016
+search_text: 'Table soccer_2016_City. Cities used in the 2016 soccer dataset, listing
+  each city''s name and the country it belongs to for use in location lookups and
+  joins. One row = one row per city (City_Id) with City_Name and Country_id. Freshness:
+  static. Traffic: n/a. Columns: City_Id, City_Name, Country_id.'

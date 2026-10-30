@@ -1,0 +1,73 @@
+table: works_cycles_Product
+description: Catalog of products with IDs, names, pricing, inventory and manufacturing
+  attributes (size/weight, safety stock, reorder point, costs, list price), availability
+  and status dates—used for sales, inventory and production planning.
+grain: one row per product
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: ProductID
+  type: INT
+- name: Name
+  type: TEXT
+- name: ProductNumber
+  type: TEXT
+- name: MakeFlag
+  type: INT
+- name: FinishedGoodsFlag
+  type: INT
+- name: Color
+  type: TEXT
+- name: SafetyStockLevel
+  type: INT
+- name: ReorderPoint
+  type: INT
+- name: StandardCost
+  type: DOUBLE
+- name: ListPrice
+  type: DOUBLE
+- name: Size
+  type: TEXT
+- name: SizeUnitMeasureCode
+  type: TEXT
+- name: WeightUnitMeasureCode
+  type: TEXT
+- name: Weight
+  type: DOUBLE
+- name: DaysToManufacture
+  type: INT
+- name: ProductLine
+  type: TEXT
+- name: Class
+  type: TEXT
+- name: Style
+  type: TEXT
+- name: ProductSubcategoryID
+  type: INT
+- name: ProductModelID
+  type: INT
+- name: SellStartDate
+  type: DATETIME
+- name: SellEndDate
+  type: DATETIME
+- name: DiscontinuedDate
+  type: DATETIME
+- name: rowguid
+  type: TEXT
+- name: ModifiedDate
+  type: DATETIME
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: works_cycles
+search_text: 'Table works_cycles_Product. Catalog of products with IDs, names, pricing,
+  inventory and manufacturing attributes (size/weight, safety stock, reorder point,
+  costs, list price), availability and status dates—used for sales, inventory and
+  production planning. One row = one row per product. Freshness: static. Traffic:
+  n/a. Columns: ProductID, Name, ProductNumber, MakeFlag, FinishedGoodsFlag, Color,
+  SafetyStockLevel, ReorderPoint, StandardCost, ListPrice, Size, SizeUnitMeasureCode,
+  WeightUnitMeasureCode, Weight, DaysToManufacture, ProductLine, Class, Style, ProductSubcategoryID,
+  ProductModelID, SellStartDate, SellEndDate, DiscontinuedDate, rowguid, ModifiedDate.'

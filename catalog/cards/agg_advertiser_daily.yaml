@@ -1,0 +1,48 @@
+table: agg_advertiser_daily
+description: Final daily impressions, clicks, CTR and estimated value per advertiser
+  (all its campaigns together).
+grain: one row per advertiser per day
+freshness: final
+traffic: all
+joins:
+  advertiser_id: dim_advertiser
+lookalikes:
+- agg_campaign_daily
+columns:
+- name: event_date
+  type: DATE
+- name: advertiser_id
+  type: BIGINT
+- name: impressions
+  type: BIGINT
+- name: clicks
+  type: HUGEINT
+- name: ctr
+  type: DOUBLE
+- name: est_value
+  type: DOUBLE
+row_count: 1058204
+date_range: 2017-05-06 to 2017-05-12
+examples:
+- event_date: '2017-05-09'
+  advertiser_id: '183208'
+  impressions: '15'
+  clicks: '0'
+  ctr: '0.0'
+  est_value: '0.0'
+- event_date: '2017-05-07'
+  advertiser_id: '128744'
+  impressions: '41'
+  clicks: '0'
+  ctr: '0.0'
+  est_value: '0.0'
+- event_date: '2017-05-11'
+  advertiser_id: '74142'
+  impressions: '16'
+  clicks: '1'
+  ctr: '0.0625'
+  est_value: '249.0'
+search_text: 'Table agg_advertiser_daily. Final daily impressions, clicks, CTR and
+  estimated value per advertiser (all its campaigns together). One row = one row per
+  advertiser per day. Freshness: final. Traffic: all. Columns: event_date, advertiser_id,
+  impressions, clicks, ctr, est_value.'

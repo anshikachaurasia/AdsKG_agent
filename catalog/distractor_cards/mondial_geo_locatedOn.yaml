@@ -1,0 +1,28 @@
+table: mondial_geo_locatedOn
+description: 'Mapping of populated places to their administrative divisions: each
+  row lists a city and the province, country, and island it sits on, used for geographic
+  lookups and joins.'
+grain: one row per city (a single city and its province, country, and island)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: City
+  type: TEXT
+- name: Province
+  type: TEXT
+- name: Country
+  type: TEXT
+- name: Island
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: mondial_geo
+search_text: 'Table mondial_geo_locatedOn. Mapping of populated places to their administrative
+  divisions: each row lists a city and the province, country, and island it sits on,
+  used for geographic lookups and joins. One row = one row per city (a single city
+  and its province, country, and island). Freshness: static. Traffic: n/a. Columns:
+  City, Province, Country, Island.'

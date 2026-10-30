@@ -1,0 +1,37 @@
+table: retails_customer
+description: Customer master records including customer name, contact, market segment,
+  nation key, account balance and free-text comment, used for lookups, segmentation,
+  billing and analytics.
+grain: one row per customer (unique customer record)
+freshness: static
+traffic: n/a
+joins:
+  c_nationkey: retails_nation
+lookalikes: []
+columns:
+- name: c_custkey
+  type: INT
+- name: c_mktsegment
+  type: TEXT
+- name: c_nationkey
+  type: INT
+- name: c_name
+  type: TEXT
+- name: c_address
+  type: TEXT
+- name: c_phone
+  type: TEXT
+- name: c_acctbal
+  type: DOUBLE
+- name: c_comment
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: retails
+search_text: 'Table retails_customer. Customer master records including customer name,
+  contact, market segment, nation key, account balance and free-text comment, used
+  for lookups, segmentation, billing and analytics. One row = one row per customer
+  (unique customer record). Freshness: static. Traffic: n/a. Columns: c_custkey, c_mktsegment,
+  c_nationkey, c_name, c_address, c_phone, c_acctbal, c_comment.'

@@ -1,0 +1,24 @@
+table: regional_sales_Sales_Team
+description: List of sales teams with their ID and assigned region, used to look up
+  team names and regions for reporting and regional sales analysis.
+grain: one row per sales team (SalesTeamID, Sales Team, and Region)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: SalesTeamID
+  type: INT
+- name: Sales Team
+  type: TEXT
+- name: Region
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: regional_sales
+search_text: 'Table regional_sales_Sales_Team. List of sales teams with their ID and
+  assigned region, used to look up team names and regions for reporting and regional
+  sales analysis. One row = one row per sales team (SalesTeamID, Sales Team, and Region).
+  Freshness: static. Traffic: n/a. Columns: SalesTeamID, Sales Team, Region.'

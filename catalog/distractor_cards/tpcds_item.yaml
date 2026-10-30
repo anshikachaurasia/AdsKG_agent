@@ -1,0 +1,69 @@
+table: tpcds_item
+description: 'Catalog of product/item records: contains item identifiers, descriptions,
+  current price and wholesale cost, brand/class/category/manufacturer attributes,
+  physical characteristics, manager and record effective dates — used as the item
+  dimension for product cataloging, reporting, and joins to sales/inventory data.'
+grain: one row per unique item (SKU) identified by i_item_sk / i_item_id)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: i_item_sk
+  type: BIGINT
+- name: i_item_id
+  type: VARCHAR
+- name: i_rec_start_date
+  type: DATE
+- name: i_rec_end_date
+  type: DATE
+- name: i_item_desc
+  type: VARCHAR
+- name: i_current_price
+  type: DECIMAL(7,2)
+- name: i_wholesale_cost
+  type: DECIMAL(7,2)
+- name: i_brand_id
+  type: BIGINT
+- name: i_brand
+  type: VARCHAR
+- name: i_class_id
+  type: BIGINT
+- name: i_class
+  type: VARCHAR
+- name: i_category_id
+  type: BIGINT
+- name: i_category
+  type: VARCHAR
+- name: i_manufact_id
+  type: BIGINT
+- name: i_manufact
+  type: VARCHAR
+- name: i_size
+  type: VARCHAR
+- name: i_formulation
+  type: VARCHAR
+- name: i_color
+  type: VARCHAR
+- name: i_units
+  type: VARCHAR
+- name: i_container
+  type: VARCHAR
+- name: i_manager_id
+  type: BIGINT
+- name: i_product_name
+  type: VARCHAR
+row_count: null
+date_range: null
+examples: []
+source: TPCDS
+database: tpcds
+search_text: 'Table tpcds_item. Catalog of product/item records: contains item identifiers,
+  descriptions, current price and wholesale cost, brand/class/category/manufacturer
+  attributes, physical characteristics, manager and record effective dates — used
+  as the item dimension for product cataloging, reporting, and joins to sales/inventory
+  data. One row = one row per unique item (SKU) identified by i_item_sk / i_item_id).
+  Freshness: static. Traffic: n/a. Columns: i_item_sk, i_item_id, i_rec_start_date,
+  i_rec_end_date, i_item_desc, i_current_price, i_wholesale_cost, i_brand_id, i_brand,
+  i_class_id, i_class, i_category_id, i_category, i_manufact_id, i_manufact, i_size,
+  i_formulation, i_color, i_units, i_container, i_manager_id, i_product_name.'

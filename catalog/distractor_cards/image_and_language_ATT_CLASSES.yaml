@@ -1,0 +1,24 @@
+table: image_and_language_ATT_CLASSES
+description: Lookup table of attribute classes used by the image_and_language dataset,
+  mapping each attribute class ID to its text label for tagging images and language
+  items.
+grain: one row per attribute class (one ID and its text label)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: ATT_CLASS_ID
+  type: INT
+- name: ATT_CLASS
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: image_and_language
+search_text: 'Table image_and_language_ATT_CLASSES. Lookup table of attribute classes
+  used by the image_and_language dataset, mapping each attribute class ID to its text
+  label for tagging images and language items. One row = one row per attribute class
+  (one ID and its text label). Freshness: static. Traffic: n/a. Columns: ATT_CLASS_ID,
+  ATT_CLASS.'

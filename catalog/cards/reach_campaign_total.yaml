@@ -1,0 +1,38 @@
+table: reach_campaign_total
+description: Total reach per campaign over the whole final period (6-12 May) - unique
+  users, unique clickers and average frequency (impressions per person).
+grain: one row per campaign
+freshness: final
+traffic: all
+joins:
+  campaign_id: dim_campaign
+lookalikes:
+- reach_campaign_daily
+columns:
+- name: campaign_id
+  type: BIGINT
+- name: unique_users
+  type: BIGINT
+- name: unique_clickers
+  type: BIGINT
+- name: avg_frequency
+  type: DOUBLE
+row_count: 410503
+date_range: null
+examples:
+- campaign_id: '268552'
+  unique_users: '295'
+  unique_clickers: '12'
+  avg_frequency: '1.623728813559322'
+- campaign_id: '216253'
+  unique_users: '42'
+  unique_clickers: '0'
+  avg_frequency: '1.0952380952380953'
+- campaign_id: '33040'
+  unique_users: '1451'
+  unique_clickers: '116'
+  avg_frequency: '1.5189524465885595'
+search_text: 'Table reach_campaign_total. Total reach per campaign over the whole
+  final period (6-12 May) - unique users, unique clickers and average frequency (impressions
+  per person). One row = one row per campaign. Freshness: final. Traffic: all. Columns:
+  campaign_id, unique_users, unique_clickers, avg_frequency.'

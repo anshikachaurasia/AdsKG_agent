@@ -1,0 +1,32 @@
+table: talkingdata_events
+description: Event records from the TalkingData dataset capturing an individual event
+  occurrence with its device, time and GPS coordinates for location analysis and event
+  sequencing.
+grain: one row per individual event (one event_id occurrence for a device at a specific
+  timestamp with latitude/longitude)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: event_id
+  type: INT
+- name: device_id
+  type: INT
+- name: timestamp
+  type: DATETIME
+- name: longitude
+  type: DOUBLE
+- name: latitude
+  type: DOUBLE
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: talkingdata
+search_text: 'Table talkingdata_events. Event records from the TalkingData dataset
+  capturing an individual event occurrence with its device, time and GPS coordinates
+  for location analysis and event sequencing. One row = one row per individual event
+  (one event_id occurrence for a device at a specific timestamp with latitude/longitude).
+  Freshness: static. Traffic: n/a. Columns: event_id, device_id, timestamp, longitude,
+  latitude.'

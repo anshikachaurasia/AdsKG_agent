@@ -1,0 +1,65 @@
+table: dim_user
+description: User profile for each user - gender, age level, spending level, shopping
+  depth, student flag, city level. Use it to split results by audience. Some users
+  have no profile.
+grain: one row per user
+freshness: static
+traffic: n/a
+joins:
+  user_id: fact_ad_events
+lookalikes:
+- agg_campaign_daily_by_audience
+columns:
+- name: user_id
+  type: BIGINT
+- name: gender
+  type: VARCHAR
+- name: age_level
+  type: BIGINT
+- name: spending_level
+  type: BIGINT
+- name: shopping_depth
+  type: BIGINT
+- name: is_student
+  type: BIGINT
+- name: city_level
+  type: BIGINT
+- name: micro_group_id
+  type: BIGINT
+- name: group_id
+  type: BIGINT
+row_count: 1061768
+date_range: null
+examples:
+- user_id: '234'
+  gender: female
+  age_level: '5'
+  spending_level: None
+  shopping_depth: '3'
+  is_student: '0'
+  city_level: '3'
+  micro_group_id: '0'
+  group_id: '5'
+- user_id: '523'
+  gender: female
+  age_level: '2'
+  spending_level: '1'
+  shopping_depth: '3'
+  is_student: '1'
+  city_level: '2'
+  micro_group_id: '5'
+  group_id: '2'
+- user_id: '612'
+  gender: male
+  age_level: '2'
+  spending_level: '2'
+  shopping_depth: '3'
+  is_student: '0'
+  city_level: None
+  micro_group_id: '0'
+  group_id: '8'
+search_text: 'Table dim_user. User profile for each user - gender, age level, spending
+  level, shopping depth, student flag, city level. Use it to split results by audience.
+  Some users have no profile. One row = one row per user. Freshness: static. Traffic:
+  n/a. Columns: user_id, gender, age_level, spending_level, shopping_depth, is_student,
+  city_level, micro_group_id, group_id.'

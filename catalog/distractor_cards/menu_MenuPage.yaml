@@ -1,0 +1,34 @@
+table: menu_MenuPage
+description: Stores pages of a menu including the page number, linked image, full
+  image dimensions and UUID for rendering or referencing menu pages.
+grain: one row per page of a menu (a specific menu_id and page_number)
+freshness: static
+traffic: n/a
+joins:
+  menu_id: menu_Menu
+lookalikes: []
+columns:
+- name: id
+  type: INT
+- name: menu_id
+  type: INT
+- name: page_number
+  type: INT
+- name: image_id
+  type: DOUBLE
+- name: full_height
+  type: INT
+- name: full_width
+  type: INT
+- name: uuid
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: menu
+search_text: 'Table menu_MenuPage. Stores pages of a menu including the page number,
+  linked image, full image dimensions and UUID for rendering or referencing menu pages.
+  One row = one row per page of a menu (a specific menu_id and page_number). Freshness:
+  static. Traffic: n/a. Columns: id, menu_id, page_number, image_id, full_height,
+  full_width, uuid.'

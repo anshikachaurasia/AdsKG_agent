@@ -1,0 +1,37 @@
+table: cs_semester_student
+description: Directory of students enrolled in the CS semester, storing each student’s
+  contact details, academic metrics (intelligence score, GPA), and classification
+  (type) for use in enrollment, reporting, and academic tracking.
+grain: one row per individual student record for the CS semester (one student)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: student_id
+  type: INT
+- name: f_name
+  type: TEXT
+- name: l_name
+  type: TEXT
+- name: phone_number
+  type: TEXT
+- name: email
+  type: TEXT
+- name: intelligence
+  type: INT
+- name: gpa
+  type: DOUBLE
+- name: type
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: cs_semester
+search_text: 'Table cs_semester_student. Directory of students enrolled in the CS
+  semester, storing each student’s contact details, academic metrics (intelligence
+  score, GPA), and classification (type) for use in enrollment, reporting, and academic
+  tracking. One row = one row per individual student record for the CS semester (one
+  student). Freshness: static. Traffic: n/a. Columns: student_id, f_name, l_name,
+  phone_number, email, intelligence, gpa, type.'

@@ -1,0 +1,30 @@
+table: works_cycles_ProductDocument
+description: Stores document content or document node fragments associated with products,
+  along with the last modified timestamp, used to track and retrieve product-related
+  documents.
+grain: one row per product document node (a specific document or document fragment
+  for a single ProductID) with its last modified date
+freshness: static
+traffic: n/a
+joins:
+  ProductID: works_cycles_Product
+  DocumentNode: works_cycles_Document
+lookalikes: []
+columns:
+- name: ProductID
+  type: INT
+- name: DocumentNode
+  type: TEXT
+- name: ModifiedDate
+  type: DATETIME
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: works_cycles
+search_text: 'Table works_cycles_ProductDocument. Stores document content or document
+  node fragments associated with products, along with the last modified timestamp,
+  used to track and retrieve product-related documents. One row = one row per product
+  document node (a specific document or document fragment for a single ProductID)
+  with its last modified date. Freshness: static. Traffic: n/a. Columns: ProductID,
+  DocumentNode, ModifiedDate.'

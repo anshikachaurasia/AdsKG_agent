@@ -1,0 +1,29 @@
+table: olympics_person
+description: Records of individual Olympic people/athletes with name, gender, height
+  and weight, used to look up athlete info and analyze demographics or physical characteristics.
+grain: one row per person (athlete) in the Olympics dataset
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: id
+  type: INT
+- name: full_name
+  type: TEXT
+- name: gender
+  type: TEXT
+- name: height
+  type: INT
+- name: weight
+  type: INT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: olympics
+search_text: 'Table olympics_person. Records of individual Olympic people/athletes
+  with name, gender, height and weight, used to look up athlete info and analyze demographics
+  or physical characteristics. One row = one row per person (athlete) in the Olympics
+  dataset. Freshness: static. Traffic: n/a. Columns: id, full_name, gender, height,
+  weight.'

@@ -1,0 +1,66 @@
+table: tpcds_store_returns
+description: Details of each product return at a store, including date/time, item,
+  customer and demographic links, store and reason, and all monetary amounts (refund,
+  tax, fees, shipping, store credit, net loss); used to analyze return behavior and
+  financial impact.
+grain: one row per individual store return line (a single returned item in a return
+  transaction)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: sr_returned_date_sk
+  type: BIGINT
+- name: sr_return_time_sk
+  type: BIGINT
+- name: sr_item_sk
+  type: BIGINT
+- name: sr_customer_sk
+  type: BIGINT
+- name: sr_cdemo_sk
+  type: BIGINT
+- name: sr_hdemo_sk
+  type: BIGINT
+- name: sr_addr_sk
+  type: BIGINT
+- name: sr_store_sk
+  type: BIGINT
+- name: sr_reason_sk
+  type: BIGINT
+- name: sr_ticket_number
+  type: BIGINT
+- name: sr_return_quantity
+  type: BIGINT
+- name: sr_return_amt
+  type: DECIMAL(7,2)
+- name: sr_return_tax
+  type: DECIMAL(7,2)
+- name: sr_return_amt_inc_tax
+  type: DECIMAL(7,2)
+- name: sr_fee
+  type: DECIMAL(7,2)
+- name: sr_return_ship_cost
+  type: DECIMAL(7,2)
+- name: sr_refunded_cash
+  type: DECIMAL(7,2)
+- name: sr_reversed_charge
+  type: DECIMAL(7,2)
+- name: sr_store_credit
+  type: DECIMAL(7,2)
+- name: sr_net_loss
+  type: DECIMAL(7,2)
+row_count: null
+date_range: null
+examples: []
+source: TPCDS
+database: tpcds
+search_text: 'Table tpcds_store_returns. Details of each product return at a store,
+  including date/time, item, customer and demographic links, store and reason, and
+  all monetary amounts (refund, tax, fees, shipping, store credit, net loss); used
+  to analyze return behavior and financial impact. One row = one row per individual
+  store return line (a single returned item in a return transaction). Freshness: static.
+  Traffic: n/a. Columns: sr_returned_date_sk, sr_return_time_sk, sr_item_sk, sr_customer_sk,
+  sr_cdemo_sk, sr_hdemo_sk, sr_addr_sk, sr_store_sk, sr_reason_sk, sr_ticket_number,
+  sr_return_quantity, sr_return_amt, sr_return_tax, sr_return_amt_inc_tax, sr_fee,
+  sr_return_ship_cost, sr_refunded_cash, sr_reversed_charge, sr_store_credit, sr_net_loss.'

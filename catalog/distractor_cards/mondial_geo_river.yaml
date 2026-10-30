@@ -1,0 +1,46 @@
+table: mondial_geo_river
+description: Worldwide rivers with their names and geographic details — used to analyze
+  and map river attributes such as length, source and estuary locations, source altitude,
+  and related lakes, seas or mountains.
+grain: one row per river (a single record for a river including its names, length,
+  source and estuary coordinates, source altitude, and associated lake/sea/mountain
+  information)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: Name
+  type: TEXT
+- name: River
+  type: TEXT
+- name: Lake
+  type: TEXT
+- name: Sea
+  type: TEXT
+- name: Length
+  type: DOUBLE
+- name: SourceLongitude
+  type: DOUBLE
+- name: SourceLatitude
+  type: DOUBLE
+- name: Mountains
+  type: TEXT
+- name: SourceAltitude
+  type: DOUBLE
+- name: EstuaryLongitude
+  type: DOUBLE
+- name: EstuaryLatitude
+  type: DOUBLE
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: mondial_geo
+search_text: 'Table mondial_geo_river. Worldwide rivers with their names and geographic
+  details — used to analyze and map river attributes such as length, source and estuary
+  locations, source altitude, and related lakes, seas or mountains. One row = one
+  row per river (a single record for a river including its names, length, source and
+  estuary coordinates, source altitude, and associated lake/sea/mountain information).
+  Freshness: static. Traffic: n/a. Columns: Name, River, Lake, Sea, Length, SourceLongitude,
+  SourceLatitude, Mountains, SourceAltitude, EstuaryLongitude, EstuaryLatitude.'

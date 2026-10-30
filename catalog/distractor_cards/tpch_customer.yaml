@@ -1,0 +1,37 @@
+table: tpch_customer
+description: 'Customer master records for the TPC-H dataset: customer ID, name, address,
+  nation reference, phone, account balance, market segment and comment, used for joins
+  and business-analytics queries (orders, revenue, segmentation).'
+grain: one row per customer (one customer record)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: c_custkey
+  type: BIGINT
+- name: c_name
+  type: VARCHAR
+- name: c_address
+  type: VARCHAR
+- name: c_nationkey
+  type: INTEGER
+- name: c_phone
+  type: VARCHAR
+- name: c_acctbal
+  type: DECIMAL(15,2)
+- name: c_mktsegment
+  type: VARCHAR
+- name: c_comment
+  type: VARCHAR
+row_count: null
+date_range: null
+examples: []
+source: TPCH
+database: tpch
+search_text: 'Table tpch_customer. Customer master records for the TPC-H dataset:
+  customer ID, name, address, nation reference, phone, account balance, market segment
+  and comment, used for joins and business-analytics queries (orders, revenue, segmentation).
+  One row = one row per customer (one customer record). Freshness: static. Traffic:
+  n/a. Columns: c_custkey, c_name, c_address, c_nationkey, c_phone, c_acctbal, c_mktsegment,
+  c_comment.'

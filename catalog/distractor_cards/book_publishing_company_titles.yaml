@@ -1,0 +1,42 @@
+table: book_publishing_company_titles
+description: Information about each book title the company publishes, including identifiers,
+  type, publisher, pricing and financial terms, sales and publication date — used
+  for cataloging, reporting, and royalty/payment calculations.
+grain: one row per book title (unique title_id)
+freshness: static
+traffic: n/a
+joins:
+  pub_id: book_publishing_company_publishers
+lookalikes: []
+columns:
+- name: title_id
+  type: TEXT
+- name: title
+  type: TEXT
+- name: type
+  type: TEXT
+- name: pub_id
+  type: TEXT
+- name: price
+  type: DOUBLE
+- name: advance
+  type: DOUBLE
+- name: royalty
+  type: INT
+- name: ytd_sales
+  type: INT
+- name: notes
+  type: TEXT
+- name: pubdate
+  type: DATETIME
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: book_publishing_company
+search_text: 'Table book_publishing_company_titles. Information about each book title
+  the company publishes, including identifiers, type, publisher, pricing and financial
+  terms, sales and publication date — used for cataloging, reporting, and royalty/payment
+  calculations. One row = one row per book title (unique title_id). Freshness: static.
+  Traffic: n/a. Columns: title_id, title, type, pub_id, price, advance, royalty, ytd_sales,
+  notes, pubdate.'

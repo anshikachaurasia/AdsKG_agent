@@ -1,0 +1,47 @@
+table: agg_category_daily
+description: Final daily impressions, clicks, CTR and estimated value per product
+  category.
+grain: one row per category per day
+freshness: final
+traffic: all
+joins:
+  category_id: dim_ad
+lookalikes:
+- agg_brand_daily
+columns:
+- name: event_date
+  type: DATE
+- name: category_id
+  type: BIGINT
+- name: impressions
+  type: BIGINT
+- name: clicks
+  type: HUGEINT
+- name: ctr
+  type: DOUBLE
+- name: est_value
+  type: DOUBLE
+row_count: 39549
+date_range: 2017-05-06 to 2017-05-12
+examples:
+- event_date: '2017-05-06'
+  category_id: '4521'
+  impressions: '32924'
+  clicks: '1802'
+  ctr: '0.05473211031466407'
+  est_value: '363607.14999999997'
+- event_date: '2017-05-12'
+  category_id: '9493'
+  impressions: '3012'
+  clicks: '133'
+  ctr: '0.04415670650730412'
+  est_value: '278131.39'
+- event_date: '2017-05-10'
+  category_id: '4505'
+  impressions: '60813'
+  clicks: '2046'
+  ctr: '0.03364412214493612'
+  est_value: '400212.06'
+search_text: 'Table agg_category_daily. Final daily impressions, clicks, CTR and estimated
+  value per product category. One row = one row per category per day. Freshness: final.
+  Traffic: all. Columns: event_date, category_id, impressions, clicks, ctr, est_value.'

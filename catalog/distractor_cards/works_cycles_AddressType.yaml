@@ -1,0 +1,26 @@
+table: works_cycles_AddressType
+description: Lookup table of address types used by the works_cycles system (e.g.,
+  Home, Work), storing the type name, unique IDs, and when the record was last modified.
+grain: one row per address type (one AddressTypeID)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: AddressTypeID
+  type: INT
+- name: Name
+  type: TEXT
+- name: rowguid
+  type: TEXT
+- name: ModifiedDate
+  type: DATETIME
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: works_cycles
+search_text: 'Table works_cycles_AddressType. Lookup table of address types used by
+  the works_cycles system (e.g., Home, Work), storing the type name, unique IDs, and
+  when the record was last modified. One row = one row per address type (one AddressTypeID).
+  Freshness: static. Traffic: n/a. Columns: AddressTypeID, Name, rowguid, ModifiedDate.'

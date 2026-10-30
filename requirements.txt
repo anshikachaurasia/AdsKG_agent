@@ -1,0 +1,18 @@
+duckdb==2.0.0
+fastembed==0.9.1
+ipykernel==7.4.0
+nbconvert==7.17.2
+neo4j==6.4.1
+notebook==7.6.3
+openai==3.40.0
+python-dotenv==1.2.4
+PyYAML==6.0.3
+qdrant-client==1.20.0
+sqlglot==30.25.0
+fastmcp==4.1.4
+langchain-core==1.7.3
+langchain-openai==1.7.3
+langgraph==1.2.18
+matplotlib==3.11.2   # M9 results chart
+streamlit==1.66.1    # M10 chat UI
+python-pptx==1.0.2   # M10 slides (scripts/make_slides.py)

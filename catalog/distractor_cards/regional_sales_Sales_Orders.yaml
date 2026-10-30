@@ -1,0 +1,56 @@
+table: regional_sales_Sales_Orders
+description: All regional sales orders with order, shipping and delivery dates, channel
+  and warehouse, product and customer links, quantities, pricing and discounts — used
+  for order-level reporting, revenue and cost analysis, and fulfillment tracking.
+grain: one row per ordered product line on a sales order (one product instance/line
+  within an order)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: OrderNumber
+  type: TEXT
+- name: Sales Channel
+  type: TEXT
+- name: WarehouseCode
+  type: TEXT
+- name: ProcuredDate
+  type: TEXT
+- name: OrderDate
+  type: TEXT
+- name: ShipDate
+  type: TEXT
+- name: DeliveryDate
+  type: TEXT
+- name: CurrencyCode
+  type: TEXT
+- name: _SalesTeamID
+  type: INT
+- name: _CustomerID
+  type: INT
+- name: _StoreID
+  type: INT
+- name: _ProductID
+  type: INT
+- name: Order Quantity
+  type: INT
+- name: Discount Applied
+  type: DOUBLE
+- name: Unit Price
+  type: TEXT
+- name: Unit Cost
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: regional_sales
+search_text: 'Table regional_sales_Sales_Orders. All regional sales orders with order,
+  shipping and delivery dates, channel and warehouse, product and customer links,
+  quantities, pricing and discounts — used for order-level reporting, revenue and
+  cost analysis, and fulfillment tracking. One row = one row per ordered product line
+  on a sales order (one product instance/line within an order). Freshness: static.
+  Traffic: n/a. Columns: OrderNumber, Sales Channel, WarehouseCode, ProcuredDate,
+  OrderDate, ShipDate, DeliveryDate, CurrencyCode, _SalesTeamID, _CustomerID, _StoreID,
+  _ProductID, Order Quantity, Discount Applied, Unit Price, Unit Cost.'

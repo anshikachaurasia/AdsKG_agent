@@ -1,0 +1,47 @@
+table: superstore_central_superstore
+description: 'Line-level sales records for the Superstore dataset: each row contains
+  order, shipping, customer, product, and monetary details used for sales, shipping
+  and profitability analysis.'
+grain: one row per order line (a single product within an order)
+freshness: static
+traffic: n/a
+joins:
+  Customer ID: superstore_people
+  Product ID: superstore_product
+lookalikes: []
+columns:
+- name: Row ID
+  type: INT
+- name: Order ID
+  type: TEXT
+- name: Order Date
+  type: DATE
+- name: Ship Date
+  type: DATE
+- name: Ship Mode
+  type: TEXT
+- name: Customer ID
+  type: TEXT
+- name: Region
+  type: TEXT
+- name: Product ID
+  type: TEXT
+- name: Sales
+  type: DOUBLE
+- name: Quantity
+  type: INT
+- name: Discount
+  type: DOUBLE
+- name: Profit
+  type: DOUBLE
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: superstore
+search_text: 'Table superstore_central_superstore. Line-level sales records for the
+  Superstore dataset: each row contains order, shipping, customer, product, and monetary
+  details used for sales, shipping and profitability analysis. One row = one row per
+  order line (a single product within an order). Freshness: static. Traffic: n/a.
+  Columns: Row ID, Order ID, Order Date, Ship Date, Ship Mode, Customer ID, Region,
+  Product ID, Sales, Quantity, Discount, Profit.'

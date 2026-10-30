@@ -1,0 +1,7 @@
+# Version B: basic search - the AI sees only the 5 closest table cards (Qdrant)
+version: B
+k: 5
+model: gpt-5-mini
+reasoning_effort: low
+price_in_per_1m: 0.25     # USD per 1M input tokens (check openai.com/api/pricing)
+price_out_per_1m: 2.00    # USD per 1M output tokens

@@ -1,0 +1,24 @@
+table: talkingdata_app_labels
+description: Mapping of apps to label tags — records which label (category/attribute/tag)
+  applies to each app for analytics and targeting.
+grain: one row per app-label association (one (app_id, label_id) pair)
+freshness: static
+traffic: n/a
+joins:
+  label_id: talkingdata_label_categories
+  app_id: talkingdata_app_all
+lookalikes: []
+columns:
+- name: app_id
+  type: INT
+- name: label_id
+  type: INT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: talkingdata
+search_text: 'Table talkingdata_app_labels. Mapping of apps to label tags — records
+  which label (category/attribute/tag) applies to each app for analytics and targeting.
+  One row = one row per app-label association (one (app_id, label_id) pair). Freshness:
+  static. Traffic: n/a. Columns: app_id, label_id.'

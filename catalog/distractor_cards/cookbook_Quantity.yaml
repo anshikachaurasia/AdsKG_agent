@@ -1,0 +1,38 @@
+table: cookbook_Quantity
+description: Ingredient quantities for recipes, listing min/max amounts, units, preparation
+  notes, and whether the ingredient is optional.
+grain: one row per ingredient quantity for a specific recipe (identified by recipe_id
+  and ingredient_id)
+freshness: static
+traffic: n/a
+joins:
+  recipe_id: cookbook_Nutrition
+  ingredient_id: cookbook_Ingredient
+lookalikes: []
+columns:
+- name: quantity_id
+  type: INT
+- name: recipe_id
+  type: INT
+- name: ingredient_id
+  type: INT
+- name: max_qty
+  type: DOUBLE
+- name: min_qty
+  type: DOUBLE
+- name: unit
+  type: TEXT
+- name: preparation
+  type: TEXT
+- name: optional
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: cookbook
+search_text: 'Table cookbook_Quantity. Ingredient quantities for recipes, listing
+  min/max amounts, units, preparation notes, and whether the ingredient is optional.
+  One row = one row per ingredient quantity for a specific recipe (identified by recipe_id
+  and ingredient_id). Freshness: static. Traffic: n/a. Columns: quantity_id, recipe_id,
+  ingredient_id, max_qty, min_qty, unit, preparation, optional.'

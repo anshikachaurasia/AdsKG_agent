@@ -1,0 +1,22 @@
+table: airline_Airports
+description: List of airports with their IATA/FAA codes and full descriptions (name
+  and location) used to look up airport details.
+grain: one row per airport code (one airport)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: Code
+  type: TEXT
+- name: Description
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: airline
+search_text: 'Table airline_Airports. List of airports with their IATA/FAA codes and
+  full descriptions (name and location) used to look up airport details. One row =
+  one row per airport code (one airport). Freshness: static. Traffic: n/a. Columns:
+  Code, Description.'

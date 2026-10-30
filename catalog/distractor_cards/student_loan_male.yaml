@@ -1,0 +1,21 @@
+table: student_loan_male
+description: List of male borrower names in the student_loan database, used to identify
+  or group male students associated with loans for reporting or matching.
+grain: one row per male borrower name (one text name)
+freshness: static
+traffic: n/a
+joins:
+  name: student_loan_person
+lookalikes: []
+columns:
+- name: name
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: student_loan
+search_text: 'Table student_loan_male. List of male borrower names in the student_loan
+  database, used to identify or group male students associated with loans for reporting
+  or matching. One row = one row per male borrower name (one text name). Freshness:
+  static. Traffic: n/a. Columns: name.'

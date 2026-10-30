@@ -1,0 +1,28 @@
+table: public_review_platform_Tips
+description: User-submitted tips for businesses including who wrote them, how many
+  likes they received, and the tip text length; used to analyze short feedback and
+  tip popularity per business.
+grain: one row per tip left by a user for a specific business (one user-business tip)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: business_id
+  type: INT
+- name: user_id
+  type: INT
+- name: likes
+  type: INT
+- name: tip_length
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: public_review_platform
+search_text: 'Table public_review_platform_Tips. User-submitted tips for businesses
+  including who wrote them, how many likes they received, and the tip text length;
+  used to analyze short feedback and tip popularity per business. One row = one row
+  per tip left by a user for a specific business (one user-business tip). Freshness:
+  static. Traffic: n/a. Columns: business_id, user_id, likes, tip_length.'

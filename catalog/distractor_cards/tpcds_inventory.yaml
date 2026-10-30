@@ -1,0 +1,28 @@
+table: tpcds_inventory
+description: Daily snapshot of how many units of each item are on hand at each warehouse
+  (used to track stock levels and support inventory reporting and fulfillment planning).
+grain: one row per date × item × warehouse (inventory quantity on hand for that item
+  at that warehouse on that date)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: inv_date_sk
+  type: BIGINT
+- name: inv_item_sk
+  type: BIGINT
+- name: inv_warehouse_sk
+  type: BIGINT
+- name: inv_quantity_on_hand
+  type: INTEGER
+row_count: null
+date_range: null
+examples: []
+source: TPCDS
+database: tpcds
+search_text: 'Table tpcds_inventory. Daily snapshot of how many units of each item
+  are on hand at each warehouse (used to track stock levels and support inventory
+  reporting and fulfillment planning). One row = one row per date × item × warehouse
+  (inventory quantity on hand for that item at that warehouse on that date). Freshness:
+  static. Traffic: n/a. Columns: inv_date_sk, inv_item_sk, inv_warehouse_sk, inv_quantity_on_hand.'

@@ -1,0 +1,33 @@
+table: retail_world_Orders
+description: Records of customer orders including who ordered, who handled the order,
+  when it was placed, and which shipper will deliver it — used to track sales, fulfillment,
+  and order history.
+grain: one row per customer order (OrderID)
+freshness: static
+traffic: n/a
+joins:
+  EmployeeID: retail_world_Employees
+  CustomerID: retail_world_Customers
+  ShipperID: retail_world_Shippers
+lookalikes: []
+columns:
+- name: OrderID
+  type: INT
+- name: CustomerID
+  type: INT
+- name: EmployeeID
+  type: INT
+- name: OrderDate
+  type: DATETIME
+- name: ShipperID
+  type: INT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: retail_world
+search_text: 'Table retail_world_Orders. Records of customer orders including who
+  ordered, who handled the order, when it was placed, and which shipper will deliver
+  it — used to track sales, fulfillment, and order history. One row = one row per
+  customer order (OrderID). Freshness: static. Traffic: n/a. Columns: OrderID, CustomerID,
+  EmployeeID, OrderDate, ShipperID.'

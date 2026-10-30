@@ -1,0 +1,42 @@
+table: codebase_community_postHistory
+description: History of changes and events for community posts — records revisions,
+  edits, comments and other post-related actions including content, who made them
+  and when.
+grain: one row per post history event (a single revision, edit, comment, or other
+  post-related action)
+freshness: static
+traffic: n/a
+joins:
+  UserId: codebase_community_users
+  PostId: codebase_community_posts
+lookalikes: []
+columns:
+- name: Id
+  type: INT
+- name: PostHistoryTypeId
+  type: INT
+- name: PostId
+  type: INT
+- name: RevisionGUID
+  type: TEXT
+- name: CreationDate
+  type: DATETIME
+- name: UserId
+  type: INT
+- name: Text
+  type: TEXT
+- name: Comment
+  type: TEXT
+- name: UserDisplayName
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: codebase_community
+search_text: 'Table codebase_community_postHistory. History of changes and events
+  for community posts — records revisions, edits, comments and other post-related
+  actions including content, who made them and when. One row = one row per post history
+  event (a single revision, edit, comment, or other post-related action). Freshness:
+  static. Traffic: n/a. Columns: Id, PostHistoryTypeId, PostId, RevisionGUID, CreationDate,
+  UserId, Text, Comment, UserDisplayName.'

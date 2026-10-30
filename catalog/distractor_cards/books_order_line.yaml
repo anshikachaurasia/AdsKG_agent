@@ -1,0 +1,26 @@
+table: books_order_line
+description: 'Individual line items for book orders: each row records a specific book
+  included in an order with its price.'
+grain: one row per book in an order (one order line item)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: line_id
+  type: INT
+- name: order_id
+  type: INT
+- name: book_id
+  type: INT
+- name: price
+  type: DOUBLE
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: books
+search_text: 'Table books_order_line. Individual line items for book orders: each
+  row records a specific book included in an order with its price. One row = one row
+  per book in an order (one order line item). Freshness: static. Traffic: n/a. Columns:
+  line_id, order_id, book_id, price.'

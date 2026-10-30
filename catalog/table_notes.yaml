@@ -1,0 +1,235 @@
+# Hand-written notes for each warehouse table (M2).
+# make_cards.py adds the automatic facts (columns, row count, dates, example values)
+# and writes one card per table into catalog/cards/.
+#
+# Fields:
+#   description  what the table is for, in plain words (the most important field for search)
+#   grain        what one row means
+#   freshness    final (up to yesterday 2017-05-12), includes_today, live_last_6h, or static
+#   traffic      all, valid (suspicious clicks removed), or n/a
+#   joins        column -> table it joins to
+#   lookalikes   tables that look similar but answer a different question
+
+dim_ad:
+  description: Lookup of every ad with its campaign, advertiser, brand, product category and item price. Use it to find which campaign, brand or advertiser an ad belongs to.
+  grain: one row per ad
+  freshness: static
+  traffic: n/a
+  joins: {campaign_id: dim_campaign, advertiser_id: dim_advertiser, ad_id: agg_ad_daily}
+  lookalikes: []
+
+dim_campaign:
+  description: Lookup of every campaign with its advertiser and how many ads it has.
+  grain: one row per campaign
+  freshness: static
+  traffic: n/a
+  joins: {campaign_id: agg_campaign_daily, advertiser_id: dim_advertiser}
+  lookalikes: []
+
+dim_advertiser:
+  description: Lookup of every advertiser (customer) with how many campaigns and ads it runs.
+  grain: one row per advertiser
+  freshness: static
+  traffic: n/a
+  joins: {advertiser_id: dim_campaign}
+  lookalikes: []
+
+dim_user:
+  description: User profile for each user - gender, age level, spending level, shopping depth, student flag, city level. Use it to split results by audience. Some users have no profile.
+  grain: one row per user
+  freshness: static
+  traffic: n/a
+  joins: {user_id: fact_ad_events}
+  lookalikes: [agg_campaign_daily_by_audience]
+
+dim_placement:
+  description: The two ad placements (positions on the site where ads are shown) with total impressions each.
+  grain: one row per placement
+  freshness: static
+  traffic: n/a
+  joins: {placement_id: agg_placement_daily}
+  lookalikes: []
+
+dim_date:
+  description: Calendar of the 8 days in the data with weekday, week start (Monday), and flags for today and final days.
+  grain: one row per day
+  freshness: static
+  traffic: n/a
+  joins: {date: agg_campaign_daily.event_date}
+  lookalikes: []
+
+fact_ad_events:
+  description: Every single ad impression (one ad shown to one user) with exact time, click flag, ad, campaign, brand, category, placement and price. Very large; use summary tables when they fit the question.
+  grain: one row per impression
+  freshness: includes_today
+  traffic: all
+  joins: {user_id: dim_user, ad_id: dim_ad, campaign_id: dim_campaign}
+  lookalikes: [agg_ad_hourly]
+
+ref_suspicious_user_hours:
+  description: List of suspicious user-hours - users who clicked more than 5 times in the same hour (likely bots or accidental clicks). Used to remove invalid traffic.
+  grain: one row per user per hour
+  freshness: includes_today
+  traffic: n/a
+  joins: {user_id: dim_user, event_hour: fact_ad_events}
+  lookalikes: []
+
+agg_ad_hourly:
+  description: Impressions, clicks, CTR and estimated value per ad per hour. Includes today, so today's hours are incomplete.
+  grain: one row per ad per hour
+  freshness: includes_today
+  traffic: all
+  joins: {ad_id: dim_ad, campaign_id: dim_campaign}
+  lookalikes: [agg_ad_daily, agg_ad_weekly, live_ad_last6h]
+
+agg_ad_daily:
+  description: Final daily impressions, clicks, CTR and estimated value per ad, all traffic, up to yesterday.
+  grain: one row per ad per day
+  freshness: final
+  traffic: all
+  joins: {ad_id: dim_ad, campaign_id: dim_campaign}
+  lookalikes: [agg_ad_hourly, agg_ad_weekly, agg_ad_daily_valid]
+
+agg_ad_weekly:
+  description: Final weekly impressions, clicks, CTR and estimated value per ad (weeks start Monday; days_in_week shows partial weeks).
+  grain: one row per ad per week
+  freshness: final
+  traffic: all
+  joins: {ad_id: dim_ad, campaign_id: dim_campaign}
+  lookalikes: [agg_ad_daily, agg_ad_hourly]
+
+agg_campaign_hourly:
+  description: Impressions, clicks, CTR and estimated value per campaign per hour, all traffic. Includes today, so today's hours are incomplete.
+  grain: one row per campaign per hour
+  freshness: includes_today
+  traffic: all
+  joins: {campaign_id: dim_campaign, advertiser_id: dim_advertiser}
+  lookalikes: [agg_campaign_daily, agg_campaign_weekly, agg_campaign_hourly_valid, live_campaign_last6h]
+
+agg_campaign_daily:
+  description: Final daily impressions, clicks, CTR and estimated value per campaign, all traffic, up to yesterday.
+  grain: one row per campaign per day
+  freshness: final
+  traffic: all
+  joins: {campaign_id: dim_campaign, advertiser_id: dim_advertiser}
+  lookalikes: [agg_campaign_hourly, agg_campaign_weekly, agg_campaign_daily_valid, reach_campaign_daily]
+
+agg_campaign_weekly:
+  description: Final weekly impressions, clicks, CTR and estimated value per campaign (weeks start Monday; days_in_week shows partial weeks).
+  grain: one row per campaign per week
+  freshness: final
+  traffic: all
+  joins: {campaign_id: dim_campaign, advertiser_id: dim_advertiser}
+  lookalikes: [agg_campaign_daily, agg_campaign_hourly]
+
+agg_advertiser_daily:
+  description: Final daily impressions, clicks, CTR and estimated value per advertiser (all its campaigns together).
+  grain: one row per advertiser per day
+  freshness: final
+  traffic: all
+  joins: {advertiser_id: dim_advertiser}
+  lookalikes: [agg_campaign_daily]
+
+agg_brand_daily:
+  description: Final daily impressions, clicks, CTR and estimated value per brand. Ads without a brand are not included.
+  grain: one row per brand per day
+  freshness: final
+  traffic: all
+  joins: {brand_id: dim_ad}
+  lookalikes: [reach_brand_daily]
+
+agg_category_daily:
+  description: Final daily impressions, clicks, CTR and estimated value per product category.
+  grain: one row per category per day
+  freshness: final
+  traffic: all
+  joins: {category_id: dim_ad}
+  lookalikes: [agg_brand_daily]
+
+agg_placement_daily:
+  description: Final daily impressions, clicks, CTR and estimated value per ad placement (position on the site).
+  grain: one row per placement per day
+  freshness: final
+  traffic: all
+  joins: {placement_id: dim_placement}
+  lookalikes: []
+
+agg_ad_daily_valid:
+  description: Final daily impressions, clicks, CTR and estimated value per ad with suspicious / invalid / bot traffic removed.
+  grain: one row per ad per day
+  freshness: final
+  traffic: valid
+  joins: {ad_id: dim_ad, campaign_id: dim_campaign}
+  lookalikes: [agg_ad_daily]
+
+agg_campaign_hourly_valid:
+  description: Hourly impressions, clicks, CTR and estimated value per campaign with suspicious / invalid / bot traffic removed. Includes today.
+  grain: one row per campaign per hour
+  freshness: includes_today
+  traffic: valid
+  joins: {campaign_id: dim_campaign, advertiser_id: dim_advertiser}
+  lookalikes: [agg_campaign_hourly, agg_campaign_daily_valid]
+
+agg_campaign_daily_valid:
+  description: Final daily impressions, clicks, CTR and estimated value per campaign with suspicious / invalid / bot traffic removed.
+  grain: one row per campaign per day
+  freshness: final
+  traffic: valid
+  joins: {campaign_id: dim_campaign, advertiser_id: dim_advertiser}
+  lookalikes: [agg_campaign_daily, agg_campaign_hourly_valid]
+
+reach_campaign_daily:
+  description: Reach per campaign per day - number of unique users (people) who saw it and unique users who clicked. Do not add days together; use reach_campaign_total for multi-day reach.
+  grain: one row per campaign per day
+  freshness: final
+  traffic: all
+  joins: {campaign_id: dim_campaign}
+  lookalikes: [reach_campaign_total, agg_campaign_daily, live_reach_campaign_last6h]
+
+reach_campaign_total:
+  description: Total reach per campaign over the whole final period (6-12 May) - unique users, unique clickers and average frequency (impressions per person).
+  grain: one row per campaign
+  freshness: final
+  traffic: all
+  joins: {campaign_id: dim_campaign}
+  lookalikes: [reach_campaign_daily]
+
+reach_brand_daily:
+  description: Reach per brand per day - number of unique users (people) who saw the brand's ads and unique users who clicked.
+  grain: one row per brand per day
+  freshness: final
+  traffic: all
+  joins: {brand_id: dim_ad}
+  lookalikes: [agg_brand_daily]
+
+agg_campaign_daily_by_audience:
+  description: Final daily impressions, clicks and CTR per campaign split by user gender and age level (audience breakdown / demographics). Users without a profile are 'unknown'.
+  grain: one row per campaign per day per gender per age level
+  freshness: final
+  traffic: all
+  joins: {campaign_id: dim_campaign}
+  lookalikes: [agg_campaign_daily, dim_user]
+
+live_ad_last6h:
+  description: Live numbers for the last 6 hours only (13 May 18:00-23:59) - impressions, clicks, CTR and estimated value per ad. Today's data is incomplete.
+  grain: one row per ad (last 6 hours total)
+  freshness: live_last_6h
+  traffic: all
+  joins: {ad_id: dim_ad, campaign_id: dim_campaign}
+  lookalikes: [agg_ad_hourly, agg_ad_daily]
+
+live_campaign_last6h:
+  description: Live numbers for the last 6 hours only (13 May 18:00-23:59) - impressions, clicks, CTR and estimated value per campaign right now.
+  grain: one row per campaign (last 6 hours total)
+  freshness: live_last_6h
+  traffic: all
+  joins: {campaign_id: dim_campaign, advertiser_id: dim_advertiser}
+  lookalikes: [agg_campaign_hourly, agg_campaign_daily, live_reach_campaign_last6h]
+
+live_reach_campaign_last6h:
+  description: Live reach for the last 6 hours only (13 May 18:00-23:59) - unique users who saw and clicked each campaign right now.
+  grain: one row per campaign (last 6 hours total)
+  freshness: live_last_6h
+  traffic: all
+  joins: {campaign_id: dim_campaign}
+  lookalikes: [reach_campaign_daily, live_campaign_last6h]

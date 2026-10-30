@@ -1,0 +1,33 @@
+table: hockey_AwardsMisc
+description: Miscellaneous awards and honors given to hockey people (players, coaches,
+  etc.) across leagues and years, used to look up and report individual award history
+  and related notes.
+grain: one row per single award instance for a person in a given year and league (with
+  optional note)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: name
+  type: TEXT
+- name: ID
+  type: TEXT
+- name: award
+  type: TEXT
+- name: year
+  type: INT
+- name: lgID
+  type: TEXT
+- name: note
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: hockey
+search_text: 'Table hockey_AwardsMisc. Miscellaneous awards and honors given to hockey
+  people (players, coaches, etc.) across leagues and years, used to look up and report
+  individual award history and related notes. One row = one row per single award instance
+  for a person in a given year and league (with optional note). Freshness: static.
+  Traffic: n/a. Columns: name, ID, award, year, lgID, note.'

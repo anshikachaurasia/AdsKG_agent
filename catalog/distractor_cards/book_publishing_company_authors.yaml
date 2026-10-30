@@ -1,0 +1,38 @@
+table: book_publishing_company_authors
+description: Author contact and address details plus contract status for authors working
+  with the publishing company, used to manage relationships, deliveries and payments.
+grain: one row per author (unique author record with contact, address, and contract
+  information)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: au_id
+  type: TEXT
+- name: au_lname
+  type: TEXT
+- name: au_fname
+  type: TEXT
+- name: phone
+  type: TEXT
+- name: address
+  type: TEXT
+- name: city
+  type: TEXT
+- name: state
+  type: TEXT
+- name: zip
+  type: TEXT
+- name: contract
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: book_publishing_company
+search_text: 'Table book_publishing_company_authors. Author contact and address details
+  plus contract status for authors working with the publishing company, used to manage
+  relationships, deliveries and payments. One row = one row per author (unique author
+  record with contact, address, and contract information). Freshness: static. Traffic:
+  n/a. Columns: au_id, au_lname, au_fname, phone, address, city, state, zip, contract.'

@@ -1,0 +1,31 @@
+table: dim_advertiser
+description: Lookup of every advertiser (customer) with how many campaigns and ads
+  it runs.
+grain: one row per advertiser
+freshness: static
+traffic: n/a
+joins:
+  advertiser_id: dim_campaign
+lookalikes: []
+columns:
+- name: advertiser_id
+  type: BIGINT
+- name: num_campaigns
+  type: BIGINT
+- name: num_ads
+  type: BIGINT
+row_count: 255875
+date_range: null
+examples:
+- advertiser_id: '2'
+  num_campaigns: '1'
+  num_ads: '1'
+- advertiser_id: '34'
+  num_campaigns: '1'
+  num_ads: '7'
+- advertiser_id: '39'
+  num_campaigns: '1'
+  num_ads: '1'
+search_text: 'Table dim_advertiser. Lookup of every advertiser (customer) with how
+  many campaigns and ads it runs. One row = one row per advertiser. Freshness: static.
+  Traffic: n/a. Columns: advertiser_id, num_campaigns, num_ads.'

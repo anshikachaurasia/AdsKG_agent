@@ -1,0 +1,38 @@
+table: reach_brand_daily
+description: Reach per brand per day - number of unique users (people) who saw the
+  brand's ads and unique users who clicked.
+grain: one row per brand per day
+freshness: final
+traffic: all
+joins:
+  brand_id: dim_ad
+lookalikes:
+- agg_brand_daily
+columns:
+- name: event_date
+  type: DATE
+- name: brand_id
+  type: BIGINT
+- name: unique_users
+  type: BIGINT
+- name: unique_clickers
+  type: BIGINT
+row_count: 463601
+date_range: 2017-05-06 to 2017-05-12
+examples:
+- event_date: '2017-05-07'
+  brand_id: '243957'
+  unique_users: '30'
+  unique_clickers: '1'
+- event_date: '2017-05-12'
+  brand_id: '231229'
+  unique_users: '98'
+  unique_clickers: '5'
+- event_date: '2017-05-11'
+  brand_id: '182299'
+  unique_users: '7'
+  unique_clickers: '0'
+search_text: 'Table reach_brand_daily. Reach per brand per day - number of unique
+  users (people) who saw the brand''s ads and unique users who clicked. One row =
+  one row per brand per day. Freshness: final. Traffic: all. Columns: event_date,
+  brand_id, unique_users, unique_clickers.'

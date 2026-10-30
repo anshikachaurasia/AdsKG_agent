@@ -1,0 +1,30 @@
+table: olympics_competitor_event
+description: Records which competitors participated in which Olympic events and the
+  medal they won (if any); used to analyze participation, results and medal counts
+  by competitor and event.
+grain: one row per competitor's participation in a specific event (includes medal_id
+  if a medal was awarded)
+freshness: static
+traffic: n/a
+joins:
+  competitor_id: olympics_games_competitor
+  event_id: olympics_event
+  medal_id: olympics_medal
+lookalikes: []
+columns:
+- name: event_id
+  type: INT
+- name: competitor_id
+  type: INT
+- name: medal_id
+  type: INT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: olympics
+search_text: 'Table olympics_competitor_event. Records which competitors participated
+  in which Olympic events and the medal they won (if any); used to analyze participation,
+  results and medal counts by competitor and event. One row = one row per competitor''s
+  participation in a specific event (includes medal_id if a medal was awarded). Freshness:
+  static. Traffic: n/a. Columns: event_id, competitor_id, medal_id.'

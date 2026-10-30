@@ -1,0 +1,64 @@
+table: software_company_Demog
+description: Demographic attributes for geographic areas including total inhabitants,
+  median income (in thousands) and a set of 18 additional demographic/analytic variables
+  used for customer segmentation and regional analysis.
+grain: one row per geographic area identified by GEOID
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: GEOID
+  type: INT
+- name: INHABITANTS_K
+  type: DOUBLE
+- name: INCOME_K
+  type: DOUBLE
+- name: A_VAR1
+  type: DOUBLE
+- name: A_VAR2
+  type: DOUBLE
+- name: A_VAR3
+  type: DOUBLE
+- name: A_VAR4
+  type: DOUBLE
+- name: A_VAR5
+  type: DOUBLE
+- name: A_VAR6
+  type: DOUBLE
+- name: A_VAR7
+  type: DOUBLE
+- name: A_VAR8
+  type: DOUBLE
+- name: A_VAR9
+  type: DOUBLE
+- name: A_VAR10
+  type: DOUBLE
+- name: A_VAR11
+  type: DOUBLE
+- name: A_VAR12
+  type: DOUBLE
+- name: A_VAR13
+  type: DOUBLE
+- name: A_VAR14
+  type: DOUBLE
+- name: A_VAR15
+  type: DOUBLE
+- name: A_VAR16
+  type: DOUBLE
+- name: A_VAR17
+  type: DOUBLE
+- name: A_VAR18
+  type: DOUBLE
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: software_company
+search_text: 'Table software_company_Demog. Demographic attributes for geographic
+  areas including total inhabitants, median income (in thousands) and a set of 18
+  additional demographic/analytic variables used for customer segmentation and regional
+  analysis. One row = one row per geographic area identified by GEOID. Freshness:
+  static. Traffic: n/a. Columns: GEOID, INHABITANTS_K, INCOME_K, A_VAR1, A_VAR2, A_VAR3,
+  A_VAR4, A_VAR5, A_VAR6, A_VAR7, A_VAR8, A_VAR9, A_VAR10, A_VAR11, A_VAR12, A_VAR13,
+  A_VAR14, A_VAR15, A_VAR16, A_VAR17, A_VAR18.'

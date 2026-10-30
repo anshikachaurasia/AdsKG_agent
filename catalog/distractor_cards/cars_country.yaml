@@ -1,0 +1,22 @@
+table: cars_country
+description: Lookup table that maps numeric car origin codes to the corresponding
+  country name, used to translate origin codes into human-readable country values.
+grain: one row per origin code and its country name.
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: origin
+  type: INT
+- name: country
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: cars
+search_text: 'Table cars_country. Lookup table that maps numeric car origin codes
+  to the corresponding country name, used to translate origin codes into human-readable
+  country values. One row = one row per origin code and its country name.. Freshness:
+  static. Traffic: n/a. Columns: origin, country.'

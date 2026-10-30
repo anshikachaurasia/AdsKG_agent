@@ -1,0 +1,29 @@
+table: tpcds_household_demographics
+description: Household demographic categories (income band, buying potential, dependent
+  count, and vehicle count) used to classify households for analysis and joins.
+grain: one row per household demographic profile (a demographic category/bucket)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: hd_demo_sk
+  type: BIGINT
+- name: hd_income_band_sk
+  type: BIGINT
+- name: hd_buy_potential
+  type: VARCHAR
+- name: hd_dep_count
+  type: BIGINT
+- name: hd_vehicle_count
+  type: INTEGER
+row_count: null
+date_range: null
+examples: []
+source: TPCDS
+database: tpcds
+search_text: 'Table tpcds_household_demographics. Household demographic categories
+  (income band, buying potential, dependent count, and vehicle count) used to classify
+  households for analysis and joins. One row = one row per household demographic profile
+  (a demographic category/bucket). Freshness: static. Traffic: n/a. Columns: hd_demo_sk,
+  hd_income_band_sk, hd_buy_potential, hd_dep_count, hd_vehicle_count.'

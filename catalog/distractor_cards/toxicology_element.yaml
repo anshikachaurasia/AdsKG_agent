@@ -1,0 +1,22 @@
+table: toxicology_element
+description: Lookup table of chemical elements tracked in toxicology data, mapping
+  element IDs to their human-readable names for use in analyses, reports, and joins.
+grain: one row per chemical element (one element_id and element_name pair)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: element_id
+  type: TEXT
+- name: element_name
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: toxicology
+search_text: 'Table toxicology_element. Lookup table of chemical elements tracked
+  in toxicology data, mapping element IDs to their human-readable names for use in
+  analyses, reports, and joins. One row = one row per chemical element (one element_id
+  and element_name pair). Freshness: static. Traffic: n/a. Columns: element_id, element_name.'

@@ -1,0 +1,31 @@
+table: codebase_community_tags
+description: List of tags used in the codebase community, with each tag's name, how
+  many times it appears, and links to its excerpt and wiki posts; used to track tag
+  metadata and popularity.
+grain: one row per tag (TagName) with its Id, Count, ExcerptPostId and WikiPostId
+freshness: static
+traffic: n/a
+joins:
+  ExcerptPostId: codebase_community_posts
+lookalikes: []
+columns:
+- name: Id
+  type: INT
+- name: TagName
+  type: TEXT
+- name: Count
+  type: INT
+- name: ExcerptPostId
+  type: INT
+- name: WikiPostId
+  type: INT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: codebase_community
+search_text: 'Table codebase_community_tags. List of tags used in the codebase community,
+  with each tag''s name, how many times it appears, and links to its excerpt and wiki
+  posts; used to track tag metadata and popularity. One row = one row per tag (TagName)
+  with its Id, Count, ExcerptPostId and WikiPostId. Freshness: static. Traffic: n/a.
+  Columns: Id, TagName, Count, ExcerptPostId, WikiPostId.'

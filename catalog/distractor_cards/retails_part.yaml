@@ -1,0 +1,38 @@
+table: retails_part
+description: 'Catalog of retail parts: product identifiers, attributes (type, size,
+  brand, name, container), manufacturer, retail price and comments used for product
+  cataloging, pricing and inventory reporting.'
+grain: one row per retail part (one unique product)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: p_partkey
+  type: INT
+- name: p_type
+  type: TEXT
+- name: p_size
+  type: INT
+- name: p_brand
+  type: TEXT
+- name: p_name
+  type: TEXT
+- name: p_container
+  type: TEXT
+- name: p_mfgr
+  type: TEXT
+- name: p_retailprice
+  type: DOUBLE
+- name: p_comment
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: retails
+search_text: 'Table retails_part. Catalog of retail parts: product identifiers, attributes
+  (type, size, brand, name, container), manufacturer, retail price and comments used
+  for product cataloging, pricing and inventory reporting. One row = one row per retail
+  part (one unique product). Freshness: static. Traffic: n/a. Columns: p_partkey,
+  p_type, p_size, p_brand, p_name, p_container, p_mfgr, p_retailprice, p_comment.'

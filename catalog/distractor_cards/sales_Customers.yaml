@@ -1,0 +1,28 @@
+table: sales_Customers
+description: Customer directory containing each customer's ID and name fields (first
+  name, middle initial, last name); used for contact, billing, and linking customers
+  to sales records.
+grain: one row per customer (unique CustomerID)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: CustomerID
+  type: INT
+- name: FirstName
+  type: TEXT
+- name: MiddleInitial
+  type: TEXT
+- name: LastName
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: sales
+search_text: 'Table sales_Customers. Customer directory containing each customer''s
+  ID and name fields (first name, middle initial, last name); used for contact, billing,
+  and linking customers to sales records. One row = one row per customer (unique CustomerID).
+  Freshness: static. Traffic: n/a. Columns: CustomerID, FirstName, MiddleInitial,
+  LastName.'

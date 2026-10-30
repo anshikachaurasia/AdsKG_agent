@@ -1,0 +1,34 @@
+table: codebase_community_postLinks
+description: Records links between community posts (e.g., duplicates, related, or
+  referenced posts) with link type and when the link was created, used to analyze
+  relationships and navigation between posts.
+grain: one row per single link from one post to another (PostId → RelatedPostId) with
+  its link type and creation timestamp.
+freshness: static
+traffic: n/a
+joins:
+  RelatedPostId: codebase_community_posts
+  PostId: codebase_community_posts
+lookalikes: []
+columns:
+- name: Id
+  type: INT
+- name: CreationDate
+  type: DATETIME
+- name: PostId
+  type: INT
+- name: RelatedPostId
+  type: INT
+- name: LinkTypeId
+  type: INT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: codebase_community
+search_text: 'Table codebase_community_postLinks. Records links between community
+  posts (e.g., duplicates, related, or referenced posts) with link type and when the
+  link was created, used to analyze relationships and navigation between posts. One
+  row = one row per single link from one post to another (PostId → RelatedPostId)
+  with its link type and creation timestamp.. Freshness: static. Traffic: n/a. Columns:
+  Id, CreationDate, PostId, RelatedPostId, LinkTypeId.'

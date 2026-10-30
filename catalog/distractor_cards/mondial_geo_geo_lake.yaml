@@ -1,0 +1,24 @@
+table: mondial_geo_geo_lake
+description: Reference list of lakes with their country and province, used for geospatial
+  lookup, mapping and joining lake-level data to locations.
+grain: one row per lake with its country and province
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: Lake
+  type: TEXT
+- name: Country
+  type: TEXT
+- name: Province
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: mondial_geo
+search_text: 'Table mondial_geo_geo_lake. Reference list of lakes with their country
+  and province, used for geospatial lookup, mapping and joining lake-level data to
+  locations. One row = one row per lake with its country and province. Freshness:
+  static. Traffic: n/a. Columns: Lake, Country, Province.'

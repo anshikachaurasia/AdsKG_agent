@@ -1,0 +1,1 @@
+SELECT a.category_id, SUM(d.est_value) AS est_value FROM agg_ad_daily d JOIN dim_ad a ON a.ad_id = d.ad_id WHERE a.advertiser_id = 183758 AND d.event_date = '2017-05-12' GROUP BY a.category_id ORDER BY a.category_id

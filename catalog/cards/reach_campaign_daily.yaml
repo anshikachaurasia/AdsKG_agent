@@ -1,0 +1,42 @@
+table: reach_campaign_daily
+description: Reach per campaign per day - number of unique users (people) who saw
+  it and unique users who clicked. Do not add days together; use reach_campaign_total
+  for multi-day reach.
+grain: one row per campaign per day
+freshness: final
+traffic: all
+joins:
+  campaign_id: dim_campaign
+lookalikes:
+- reach_campaign_total
+- agg_campaign_daily
+- live_reach_campaign_last6h
+columns:
+- name: event_date
+  type: DATE
+- name: campaign_id
+  type: BIGINT
+- name: unique_users
+  type: BIGINT
+- name: unique_clickers
+  type: BIGINT
+row_count: 1601009
+date_range: 2017-05-06 to 2017-05-12
+examples:
+- event_date: '2017-05-10'
+  campaign_id: '296876'
+  unique_users: '119'
+  unique_clickers: '14'
+- event_date: '2017-05-09'
+  campaign_id: '46072'
+  unique_users: '18'
+  unique_clickers: '1'
+- event_date: '2017-05-09'
+  campaign_id: '285192'
+  unique_users: '37'
+  unique_clickers: '5'
+search_text: 'Table reach_campaign_daily. Reach per campaign per day - number of unique
+  users (people) who saw it and unique users who clicked. Do not add days together;
+  use reach_campaign_total for multi-day reach. One row = one row per campaign per
+  day. Freshness: final. Traffic: all. Columns: event_date, campaign_id, unique_users,
+  unique_clickers.'

@@ -1,0 +1,24 @@
+table: tpch_region
+description: Lookup table of world regions used by the TPC-H dataset, containing each
+  region's unique key, name, and descriptive comment.
+grain: one row per region (one regionkey, name, and comment)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: r_regionkey
+  type: INTEGER
+- name: r_name
+  type: VARCHAR
+- name: r_comment
+  type: VARCHAR
+row_count: null
+date_range: null
+examples: []
+source: TPCH
+database: tpch
+search_text: 'Table tpch_region. Lookup table of world regions used by the TPC-H dataset,
+  containing each region''s unique key, name, and descriptive comment. One row = one
+  row per region (one regionkey, name, and comment). Freshness: static. Traffic: n/a.
+  Columns: r_regionkey, r_name, r_comment.'

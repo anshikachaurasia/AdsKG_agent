@@ -1,0 +1,32 @@
+table: retail_world_Employees
+description: Employee directory with personal details (ID, name, birth date), photo
+  link, and notes for each retail staff member, used for HR and contact/reference
+  purposes.
+grain: one row per employee (EmployeeID)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: EmployeeID
+  type: INT
+- name: LastName
+  type: TEXT
+- name: FirstName
+  type: TEXT
+- name: BirthDate
+  type: DATE
+- name: Photo
+  type: TEXT
+- name: Notes
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: retail_world
+search_text: 'Table retail_world_Employees. Employee directory with personal details
+  (ID, name, birth date), photo link, and notes for each retail staff member, used
+  for HR and contact/reference purposes. One row = one row per employee (EmployeeID).
+  Freshness: static. Traffic: n/a. Columns: EmployeeID, LastName, FirstName, BirthDate,
+  Photo, Notes.'

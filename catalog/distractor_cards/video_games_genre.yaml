@@ -1,0 +1,22 @@
+table: video_games_genre
+description: Lookup table of video game genres (ID and name) used to standardize and
+  reference genre categories across the video_games database.
+grain: one row per video game genre (one genre ID and its name)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: id
+  type: INT
+- name: genre_name
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: video_games
+search_text: 'Table video_games_genre. Lookup table of video game genres (ID and name)
+  used to standardize and reference genre categories across the video_games database.
+  One row = one row per video game genre (one genre ID and its name). Freshness: static.
+  Traffic: n/a. Columns: id, genre_name.'

@@ -1,0 +1,26 @@
+table: beer_factory_geolocation
+description: Geographic coordinates (latitude and longitude) for locations used by
+  the beer_factory system, for mapping and location-based analysis.
+grain: one row per location identified by LocationID (with its latitude and longitude)
+freshness: static
+traffic: n/a
+joins:
+  LocationID: beer_factory_location
+lookalikes: []
+columns:
+- name: LocationID
+  type: INT
+- name: Latitude
+  type: DOUBLE
+- name: Longitude
+  type: DOUBLE
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: beer_factory
+search_text: 'Table beer_factory_geolocation. Geographic coordinates (latitude and
+  longitude) for locations used by the beer_factory system, for mapping and location-based
+  analysis. One row = one row per location identified by LocationID (with its latitude
+  and longitude). Freshness: static. Traffic: n/a. Columns: LocationID, Latitude,
+  Longitude.'

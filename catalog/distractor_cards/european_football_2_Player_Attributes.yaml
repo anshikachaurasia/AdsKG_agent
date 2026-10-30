@@ -1,0 +1,112 @@
+table: european_football_2_Player_Attributes
+description: Historical snapshots of a player's attribute ratings and skill metrics
+  (technical, physical, mental and goalkeeper stats) for use in scouting, performance
+  analysis and modeling.
+grain: one row per player attribute snapshot (one player on a specific date)
+freshness: static
+traffic: n/a
+joins:
+  player_api_id: european_football_2_Player
+  player_fifa_api_id: european_football_2_Player
+lookalikes: []
+columns:
+- name: id
+  type: INT
+- name: player_fifa_api_id
+  type: INT
+- name: player_api_id
+  type: INT
+- name: date
+  type: TEXT
+- name: overall_rating
+  type: INT
+- name: potential
+  type: INT
+- name: preferred_foot
+  type: TEXT
+- name: attacking_work_rate
+  type: TEXT
+- name: defensive_work_rate
+  type: TEXT
+- name: crossing
+  type: INT
+- name: finishing
+  type: INT
+- name: heading_accuracy
+  type: INT
+- name: short_passing
+  type: INT
+- name: volleys
+  type: INT
+- name: dribbling
+  type: INT
+- name: curve
+  type: INT
+- name: free_kick_accuracy
+  type: INT
+- name: long_passing
+  type: INT
+- name: ball_control
+  type: INT
+- name: acceleration
+  type: INT
+- name: sprint_speed
+  type: INT
+- name: agility
+  type: INT
+- name: reactions
+  type: INT
+- name: balance
+  type: INT
+- name: shot_power
+  type: INT
+- name: jumping
+  type: INT
+- name: stamina
+  type: INT
+- name: strength
+  type: INT
+- name: long_shots
+  type: INT
+- name: aggression
+  type: INT
+- name: interceptions
+  type: INT
+- name: positioning
+  type: INT
+- name: vision
+  type: INT
+- name: penalties
+  type: INT
+- name: marking
+  type: INT
+- name: standing_tackle
+  type: INT
+- name: sliding_tackle
+  type: INT
+- name: gk_diving
+  type: INT
+- name: gk_handling
+  type: INT
+- name: gk_kicking
+  type: INT
+- name: gk_positioning
+  type: INT
+- name: gk_reflexes
+  type: INT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: european_football_2
+search_text: 'Table european_football_2_Player_Attributes. Historical snapshots of
+  a player''s attribute ratings and skill metrics (technical, physical, mental and
+  goalkeeper stats) for use in scouting, performance analysis and modeling. One row
+  = one row per player attribute snapshot (one player on a specific date). Freshness:
+  static. Traffic: n/a. Columns: id, player_fifa_api_id, player_api_id, date, overall_rating,
+  potential, preferred_foot, attacking_work_rate, defensive_work_rate, crossing, finishing,
+  heading_accuracy, short_passing, volleys, dribbling, curve, free_kick_accuracy,
+  long_passing, ball_control, acceleration, sprint_speed, agility, reactions, balance,
+  shot_power, jumping, stamina, strength, long_shots, aggression, interceptions, positioning,
+  vision, penalties, marking, standing_tackle, sliding_tackle, gk_diving, gk_handling,
+  gk_kicking, gk_positioning, gk_reflexes.'

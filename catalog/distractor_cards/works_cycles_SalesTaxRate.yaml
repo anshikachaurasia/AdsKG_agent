@@ -1,0 +1,34 @@
+table: works_cycles_SalesTaxRate
+description: Current sales tax rate values (type and percentage) for each state/province
+  used to calculate taxes on orders and financial records.
+grain: one row per tax rate entry for a specific state/province and tax type (SalesTaxRateID)
+freshness: static
+traffic: n/a
+joins:
+  StateProvinceID: works_cycles_StateProvince
+lookalikes: []
+columns:
+- name: SalesTaxRateID
+  type: INT
+- name: StateProvinceID
+  type: INT
+- name: TaxType
+  type: INT
+- name: TaxRate
+  type: DOUBLE
+- name: Name
+  type: TEXT
+- name: rowguid
+  type: TEXT
+- name: ModifiedDate
+  type: DATETIME
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: works_cycles
+search_text: 'Table works_cycles_SalesTaxRate. Current sales tax rate values (type
+  and percentage) for each state/province used to calculate taxes on orders and financial
+  records. One row = one row per tax rate entry for a specific state/province and
+  tax type (SalesTaxRateID). Freshness: static. Traffic: n/a. Columns: SalesTaxRateID,
+  StateProvinceID, TaxType, TaxRate, Name, rowguid, ModifiedDate.'

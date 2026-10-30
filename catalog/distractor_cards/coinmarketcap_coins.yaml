@@ -1,0 +1,51 @@
+table: coinmarketcap_coins
+description: Metadata about cryptocurrencies from CoinMarketCap including identifiers,
+  names, status, categories, descriptions, websites, tags, platform info and key dates,
+  used to look up coin details and attributes.
+grain: one row per cryptocurrency (coin/token) with its metadata
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: id
+  type: INT
+- name: name
+  type: TEXT
+- name: slug
+  type: TEXT
+- name: symbol
+  type: TEXT
+- name: status
+  type: TEXT
+- name: category
+  type: TEXT
+- name: description
+  type: TEXT
+- name: subreddit
+  type: TEXT
+- name: notice
+  type: TEXT
+- name: tags
+  type: TEXT
+- name: tag_names
+  type: TEXT
+- name: website
+  type: TEXT
+- name: platform_id
+  type: INT
+- name: date_added
+  type: TEXT
+- name: date_launched
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: coinmarketcap
+search_text: 'Table coinmarketcap_coins. Metadata about cryptocurrencies from CoinMarketCap
+  including identifiers, names, status, categories, descriptions, websites, tags,
+  platform info and key dates, used to look up coin details and attributes. One row
+  = one row per cryptocurrency (coin/token) with its metadata. Freshness: static.
+  Traffic: n/a. Columns: id, name, slug, symbol, status, category, description, subreddit,
+  notice, tags, tag_names, website, platform_id, date_added, date_launched.'

@@ -1,0 +1,22 @@
+table: movies_4_keyword
+description: 'Dictionary of movie keywords: maps keyword_id to the keyword_name used
+  to tag and categorize movies for search, filtering, and analytics.'
+grain: one row per keyword (keyword_id and keyword_name)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: keyword_id
+  type: INT
+- name: keyword_name
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: movies_4
+search_text: 'Table movies_4_keyword. Dictionary of movie keywords: maps keyword_id
+  to the keyword_name used to tag and categorize movies for search, filtering, and
+  analytics. One row = one row per keyword (keyword_id and keyword_name). Freshness:
+  static. Traffic: n/a. Columns: keyword_id, keyword_name.'

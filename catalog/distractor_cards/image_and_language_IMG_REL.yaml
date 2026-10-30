@@ -1,0 +1,34 @@
+table: image_and_language_IMG_REL
+description: 'Predicted relationship instances extracted from images: links a predicted
+  relation/class to the image and the two object samples involved, used to analyze
+  or train models that map image content to relation labels.'
+grain: one row per predicted relation instance in a specific image connecting two
+  object sample IDs (OBJ1_SAMPLE_ID, OBJ2_SAMPLE_ID) with a predicted class (PRED_CLASS_ID)
+  for image IMG_ID
+freshness: static
+traffic: n/a
+joins:
+  PRED_CLASS_ID: image_and_language_PRED_CLASSES
+  IMG_ID: image_and_language_IMG_OBJ
+lookalikes: []
+columns:
+- name: IMG_ID
+  type: INT
+- name: PRED_CLASS_ID
+  type: INT
+- name: OBJ1_SAMPLE_ID
+  type: INT
+- name: OBJ2_SAMPLE_ID
+  type: INT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: image_and_language
+search_text: 'Table image_and_language_IMG_REL. Predicted relationship instances extracted
+  from images: links a predicted relation/class to the image and the two object samples
+  involved, used to analyze or train models that map image content to relation labels.
+  One row = one row per predicted relation instance in a specific image connecting
+  two object sample IDs (OBJ1_SAMPLE_ID, OBJ2_SAMPLE_ID) with a predicted class (PRED_CLASS_ID)
+  for image IMG_ID. Freshness: static. Traffic: n/a. Columns: IMG_ID, PRED_CLASS_ID,
+  OBJ1_SAMPLE_ID, OBJ2_SAMPLE_ID.'

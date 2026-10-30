@@ -1,0 +1,30 @@
+table: works_cycles_ProductProductPhoto
+description: Associations linking products to their photos, recording which photo
+  is marked as the primary image and when the association was last modified.
+grain: one row per product-photo association (one specific ProductID paired with one
+  ProductPhotoID)
+freshness: static
+traffic: n/a
+joins:
+  ProductID: works_cycles_Product
+  ProductPhotoID: works_cycles_ProductPhoto
+lookalikes: []
+columns:
+- name: ProductID
+  type: INT
+- name: ProductPhotoID
+  type: INT
+- name: Primary
+  type: INT
+- name: ModifiedDate
+  type: DATETIME
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: works_cycles
+search_text: 'Table works_cycles_ProductProductPhoto. Associations linking products
+  to their photos, recording which photo is marked as the primary image and when the
+  association was last modified. One row = one row per product-photo association (one
+  specific ProductID paired with one ProductPhotoID). Freshness: static. Traffic:
+  n/a. Columns: ProductID, ProductPhotoID, Primary, ModifiedDate.'

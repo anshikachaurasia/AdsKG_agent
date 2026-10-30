@@ -1,0 +1,50 @@
+table: live_ad_last6h
+description: Live numbers for the last 6 hours only (13 May 18:00-23:59) - impressions,
+  clicks, CTR and estimated value per ad. Today's data is incomplete.
+grain: one row per ad (last 6 hours total)
+freshness: live_last_6h
+traffic: all
+joins:
+  ad_id: dim_ad
+  campaign_id: dim_campaign
+lookalikes:
+- agg_ad_hourly
+- agg_ad_daily
+columns:
+- name: ad_id
+  type: BIGINT
+- name: campaign_id
+  type: BIGINT
+- name: impressions
+  type: BIGINT
+- name: clicks
+  type: HUGEINT
+- name: ctr
+  type: DOUBLE
+- name: est_value
+  type: DOUBLE
+row_count: 192975
+date_range: null
+examples:
+- ad_id: '135628'
+  campaign_id: '209960'
+  impressions: '1'
+  clicks: '0'
+  ctr: '0.0'
+  est_value: '0.0'
+- ad_id: '135632'
+  campaign_id: '182695'
+  impressions: '2'
+  clicks: '0'
+  ctr: '0.0'
+  est_value: '0.0'
+- ad_id: '140760'
+  campaign_id: '396550'
+  impressions: '2'
+  clicks: '0'
+  ctr: '0.0'
+  est_value: '0.0'
+search_text: 'Table live_ad_last6h. Live numbers for the last 6 hours only (13 May
+  18:00-23:59) - impressions, clicks, CTR and estimated value per ad. Today''s data
+  is incomplete. One row = one row per ad (last 6 hours total). Freshness: live_last_6h.
+  Traffic: all. Columns: ad_id, campaign_id, impressions, clicks, ctr, est_value.'

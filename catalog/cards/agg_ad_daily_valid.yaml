@@ -1,0 +1,54 @@
+table: agg_ad_daily_valid
+description: Final daily impressions, clicks, CTR and estimated value per ad with
+  suspicious / invalid / bot traffic removed.
+grain: one row per ad per day
+freshness: final
+traffic: valid
+joins:
+  ad_id: dim_ad
+  campaign_id: dim_campaign
+lookalikes:
+- agg_ad_daily
+columns:
+- name: event_date
+  type: DATE
+- name: ad_id
+  type: BIGINT
+- name: campaign_id
+  type: BIGINT
+- name: impressions
+  type: BIGINT
+- name: clicks
+  type: HUGEINT
+- name: ctr
+  type: DOUBLE
+- name: est_value
+  type: DOUBLE
+row_count: 2439510
+date_range: 2017-05-06 to 2017-05-12
+examples:
+- event_date: '2017-05-08'
+  ad_id: '690759'
+  campaign_id: '227183'
+  impressions: '256'
+  clicks: '14'
+  ctr: '0.0546875'
+  est_value: '7770.0'
+- event_date: '2017-05-06'
+  ad_id: '690841'
+  campaign_id: '261642'
+  impressions: '1'
+  clicks: '0'
+  ctr: '0.0'
+  est_value: '0.0'
+- event_date: '2017-05-09'
+  ad_id: '690843'
+  campaign_id: '412680'
+  impressions: '2'
+  clicks: '0'
+  ctr: '0.0'
+  est_value: '0.0'
+search_text: 'Table agg_ad_daily_valid. Final daily impressions, clicks, CTR and estimated
+  value per ad with suspicious / invalid / bot traffic removed. One row = one row
+  per ad per day. Freshness: final. Traffic: valid. Columns: event_date, ad_id, campaign_id,
+  impressions, clicks, ctr, est_value.'

@@ -1,0 +1,22 @@
+table: soccer_2016_Bowling_Style
+description: Lookup table of bowling styles (identifiers and labels) used for players
+  in the soccer_2016 dataset, used to standardize and reference how a player bowls.
+grain: one row per bowling style (Bowling_Id / Bowling_skill)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: Bowling_Id
+  type: INT
+- name: Bowling_skill
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: soccer_2016
+search_text: 'Table soccer_2016_Bowling_Style. Lookup table of bowling styles (identifiers
+  and labels) used for players in the soccer_2016 dataset, used to standardize and
+  reference how a player bowls. One row = one row per bowling style (Bowling_Id /
+  Bowling_skill). Freshness: static. Traffic: n/a. Columns: Bowling_Id, Bowling_skill.'

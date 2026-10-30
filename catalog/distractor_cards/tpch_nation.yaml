@@ -1,0 +1,26 @@
+table: tpch_nation
+description: Reference list of nations with their unique ID, name, associated region
+  ID, and a descriptive comment, used for lookups and joins in TPC-H queries.
+grain: one row per nation
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: n_nationkey
+  type: INTEGER
+- name: n_name
+  type: VARCHAR
+- name: n_regionkey
+  type: INTEGER
+- name: n_comment
+  type: VARCHAR
+row_count: null
+date_range: null
+examples: []
+source: TPCH
+database: tpch
+search_text: 'Table tpch_nation. Reference list of nations with their unique ID, name,
+  associated region ID, and a descriptive comment, used for lookups and joins in TPC-H
+  queries. One row = one row per nation. Freshness: static. Traffic: n/a. Columns:
+  n_nationkey, n_name, n_regionkey, n_comment.'

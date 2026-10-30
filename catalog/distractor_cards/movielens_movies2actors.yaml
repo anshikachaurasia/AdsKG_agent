@@ -1,0 +1,26 @@
+table: movielens_movies2actors
+description: Mappings of which actors appear in which movies and their cast position,
+  used to look up movie cast members and billing/order.
+grain: one row per a single actor appearing in a single movie (movieid + actorid),
+  with cast_num giving the actor's cast/billing position
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: movieid
+  type: INT
+- name: actorid
+  type: INT
+- name: cast_num
+  type: INT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: movielens
+search_text: 'Table movielens_movies2actors. Mappings of which actors appear in which
+  movies and their cast position, used to look up movie cast members and billing/order.
+  One row = one row per a single actor appearing in a single movie (movieid + actorid),
+  with cast_num giving the actor''s cast/billing position. Freshness: static. Traffic:
+  n/a. Columns: movieid, actorid, cast_num.'

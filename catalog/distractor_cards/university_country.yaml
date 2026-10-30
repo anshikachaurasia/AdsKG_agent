@@ -1,0 +1,22 @@
+table: university_country
+description: Reference table of countries for the university database, mapping each
+  country ID to its name for lookups, joins and reporting.
+grain: one row per country (a unique country id and its country_name)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: id
+  type: INT
+- name: country_name
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: university
+search_text: 'Table university_country. Reference table of countries for the university
+  database, mapping each country ID to its name for lookups, joins and reporting.
+  One row = one row per country (a unique country id and its country_name). Freshness:
+  static. Traffic: n/a. Columns: id, country_name.'

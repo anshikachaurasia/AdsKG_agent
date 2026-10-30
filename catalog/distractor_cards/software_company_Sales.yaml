@@ -1,0 +1,29 @@
+table: software_company_Sales
+description: Records individual sales events (transactions) for the software company,
+  including event and reference IDs, timestamp, and sale amount for revenue tracking
+  and analysis.
+grain: one row per sales event (one transaction) with its event ID, reference ID,
+  event timestamp, and amount
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: EVENTID
+  type: INT
+- name: REFID
+  type: INT
+- name: EVENT_DATE
+  type: DATETIME
+- name: AMOUNT
+  type: DOUBLE
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: software_company
+search_text: 'Table software_company_Sales. Records individual sales events (transactions)
+  for the software company, including event and reference IDs, timestamp, and sale
+  amount for revenue tracking and analysis. One row = one row per sales event (one
+  transaction) with its event ID, reference ID, event timestamp, and amount. Freshness:
+  static. Traffic: n/a. Columns: EVENTID, REFID, EVENT_DATE, AMOUNT.'

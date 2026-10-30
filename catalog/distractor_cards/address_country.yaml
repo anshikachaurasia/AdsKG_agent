@@ -1,0 +1,26 @@
+table: address_country
+description: Mapping of postal (ZIP) codes to their county and state, used to look
+  up the county and state for a given ZIP code.
+grain: one row per ZIP/postal code with its county and state
+freshness: static
+traffic: n/a
+joins:
+  zip_code: address_zip_data
+  state: address_state
+lookalikes: []
+columns:
+- name: zip_code
+  type: INT
+- name: county
+  type: TEXT
+- name: state
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: address
+search_text: 'Table address_country. Mapping of postal (ZIP) codes to their county
+  and state, used to look up the county and state for a given ZIP code. One row =
+  one row per ZIP/postal code with its county and state. Freshness: static. Traffic:
+  n/a. Columns: zip_code, county, state.'

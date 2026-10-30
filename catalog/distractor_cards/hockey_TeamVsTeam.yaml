@@ -1,0 +1,36 @@
+table: hockey_TeamVsTeam
+description: Head-to-head records for a team against a specific opponent in a given
+  year and league, showing wins, losses, ties and overtime-loss info.
+grain: one row per team vs opponent per year (and league)
+freshness: static
+traffic: n/a
+joins:
+  year: hockey_Teams
+  oppID: hockey_Teams
+lookalikes: []
+columns:
+- name: year
+  type: INT
+- name: lgID
+  type: TEXT
+- name: tmID
+  type: TEXT
+- name: oppID
+  type: TEXT
+- name: W
+  type: INT
+- name: L
+  type: INT
+- name: T
+  type: INT
+- name: OTL
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: hockey
+search_text: 'Table hockey_TeamVsTeam. Head-to-head records for a team against a specific
+  opponent in a given year and league, showing wins, losses, ties and overtime-loss
+  info. One row = one row per team vs opponent per year (and league). Freshness: static.
+  Traffic: n/a. Columns: year, lgID, tmID, oppID, W, L, T, OTL.'

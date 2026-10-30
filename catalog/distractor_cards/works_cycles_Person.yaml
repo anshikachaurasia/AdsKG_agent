@@ -1,0 +1,48 @@
+table: works_cycles_Person
+description: 'Personal profile records for people in the system: contact details,
+  name components, title, demographic and additional contact info used for communications,
+  reporting and demographic analysis.'
+grain: one row per person (BusinessEntityID)
+freshness: static
+traffic: n/a
+joins:
+  BusinessEntityID: works_cycles_BusinessEntity
+lookalikes: []
+columns:
+- name: BusinessEntityID
+  type: INT
+- name: PersonType
+  type: TEXT
+- name: NameStyle
+  type: INT
+- name: Title
+  type: TEXT
+- name: FirstName
+  type: TEXT
+- name: MiddleName
+  type: TEXT
+- name: LastName
+  type: TEXT
+- name: Suffix
+  type: TEXT
+- name: EmailPromotion
+  type: INT
+- name: AdditionalContactInfo
+  type: TEXT
+- name: Demographics
+  type: TEXT
+- name: rowguid
+  type: TEXT
+- name: ModifiedDate
+  type: DATETIME
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: works_cycles
+search_text: 'Table works_cycles_Person. Personal profile records for people in the
+  system: contact details, name components, title, demographic and additional contact
+  info used for communications, reporting and demographic analysis. One row = one
+  row per person (BusinessEntityID). Freshness: static. Traffic: n/a. Columns: BusinessEntityID,
+  PersonType, NameStyle, Title, FirstName, MiddleName, LastName, Suffix, EmailPromotion,
+  AdditionalContactInfo, Demographics, rowguid, ModifiedDate.'

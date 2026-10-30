@@ -1,0 +1,27 @@
+table: hockey_ScoringSup
+description: Counts of a player's power-play assists (PPA) and shorthanded assists
+  (SHA) for a given season, used to analyze special-teams scoring contributions.
+grain: one row per player per year
+freshness: static
+traffic: n/a
+joins:
+  playerID: hockey_Master
+lookalikes: []
+columns:
+- name: playerID
+  type: TEXT
+- name: year
+  type: INT
+- name: PPA
+  type: TEXT
+- name: SHA
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: hockey
+search_text: 'Table hockey_ScoringSup. Counts of a player''s power-play assists (PPA)
+  and shorthanded assists (SHA) for a given season, used to analyze special-teams
+  scoring contributions. One row = one row per player per year. Freshness: static.
+  Traffic: n/a. Columns: playerID, year, PPA, SHA.'

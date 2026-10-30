@@ -1,0 +1,22 @@
+table: soccer_2016_Rolee
+description: Lookup table of roles used in the 2016 soccer dataset, mapping each Role_Id
+  to a human-readable Role_Desc (e.g., 'Goalkeeper', 'Coach').
+grain: one row per role (Role_Id) with its Role_Desc
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: Role_Id
+  type: INT
+- name: Role_Desc
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: soccer_2016
+search_text: 'Table soccer_2016_Rolee. Lookup table of roles used in the 2016 soccer
+  dataset, mapping each Role_Id to a human-readable Role_Desc (e.g., ''Goalkeeper'',
+  ''Coach''). One row = one row per role (Role_Id) with its Role_Desc. Freshness:
+  static. Traffic: n/a. Columns: Role_Id, Role_Desc.'

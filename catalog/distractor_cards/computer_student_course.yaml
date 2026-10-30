@@ -1,0 +1,23 @@
+table: computer_student_course
+description: Mapping of courses to their level (e.g., introductory/intermediate/advanced);
+  used to look up a course's level for reporting, curriculum planning, and access
+  control.
+grain: one row per course (course_id)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: course_id
+  type: INT
+- name: courseLevel
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: computer_student
+search_text: 'Table computer_student_course. Mapping of courses to their level (e.g.,
+  introductory/intermediate/advanced); used to look up a course''s level for reporting,
+  curriculum planning, and access control. One row = one row per course (course_id).
+  Freshness: static. Traffic: n/a. Columns: course_id, courseLevel.'

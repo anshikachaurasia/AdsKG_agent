@@ -1,0 +1,56 @@
+table: agg_ad_hourly
+description: Impressions, clicks, CTR and estimated value per ad per hour. Includes
+  today, so today's hours are incomplete.
+grain: one row per ad per hour
+freshness: includes_today
+traffic: all
+joins:
+  ad_id: dim_ad
+  campaign_id: dim_campaign
+lookalikes:
+- agg_ad_daily
+- agg_ad_weekly
+- live_ad_last6h
+columns:
+- name: event_hour
+  type: TIMESTAMP
+- name: ad_id
+  type: BIGINT
+- name: campaign_id
+  type: BIGINT
+- name: impressions
+  type: BIGINT
+- name: clicks
+  type: HUGEINT
+- name: ctr
+  type: DOUBLE
+- name: est_value
+  type: DOUBLE
+row_count: 10793256
+date_range: 2017-05-06 00:00:00 to 2017-05-13 23:00:00
+examples:
+- event_hour: '2017-05-13 07:00:00'
+  ad_id: '690759'
+  campaign_id: '227183'
+  impressions: '20'
+  clicks: '2'
+  ctr: '0.1'
+  est_value: '1110.0'
+- event_hour: '2017-05-08 22:00:00'
+  ad_id: '690764'
+  campaign_id: '29066'
+  impressions: '1'
+  clicks: '0'
+  ctr: '0.0'
+  est_value: '0.0'
+- event_hour: '2017-05-10 21:00:00'
+  ad_id: '690834'
+  campaign_id: '229439'
+  impressions: '1'
+  clicks: '0'
+  ctr: '0.0'
+  est_value: '0.0'
+search_text: 'Table agg_ad_hourly. Impressions, clicks, CTR and estimated value per
+  ad per hour. Includes today, so today''s hours are incomplete. One row = one row
+  per ad per hour. Freshness: includes_today. Traffic: all. Columns: event_hour, ad_id,
+  campaign_id, impressions, clicks, ctr, est_value.'

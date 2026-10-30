@@ -1,0 +1,50 @@
+table: tpcds_web_page
+description: Master list of web pages and their attributes (URL, content counts, type,
+  lifecycle and date keys, and linked customer) used for web reporting, analytics,
+  and joins to customer and date dimensions.
+grain: one row per web page (identified by wp_web_page_sk)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: wp_web_page_sk
+  type: BIGINT
+- name: wp_web_page_id
+  type: VARCHAR
+- name: wp_rec_start_date
+  type: DATE
+- name: wp_rec_end_date
+  type: DATE
+- name: wp_creation_date_sk
+  type: BIGINT
+- name: wp_access_date_sk
+  type: BIGINT
+- name: wp_autogen_flag
+  type: VARCHAR
+- name: wp_customer_sk
+  type: BIGINT
+- name: wp_url
+  type: VARCHAR
+- name: wp_type
+  type: VARCHAR
+- name: wp_char_count
+  type: BIGINT
+- name: wp_link_count
+  type: BIGINT
+- name: wp_image_count
+  type: BIGINT
+- name: wp_max_ad_count
+  type: INTEGER
+row_count: null
+date_range: null
+examples: []
+source: TPCDS
+database: tpcds
+search_text: 'Table tpcds_web_page. Master list of web pages and their attributes
+  (URL, content counts, type, lifecycle and date keys, and linked customer) used for
+  web reporting, analytics, and joins to customer and date dimensions. One row = one
+  row per web page (identified by wp_web_page_sk). Freshness: static. Traffic: n/a.
+  Columns: wp_web_page_sk, wp_web_page_id, wp_rec_start_date, wp_rec_end_date, wp_creation_date_sk,
+  wp_access_date_sk, wp_autogen_flag, wp_customer_sk, wp_url, wp_type, wp_char_count,
+  wp_link_count, wp_image_count, wp_max_ad_count.'

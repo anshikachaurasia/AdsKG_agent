@@ -1,0 +1,22 @@
+table: books_author
+description: List of book authors with their unique IDs and names, used to look up
+  author details and join to book records.
+grain: one row per author (one author_id and author_name)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: author_id
+  type: INT
+- name: author_name
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: books
+search_text: 'Table books_author. List of book authors with their unique IDs and names,
+  used to look up author details and join to book records. One row = one row per author
+  (one author_id and author_name). Freshness: static. Traffic: n/a. Columns: author_id,
+  author_name.'

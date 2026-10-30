@@ -1,0 +1,39 @@
+table: european_football_1_matchs
+description: 'Full match results for European football games: division, date, home
+  and away teams, full-time home and away goals, full-time result (H/D/A), and season
+  — used to analyze match outcomes and season-level statistics.'
+grain: one row per single match (one game between HomeTeam and AwayTeam on Date in
+  Div during the given season)
+freshness: static
+traffic: n/a
+joins:
+  Div: european_football_1_divisions
+lookalikes: []
+columns:
+- name: Div
+  type: TEXT
+- name: Date
+  type: DATE
+- name: HomeTeam
+  type: TEXT
+- name: AwayTeam
+  type: TEXT
+- name: FTHG
+  type: INT
+- name: FTAG
+  type: INT
+- name: FTR
+  type: TEXT
+- name: season
+  type: INT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: european_football_1
+search_text: 'Table european_football_1_matchs. Full match results for European football
+  games: division, date, home and away teams, full-time home and away goals, full-time
+  result (H/D/A), and season — used to analyze match outcomes and season-level statistics.
+  One row = one row per single match (one game between HomeTeam and AwayTeam on Date
+  in Div during the given season). Freshness: static. Traffic: n/a. Columns: Div,
+  Date, HomeTeam, AwayTeam, FTHG, FTAG, FTR, season.'

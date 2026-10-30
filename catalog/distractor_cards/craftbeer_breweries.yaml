@@ -1,0 +1,26 @@
+table: craftbeer_breweries
+description: List of breweries with their names and locations (city and state), used
+  to look up brewery details and join with beer, sales, or location analyses.
+grain: one row per brewery (unique brewery id)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: id
+  type: INT
+- name: name
+  type: TEXT
+- name: city
+  type: TEXT
+- name: state
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: craftbeer
+search_text: 'Table craftbeer_breweries. List of breweries with their names and locations
+  (city and state), used to look up brewery details and join with beer, sales, or
+  location analyses. One row = one row per brewery (unique brewery id). Freshness:
+  static. Traffic: n/a. Columns: id, name, city, state.'

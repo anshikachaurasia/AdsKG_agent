@@ -1,0 +1,33 @@
+table: ref_suspicious_user_hours
+description: List of suspicious user-hours - users who clicked more than 5 times in
+  the same hour (likely bots or accidental clicks). Used to remove invalid traffic.
+grain: one row per user per hour
+freshness: includes_today
+traffic: n/a
+joins:
+  user_id: dim_user
+  event_hour: fact_ad_events
+lookalikes: []
+columns:
+- name: user_id
+  type: BIGINT
+- name: event_hour
+  type: TIMESTAMP
+- name: clicks_in_hour
+  type: HUGEINT
+row_count: 6794
+date_range: 2017-05-06 00:00:00 to 2017-05-13 23:00:00
+examples:
+- user_id: '658336'
+  event_hour: '2017-05-11 01:00:00'
+  clicks_in_hour: '8'
+- user_id: '1088020'
+  event_hour: '2017-05-10 14:00:00'
+  clicks_in_hour: '6'
+- user_id: '869598'
+  event_hour: '2017-05-11 20:00:00'
+  clicks_in_hour: '9'
+search_text: 'Table ref_suspicious_user_hours. List of suspicious user-hours - users
+  who clicked more than 5 times in the same hour (likely bots or accidental clicks).
+  Used to remove invalid traffic. One row = one row per user per hour. Freshness:
+  includes_today. Traffic: n/a. Columns: user_id, event_hour, clicks_in_hour.'

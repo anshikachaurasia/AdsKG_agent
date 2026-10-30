@@ -1,0 +1,8 @@
+# Version D: search + table map - same 5 search hits as B, then Neo4j adds join tables and look-alikes (max 8 cards)
+version: D
+seeds: 5                  # same 5 search hits as B, so D only ADDS to what B sees
+max_tables: 8
+model: gpt-5-mini
+reasoning_effort: low
+price_in_per_1m: 0.25     # USD per 1M input tokens (check openai.com/api/pricing)
+price_out_per_1m: 2.00    # USD per 1M output tokens

@@ -1,0 +1,25 @@
+table: books_book_language
+description: Reference list of languages used for books, mapping each language's numeric
+  ID and short code to its full name (used to tag book records with their language).
+grain: one row per language (one language ID / code / name mapping)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: language_id
+  type: INT
+- name: language_code
+  type: TEXT
+- name: language_name
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: books
+search_text: 'Table books_book_language. Reference list of languages used for books,
+  mapping each language''s numeric ID and short code to its full name (used to tag
+  book records with their language). One row = one row per language (one language
+  ID / code / name mapping). Freshness: static. Traffic: n/a. Columns: language_id,
+  language_code, language_name.'

@@ -1,0 +1,83 @@
+table: tpcds_catalog_returns
+description: Details of individual catalog product returns including who returned
+  and was refunded, return reason, logistics (page, ship mode, warehouse), quantities
+  and all refund/fee/tax amounts — used to analyze return volumes, refund amounts,
+  reasons and financial impact on catalog sales.
+grain: one row per individual catalog return event for a single item on a catalog
+  order
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: cr_returned_date_sk
+  type: BIGINT
+- name: cr_returned_time_sk
+  type: BIGINT
+- name: cr_item_sk
+  type: BIGINT
+- name: cr_refunded_customer_sk
+  type: BIGINT
+- name: cr_refunded_cdemo_sk
+  type: BIGINT
+- name: cr_refunded_hdemo_sk
+  type: BIGINT
+- name: cr_refunded_addr_sk
+  type: BIGINT
+- name: cr_returning_customer_sk
+  type: BIGINT
+- name: cr_returning_cdemo_sk
+  type: BIGINT
+- name: cr_returning_hdemo_sk
+  type: BIGINT
+- name: cr_returning_addr_sk
+  type: BIGINT
+- name: cr_call_center_sk
+  type: BIGINT
+- name: cr_catalog_page_sk
+  type: BIGINT
+- name: cr_ship_mode_sk
+  type: BIGINT
+- name: cr_warehouse_sk
+  type: BIGINT
+- name: cr_reason_sk
+  type: BIGINT
+- name: cr_order_number
+  type: BIGINT
+- name: cr_return_quantity
+  type: BIGINT
+- name: cr_return_amount
+  type: DECIMAL(7,2)
+- name: cr_return_tax
+  type: DECIMAL(7,2)
+- name: cr_return_amt_inc_tax
+  type: DECIMAL(7,2)
+- name: cr_fee
+  type: DECIMAL(7,2)
+- name: cr_return_ship_cost
+  type: DECIMAL(7,2)
+- name: cr_refunded_cash
+  type: DECIMAL(7,2)
+- name: cr_reversed_charge
+  type: DECIMAL(7,2)
+- name: cr_store_credit
+  type: DECIMAL(7,2)
+- name: cr_net_loss
+  type: DECIMAL(7,2)
+row_count: null
+date_range: null
+examples: []
+source: TPCDS
+database: tpcds
+search_text: 'Table tpcds_catalog_returns. Details of individual catalog product returns
+  including who returned and was refunded, return reason, logistics (page, ship mode,
+  warehouse), quantities and all refund/fee/tax amounts — used to analyze return volumes,
+  refund amounts, reasons and financial impact on catalog sales. One row = one row
+  per individual catalog return event for a single item on a catalog order. Freshness:
+  static. Traffic: n/a. Columns: cr_returned_date_sk, cr_returned_time_sk, cr_item_sk,
+  cr_refunded_customer_sk, cr_refunded_cdemo_sk, cr_refunded_hdemo_sk, cr_refunded_addr_sk,
+  cr_returning_customer_sk, cr_returning_cdemo_sk, cr_returning_hdemo_sk, cr_returning_addr_sk,
+  cr_call_center_sk, cr_catalog_page_sk, cr_ship_mode_sk, cr_warehouse_sk, cr_reason_sk,
+  cr_order_number, cr_return_quantity, cr_return_amount, cr_return_tax, cr_return_amt_inc_tax,
+  cr_fee, cr_return_ship_cost, cr_refunded_cash, cr_reversed_charge, cr_store_credit,
+  cr_net_loss.'

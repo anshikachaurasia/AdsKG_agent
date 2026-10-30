@@ -1,0 +1,26 @@
+table: cars_production
+description: Records of individual cars produced, listing each car's unique ID, model
+  year, and country of manufacture.
+grain: one row per produced car (one unique car ID)
+freshness: static
+traffic: n/a
+joins:
+  country: cars_country
+  ID: cars_price
+lookalikes: []
+columns:
+- name: ID
+  type: INT
+- name: model_year
+  type: INT
+- name: country
+  type: INT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: cars
+search_text: 'Table cars_production. Records of individual cars produced, listing
+  each car''s unique ID, model year, and country of manufacture. One row = one row
+  per produced car (one unique car ID). Freshness: static. Traffic: n/a. Columns:
+  ID, model_year, country.'

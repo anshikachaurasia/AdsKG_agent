@@ -1,0 +1,71 @@
+table: legislator_current
+description: Current U.S. federal legislators with their names, birth date, gender,
+  religion, and various external identifier codes used to link profiles across government
+  and public data sources.
+grain: one row per current U.S. legislator (member of Congress)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: ballotpedia_id
+  type: TEXT
+- name: bioguide_id
+  type: TEXT
+- name: birthday_bio
+  type: DATE
+- name: cspan_id
+  type: DOUBLE
+- name: fec_id
+  type: TEXT
+- name: first_name
+  type: TEXT
+- name: gender_bio
+  type: TEXT
+- name: google_entity_id_id
+  type: TEXT
+- name: govtrack_id
+  type: INT
+- name: house_history_id
+  type: DOUBLE
+- name: icpsr_id
+  type: DOUBLE
+- name: last_name
+  type: TEXT
+- name: lis_id
+  type: TEXT
+- name: maplight_id
+  type: DOUBLE
+- name: middle_name
+  type: TEXT
+- name: nickname_name
+  type: TEXT
+- name: official_full_name
+  type: TEXT
+- name: opensecrets_id
+  type: TEXT
+- name: religion_bio
+  type: TEXT
+- name: suffix_name
+  type: TEXT
+- name: thomas_id
+  type: INT
+- name: votesmart_id
+  type: DOUBLE
+- name: wikidata_id
+  type: TEXT
+- name: wikipedia_id
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: legislator
+search_text: 'Table legislator_current. Current U.S. federal legislators with their
+  names, birth date, gender, religion, and various external identifier codes used
+  to link profiles across government and public data sources. One row = one row per
+  current U.S. legislator (member of Congress). Freshness: static. Traffic: n/a. Columns:
+  ballotpedia_id, bioguide_id, birthday_bio, cspan_id, fec_id, first_name, gender_bio,
+  google_entity_id_id, govtrack_id, house_history_id, icpsr_id, last_name, lis_id,
+  maplight_id, middle_name, nickname_name, official_full_name, opensecrets_id, religion_bio,
+  suffix_name, thomas_id, votesmart_id, wikidata_id, wikipedia_id.'

@@ -1,0 +1,26 @@
+table: book_publishing_company_jobs
+description: List of job positions at the publishing company with a text description
+  and the minimum and maximum job level for each role.
+grain: one row per job position (job_id)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: job_id
+  type: INT
+- name: job_desc
+  type: TEXT
+- name: min_lvl
+  type: INT
+- name: max_lvl
+  type: INT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: book_publishing_company
+search_text: 'Table book_publishing_company_jobs. List of job positions at the publishing
+  company with a text description and the minimum and maximum job level for each role.
+  One row = one row per job position (job_id). Freshness: static. Traffic: n/a. Columns:
+  job_id, job_desc, min_lvl, max_lvl.'

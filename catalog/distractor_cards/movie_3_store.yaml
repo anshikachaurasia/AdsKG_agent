@@ -1,0 +1,28 @@
+table: movie_3_store
+description: 'Details of retail stores: each row records a store''s unique ID, the
+  staff member who manages it, the address reference, and when the record was last
+  updated; used to look up store locations and manager assignments.'
+grain: one row per store (store_id)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: store_id
+  type: INT
+- name: manager_staff_id
+  type: INT
+- name: address_id
+  type: INT
+- name: last_update
+  type: DATETIME
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: movie_3
+search_text: 'Table movie_3_store. Details of retail stores: each row records a store''s
+  unique ID, the staff member who manages it, the address reference, and when the
+  record was last updated; used to look up store locations and manager assignments.
+  One row = one row per store (store_id). Freshness: static. Traffic: n/a. Columns:
+  store_id, manager_staff_id, address_id, last_update.'

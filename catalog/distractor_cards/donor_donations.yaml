@@ -1,0 +1,69 @@
+table: donor_donations
+description: Records individual donations made to projects with donor location and
+  account info, timestamps, amounts (project, optional support, total), payment method/details,
+  and any message or honoree data for fundraising analysis and reporting.
+grain: one row per individual donation transaction (a single payment from a donor
+  to a project)
+freshness: static
+traffic: n/a
+joins:
+  projectid: donor_projects
+lookalikes: []
+columns:
+- name: donationid
+  type: TEXT
+- name: projectid
+  type: TEXT
+- name: donor_acctid
+  type: TEXT
+- name: donor_city
+  type: TEXT
+- name: donor_state
+  type: TEXT
+- name: donor_zip
+  type: TEXT
+- name: is_teacher_acct
+  type: TEXT
+- name: donation_timestamp
+  type: DATETIME
+- name: donation_to_project
+  type: DOUBLE
+- name: donation_optional_support
+  type: DOUBLE
+- name: donation_total
+  type: DOUBLE
+- name: dollar_amount
+  type: TEXT
+- name: donation_included_optional_support
+  type: TEXT
+- name: payment_method
+  type: TEXT
+- name: payment_included_acct_credit
+  type: TEXT
+- name: payment_included_campaign_gift_card
+  type: TEXT
+- name: payment_included_web_purchased_gift_card
+  type: TEXT
+- name: payment_was_promo_matched
+  type: TEXT
+- name: via_giving_page
+  type: TEXT
+- name: for_honoree
+  type: TEXT
+- name: donation_message
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: donor
+search_text: 'Table donor_donations. Records individual donations made to projects
+  with donor location and account info, timestamps, amounts (project, optional support,
+  total), payment method/details, and any message or honoree data for fundraising
+  analysis and reporting. One row = one row per individual donation transaction (a
+  single payment from a donor to a project). Freshness: static. Traffic: n/a. Columns:
+  donationid, projectid, donor_acctid, donor_city, donor_state, donor_zip, is_teacher_acct,
+  donation_timestamp, donation_to_project, donation_optional_support, donation_total,
+  dollar_amount, donation_included_optional_support, payment_method, payment_included_acct_credit,
+  payment_included_campaign_gift_card, payment_included_web_purchased_gift_card, payment_was_promo_matched,
+  via_giving_page, for_honoree, donation_message.'

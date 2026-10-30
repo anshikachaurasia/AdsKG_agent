@@ -1,0 +1,48 @@
+table: professional_basketball_draft
+description: Lists each professional basketball draft pick (player selected), with
+  year, round, selection numbers, team, player names and origin; used to track who
+  was drafted when and by which team.
+grain: one row per single draft pick (one player selected in a specific draft year/round/overall
+  selection)
+freshness: static
+traffic: n/a
+joins:
+  tmID: professional_basketball_teams
+lookalikes: []
+columns:
+- name: id
+  type: INT
+- name: draftYear
+  type: INT
+- name: draftRound
+  type: INT
+- name: draftSelection
+  type: INT
+- name: draftOverall
+  type: INT
+- name: tmID
+  type: TEXT
+- name: firstName
+  type: TEXT
+- name: lastName
+  type: TEXT
+- name: suffixName
+  type: TEXT
+- name: playerID
+  type: TEXT
+- name: draftFrom
+  type: TEXT
+- name: lgID
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: professional_basketball
+search_text: 'Table professional_basketball_draft. Lists each professional basketball
+  draft pick (player selected), with year, round, selection numbers, team, player
+  names and origin; used to track who was drafted when and by which team. One row
+  = one row per single draft pick (one player selected in a specific draft year/round/overall
+  selection). Freshness: static. Traffic: n/a. Columns: id, draftYear, draftRound,
+  draftSelection, draftOverall, tmID, firstName, lastName, suffixName, playerID, draftFrom,
+  lgID.'

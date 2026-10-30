@@ -1,0 +1,39 @@
+table: menu_Dish
+description: List of distinct dishes with their names and descriptions, how often
+  and when they appeared on menus, and the lowest and highest observed prices — used
+  to analyze dish popularity, availability history, and pricing.
+grain: one row per distinct dish (unique dish id/name)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: id
+  type: INT
+- name: name
+  type: TEXT
+- name: description
+  type: TEXT
+- name: menus_appeared
+  type: INT
+- name: times_appeared
+  type: INT
+- name: first_appeared
+  type: INT
+- name: last_appeared
+  type: INT
+- name: lowest_price
+  type: DOUBLE
+- name: highest_price
+  type: DOUBLE
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: menu
+search_text: 'Table menu_Dish. List of distinct dishes with their names and descriptions,
+  how often and when they appeared on menus, and the lowest and highest observed prices
+  — used to analyze dish popularity, availability history, and pricing. One row =
+  one row per distinct dish (unique dish id/name). Freshness: static. Traffic: n/a.
+  Columns: id, name, description, menus_appeared, times_appeared, first_appeared,
+  last_appeared, lowest_price, highest_price.'

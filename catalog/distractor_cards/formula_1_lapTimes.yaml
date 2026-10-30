@@ -1,0 +1,34 @@
+table: formula_1_lapTimes
+description: 'Lap-by-lap timing records for Formula 1 races: stores each driver''s
+  lap number, on-lap position, lap time (text) and time in milliseconds for analysis
+  of lap performance and stint timing.'
+grain: one row per driver lap in a race (identified by raceId + driverId + lap)
+freshness: static
+traffic: n/a
+joins:
+  driverId: formula_1_drivers
+  raceId: formula_1_races
+lookalikes: []
+columns:
+- name: raceId
+  type: INT
+- name: driverId
+  type: INT
+- name: lap
+  type: INT
+- name: position
+  type: INT
+- name: time
+  type: TEXT
+- name: milliseconds
+  type: INT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: formula_1
+search_text: 'Table formula_1_lapTimes. Lap-by-lap timing records for Formula 1 races:
+  stores each driver''s lap number, on-lap position, lap time (text) and time in milliseconds
+  for analysis of lap performance and stint timing. One row = one row per driver lap
+  in a race (identified by raceId + driverId + lap). Freshness: static. Traffic: n/a.
+  Columns: raceId, driverId, lap, position, time, milliseconds.'

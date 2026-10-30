@@ -1,0 +1,23 @@
+table: superhero_colour
+description: Lookup of colors used for superheroes (names of colors used to describe
+  hero costumes/attributes), used to standardize or reference color values across
+  the superhero database.
+grain: one row per color (unique color id and color name)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: id
+  type: INT
+- name: colour
+  type: TEXT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: superhero
+search_text: 'Table superhero_colour. Lookup of colors used for superheroes (names
+  of colors used to describe hero costumes/attributes), used to standardize or reference
+  color values across the superhero database. One row = one row per color (unique
+  color id and color name). Freshness: static. Traffic: n/a. Columns: id, colour.'

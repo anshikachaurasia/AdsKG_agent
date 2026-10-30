@@ -1,0 +1,36 @@
+table: disney_revenue
+description: Annual revenue amounts by business segment and total for The Walt Disney
+  Company, used to track and compare yearly income from studios, consumer products,
+  interactive, parks and resorts, and media networks.
+grain: one row per calendar year (yearly revenue breakdown across segments and total)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: Year
+  type: INT
+- name: Studio Entertainment[NI 1]
+  type: DOUBLE
+- name: Disney Consumer Products[NI 2]
+  type: DOUBLE
+- name: Disney Interactive[NI 3][Rev 1]
+  type: INT
+- name: Walt Disney Parks and Resorts
+  type: DOUBLE
+- name: Disney Media Networks
+  type: TEXT
+- name: Total
+  type: INT
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: disney
+search_text: 'Table disney_revenue. Annual revenue amounts by business segment and
+  total for The Walt Disney Company, used to track and compare yearly income from
+  studios, consumer products, interactive, parks and resorts, and media networks.
+  One row = one row per calendar year (yearly revenue breakdown across segments and
+  total). Freshness: static. Traffic: n/a. Columns: Year, Studio Entertainment[NI
+  1], Disney Consumer Products[NI 2], Disney Interactive[NI 3][Rev 1], Walt Disney
+  Parks and Resorts, Disney Media Networks, Total.'

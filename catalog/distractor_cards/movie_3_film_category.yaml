@@ -1,0 +1,26 @@
+table: movie_3_film_category
+description: Mapping of films to their categories (genre labels) with the timestamp
+  of the last change; used to look up which categories each film belongs to.
+grain: one row per association of a single film with a single category, including
+  when that association was last updated
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: film_id
+  type: INT
+- name: category_id
+  type: INT
+- name: last_update
+  type: DATETIME
+row_count: null
+date_range: null
+examples: []
+source: BIRD
+database: movie_3
+search_text: 'Table movie_3_film_category. Mapping of films to their categories (genre
+  labels) with the timestamp of the last change; used to look up which categories
+  each film belongs to. One row = one row per association of a single film with a
+  single category, including when that association was last updated. Freshness: static.
+  Traffic: n/a. Columns: film_id, category_id, last_update.'

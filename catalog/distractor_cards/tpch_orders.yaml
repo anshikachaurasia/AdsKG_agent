@@ -1,0 +1,39 @@
+table: tpch_orders
+description: 'Order header records: one row per customer order with order key, customer
+  key, status, total price, order date, priority, clerk, ship priority and comment
+  used for sales and shipping analysis.'
+grain: one row per order (unique o_orderkey)
+freshness: static
+traffic: n/a
+joins: {}
+lookalikes: []
+columns:
+- name: o_orderkey
+  type: BIGINT
+- name: o_custkey
+  type: BIGINT
+- name: o_orderstatus
+  type: VARCHAR
+- name: o_totalprice
+  type: DECIMAL(15,2)
+- name: o_orderdate
+  type: DATE
+- name: o_orderpriority
+  type: VARCHAR
+- name: o_clerk
+  type: VARCHAR
+- name: o_shippriority
+  type: INTEGER
+- name: o_comment
+  type: VARCHAR
+row_count: null
+date_range: null
+examples: []
+source: TPCH
+database: tpch
+search_text: 'Table tpch_orders. Order header records: one row per customer order
+  with order key, customer key, status, total price, order date, priority, clerk,
+  ship priority and comment used for sales and shipping analysis. One row = one row
+  per order (unique o_orderkey). Freshness: static. Traffic: n/a. Columns: o_orderkey,
+  o_custkey, o_orderstatus, o_totalprice, o_orderdate, o_orderpriority, o_clerk, o_shippriority,
+  o_comment.'
