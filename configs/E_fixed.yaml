@@ -1,5 +1,5 @@
-# POST-HOC (added after review): same settings as E.yaml, run with the agent fixes made after the
-# code review: long SQL results keep valid JSON, unrun SQL is sent back once to run, stricter "not sure".
+# POST-HOC (added after the final runs): same settings as E.yaml, run with the agent bug fixes:
+# long SQL results keep valid JSON, unrun SQL is sent back once to run, stricter "not sure".
 # Reported separately from the frozen results; see README.
 version: E
 chat_memory: true

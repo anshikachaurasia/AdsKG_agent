@@ -1,4 +1,4 @@
-"""M10: the presentation deck (14 slides, 16:9) with speaker notes. Numbers are read from the result files.
+"""M10: the presentation deck (13 slides, 16:9) with speaker notes. Numbers are read from the result files.
 
 Run from the project folder:
     .venv/bin/python scripts/make_slides.py docs/AdsKG_Agent_Presentation.pptx
@@ -369,29 +369,7 @@ for i, (problem, fix) in enumerate(pivots):
     box(s, 7.35, y, 5.35, 0.85, fill=WHITE, line=LINE)
     text(s, 7.6, y, 5.0, 0.85, fix, size=16, color=INK, anchor=MSO_ANCHOR.MIDDLE)
 
-# ---------- 12. code review ----------
-s = content_slide("A code review found real problems, now fixed",
-                  "Reviewed after the final runs; every fix is in the README",
-                  notes="An outside review found a security gap: a plain SELECT could read local files such as .env. "
-                        "File access is now switched off and only the 28 warehouse tables can be read; re-checking all "
-                        "3,280 earlier queries, no score changed. It also found two agent bugs. Because they were found by "
-                        "reading test answers, the fixed agent is reported separately as a post-hoc result, not swapped in.")
-fixes = [("Security", "SELECT could read files (.env)", "file access off + 28-table allow-list · 12/12 attacks blocked"),
-         ("Agent", "long results broke JSON; SQL shown but never run", "rows trimmed, not text · sent back once to run it"),
-         ("Scoring", "greedy column match", "backtracking (re-scored 666 answers: none changed)"),
-         ("Claims", "8 tests, no correction; winner picked on test", "Bonferroni column · “tie with A” · optimism noted"),
-         ("Tests", "no unit tests or CI", "30 unit tests, run on GitHub on every push")]
-for i, (area, problem, fix) in enumerate(fixes):
-    y = 1.85 + i * 0.86
-    text(s, 0.6, y, 1.4, 0.7, area, size=16, color=NAVY, bold=True, anchor=MSO_ANCHOR.MIDDLE)
-    text(s, 2.0, y, 3.9, 0.7, problem, size=15, color=INK, anchor=MSO_ANCHOR.MIDDLE)
-    box(s, 6.1, y + 0.05, 3.7, 0.6, fill=TINT)
-    text(s, 6.3, y + 0.05, 3.4, 0.6, fix, size=13, color=INK, anchor=MSO_ANCHOR.MIDDLE)
-stat(s, 10.1, 1.85, 2.6, "84.2%", "E after fixes\n(was 80.0%)", value_color=ACCENT, h=2.0)
-stat(s, 10.1, 4.05, 2.6, "95.0%", "E + memory after fixes\n(was 92.5%; still tied with A)", h=2.15)
-text(s, 0.6, 6.45, 12.1, 0.5, "Post-hoc: reported next to the frozen results, never replacing them.", size=14, color=MUTED)
-
-# ---------- 13. demo ----------
+# ---------- 12. demo ----------
 s = content_slide("Demo: ask it yourself",
                   "streamlit run app/streamlit_app.py  ·  every answer shows its SQL, result and tool calls",
                   notes="Live demo. Question 1 tests the valid-traffic trap. Question 2 is a follow-up that needs chat "
@@ -406,20 +384,20 @@ for i, (q, t) in enumerate(zip(demo, tests)):
     text(s, 1.7, y + 0.15, 10.8, 0.5, f"“{q}”", size=18, color=NAVY, bold=True)
     text(s, 1.7, y + 0.68, 10.8, 0.4, t, size=15, color=MUTED)
 
-# ---------- 14. conclusion ----------
+# ---------- 13. conclusion ----------
 s = dark_slide("At 28 tables the simple baseline and the agent with memory are tied. We ship the agent with memory because "
                "the real use needs follow-ups and a growing catalog; for one-shot questions on a small catalog, use A. "
                "Next stage: 'why did CTR drop?', with a multi-agent supervisor reusing the same MCP tools and test harness.")
 text(s, 0.9, 0.7, 11.5, 0.9, "Final choice and lessons", size=36, color=WHITE, bold=True)
 box(s, 0.9, 1.75, 5.6, 4.6, fill=RGBColor(0x22, 0x33, 0x55))
 text(s, 1.2, 1.95, 5.1, 4.3, [[("Ship: agent + example memory", {"bold": True, "color": ACCENT, "size": 22})],
-                              "92.5% on unseen questions (95.0% after fixes)", "the only one that does follow-ups (90%)",
+                              "92.5% on unseen questions", "the only one that does follow-ups (90%)",
                               "$0.002 and 8.6 s per question",
                               [("Tied with A (p = 0.11): for one-shot questions on a small catalog, use A", {"color": ICE})]],
      size=17, color=WHITE)
 box(s, 6.85, 1.75, 5.6, 4.6, fill=RGBColor(0x22, 0x33, 0x55))
 text(s, 7.15, 1.95, 5.1, 4.3, [[("Lessons", {"bold": True, "color": ACCENT, "size": 22})],
-                               "Build the simple baseline first", "“Advanced” RAG isn't automatically better", "Get the code reviewed",
+                               "Build the simple baseline first", "“Advanced” RAG isn't automatically better",
                                "The hard part is joins and look-alikes", "Memory matters most for an agent",
                                "Freeze the test and report everything"], size=17, color=WHITE)
 text(s, 0.9, 6.6, 11.5, 0.5, "All 7 design-doc targets met  ·  code, results and notebooks in the repository  ·  Thank you!",

@@ -16,8 +16,8 @@ what worked.
 | Code | this repository; one walkthrough notebook per milestone in `notebooks/` |
 | Results and failure analysis | this README (Results, Final choice, Approaches tried and pivots, Failure analysis) |
 | Project report (what we did and how, 4 pages) | `docs/AdsKG_Agent_Project_Report.pdf` (`scripts/make_project_report.py`) |
-| Presentation (14 slides, speaker notes) | `docs/AdsKG_Agent_Presentation.pptx` (`scripts/make_slides.py`) |
-| Demo video (3 min) | script in `docs/video_script.md` |
+| Presentation (13 slides, speaker notes) | `docs/AdsKG_Agent_Presentation.pptx` (`scripts/make_slides.py`) |
+| Demo video (3 min) | script and recording checklist in `docs/video.md` |
 | UI | `app/streamlit_app.py` |
 | Run logs | `results/` (every answer, SQL, tool call and token count; 5 MB) and `memory/examples.jsonl` |
 
@@ -131,7 +131,7 @@ sqlglot), **only the 28 warehouse tables** (no table functions such as `read_tex
 tables), at most 1,000 rows, 20-second timeout. Every call is logged to `logs/mcp_calls.jsonl`.
 Done-test (`check_mcp.py`, server started over stdio like a real client): **6/6 tools work, 12/12 attacks blocked**
 (5 writes, 1 injection in a table name, 6 file reads / non-warehouse tables / settings changes).
-- **Fixed after a code review (30 Oct):** before the fix, `run_sql` only checked "one SELECT". DuckDB can read local
+- **Fixed on 30 Oct, after the final runs:** before the fix, `run_sql` only checked "one SELECT". DuckDB can read local
   files inside a SELECT (`SELECT * FROM read_text('.env')`), and a read-only database doesn't stop that, so the
   agent could in principle have read the `.env` file with the API key. The "only known tables" rule was applied to
   the other tools but not to `run_sql`, and the original 6 attacks were all writes. Re-checking all 3,280 SQL queries
@@ -147,7 +147,7 @@ Version E is a LangGraph ReAct agent (`agent/agent_graph.py`). It discovers the 
 (`agent/mcp_tools.py`, no direct data access) and loops *think → call tools → look at the results* until it can
 answer. Rules: at most 8 steps, at most 3 failed SQL runs, a 60k-token budget per question. At a limit it must
 answer from queries that already ran, or say "not sure". If its final answer shows SQL that never ran, it is sent
-back once to run it (added after the code review; see the post-hoc results).
+back once to run it (added after the final runs; see the post-hoc results).
 - **Chat memory:** a LangGraph checkpointer keeps each conversation (thread); only the last 6 user turns are sent.
 - **Example memory:** practice questions E answered correctly are saved (`memory/examples.jsonl`, 34 examples) and
   the most similar ones are added to the prompt (`configs/E_memory.yaml`). The harness refuses `--learn` on test
@@ -258,8 +258,8 @@ without hybrid 72.5%; without re-rank 76.3%. As on practice, rewrite and re-rank
      (on shared templates: 83% → 96%). No test question or answer is in memory (`--learn` refuses test questions).
 5. **Chat memory is essential for follow-ups:** turns 2–3 go from 0% to about 90%.
 
-### Post-hoc: the agent after the code-review fixes (not part of the frozen results)
-A code review (30 Oct) found two agent bugs, both by reading **test** answers: long SQL results were cut mid-JSON
+### Post-hoc: the agent after bug fixes (not part of the frozen results)
+After the final runs (30 Oct), two agent bugs were found, both by reading **test** answers: long SQL results were cut mid-JSON
 (so a successful query counted as a failed run and couldn't be graded), and the agent often ended with SQL it had
 never run (scored as "not sure"). The fixes (`agent/answer_checks.py`): long results keep valid JSON and drop list
 items instead (SQL rows, search hits, table columns); if an answer shows SQL that never ran, the agent is sent back **once** to run it (that note is only sent for the
@@ -279,7 +279,7 @@ the agent is often shown the very question it is asked, with its correct SQL. On
   each question once (majority of 3 runs) nothing changes (0 vs 0): the fix makes its answers more *consistent*
   rather than fixing new questions. Abstentions almost disappear (4.0 → 0.3 per run).
 - **Still statistically tied with A** (A 90.4% vs fixed E + memory 95.0%: 2 vs 8, p = 0.11).
-- **Second review round (after these runs):** long *search, look-alike and description* results are now also
+- **Further fixes (after these runs):** long *search, look-alike and description* results are now also
   shortened by list items instead of being cut (before, only SQL results were), and the "run your SQL" note is no
   longer sent in later turns of a conversation. The numbers above come from the runs *before* this round: the
   second change doesn't affect single questions; the first mainly affects the "needed tables shown" count.
@@ -380,7 +380,7 @@ depends on the use:
 Because the real use case (an analytics assistant people chat with, over a catalog that will grow) needs follow-ups,
 **the project ships E + example memory**, with A as the recommended baseline for small, one-shot setups.
 Caveats: this choice was made after seeing test results, so its 92.5% is somewhat optimistic (see "What the results mean").
-After the code review, the agent had bugs fixed and was re-run as a separate, post-hoc result (below).
+After the final runs, the agent had bugs fixed and was re-run as a separate, post-hoc result (below).
 
 **Not chosen:** C (smart search) was worse than basic search. B and D were not significantly better than each other.
 
@@ -397,7 +397,7 @@ After the code review, the agent had bugs fixed and was re-run as a separate, po
 | 7 | Advanced RAG (rewrite, hybrid, re-rank) | worse than basic search on practice **and** test | kept as a reported negative result; not tuned |
 | 8 | Running the 35 final runs one after another | about 3.5 h: local Qdrant allows one program at a time | one Qdrant copy per parallel chain (`QDRANT_PATH`), about 2 h |
 | 9 | Search alone for join questions | finds the summary table, misses `dim_user` / `dim_ad` | table map (D) and the agent's `get_join_path` tool |
-| 10 | Code review after the final runs (two rounds) | `run_sql` could read local files; long results counted as failed runs; unrun SQL scored as "not sure"; greedy scorer; no unit tests | file access off + 28-table allow-list (no score changed); agent fixes re-run as a separate post-hoc result (E 84.2%, E + memory 95.0%); backtracking scorer (re-scoring 666 wrong answers changed none); 30 unit tests + CI |
+| 10 | Checking the code after the final runs | `run_sql` could read local files; long results counted as failed runs; unrun SQL scored as "not sure"; greedy scorer; no unit tests | file access off + 28-table allow-list (no score changed); agent fixes re-run as a separate post-hoc result (E 84.2%, E + memory 95.0%); backtracking scorer (re-scoring 666 wrong answers changed none); 30 unit tests + CI |
 
 ## Differences from the design doc (honest list)
 - **Langfuse was not used.** Every step of every run is logged instead to `results/<run>/answers.jsonl` (SQL, tool
@@ -407,7 +407,7 @@ After the code review, the agent had bugs fixed and was re-run as a separate, po
 - **No blind questions from a classmate**; all 120 are AI-drafted from templates and checked against raw data (see Benchmark).
 - **Bigger catalog: 1 run per size** (not 3), and E was not included.
 - Model: `gpt-5-mini` for all versions, `gpt-5` as the grader.
-- **Unit tests and CI were added after a code review** (`tests/`, `.github/workflows/tests.yml`): 30 tests that need no
+- **Unit tests and CI were added after the final runs** (`tests/`, `.github/workflows/tests.yml`): 30 tests that need no
   data or services. The `check_*.py` done-tests still need the database, Qdrant and Neo4j.
 
 ## User interface

@@ -24,7 +24,7 @@ RESULTS = PROJECT / "results"
 BENCH = PROJECT / "benchmark"
 
 MAIN = ["A", "B", "C", "D", "E", "E_memory"]
-# post-hoc: the agent re-run with the fixes made after the code review (reported apart from the frozen results)
+# post-hoc: the agent re-run with bug fixes made after the final runs (reported apart from the frozen results)
 POSTHOC = ["E_fixed", "E_memory_fixed"]
 POSTHOC_PAIRS = [("A", "E_memory"), ("E", "E_fixed"), ("E_memory", "E_memory_fixed"), ("A", "E_memory_fixed")]
 PAIRS = [("A", "B"), ("B", "C"), ("C", "D"), ("D", "E"), ("B", "D"), ("A", "D"), ("A", "E"), ("E", "E_memory")]
@@ -158,7 +158,7 @@ def main():
     # post-hoc: the fixed agent (practice and test)
     fixed = {name: load_runs(name) for name in POSTHOC}
     if any(fixed.values()):
-        print("\nPOST-HOC: agent with the review fixes (not part of the frozen results)")
+        print("\nPOST-HOC: agent with the bug fixes (not part of the frozen results)")
         for name, runs in fixed.items():
             if not runs:
                 continue

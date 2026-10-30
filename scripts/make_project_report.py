@@ -180,7 +180,7 @@ s += [P("AdsKG-Agent: What We Built and How We Built It", h1),
       P("<b>The approach.</b> Start with the simplest possible version and add one idea at a time, measuring each step: "
         "(A) show the AI every table description &rarr; (B) basic search &rarr; (C) advanced search &rarr; (D) search + "
         "a map of how tables connect &rarr; (E) an agent that uses tools, with memory. Everything was built in 10 "
-        "milestones (M1&ndash;M10), then reviewed and fixed (M11), each with a walkthrough notebook."),
+        "milestones (M1&ndash;M10), then checked and fixed (M11), each with a walkthrough notebook."),
       Spacer(1, 4),
       stats_row([("92.5%", "best accuracy on 80 unseen test<br/>questions (agent + memory)"),
                  ("90%", "follow-up questions answered<br/>(0% without chat memory)"),
@@ -196,8 +196,8 @@ s += [P("AdsKG-Agent: What We Built and How We Built It", h1),
         "with A</b> (p = 0.11). It's the only version that handles follow-ups, so it's the one we ship; A remains the "
         "simple choice for one-shot questions on a small catalog."),
       B("Every claim was checked: 3 runs per version, confidence intervals, significance tests (with a Bonferroni "
-        "check), an AI grader and a human check (kappa 0.65), a sorted list of all 91 wrong answers, and an outside "
-        "code review whose fixes are reported openly (M11)."),
+        "check), an AI grader and a human check (kappa 0.65), a sorted list of all 91 wrong answers, and fixes made "
+        "after the final runs that are reported openly (M11)."),
       P("The big picture", h2),
       arch_diagram(),
       P("<i>Figure 1. One-time prep builds the tables and their descriptions. For each question, the agent finds and "
@@ -254,7 +254,7 @@ s += [milestone("M1", "Build the warehouse (28 tables)",
                 "FastMCP. Safety lives inside the server so nothing can bypass it: read-only database, one SELECT, "
                 "1,000 rows, 20-second timeout; every call logged.",
                 "6 of 6 tools work; 6 of 6 write attacks (DELETE, DROP, two statements...) blocked. Any MCP app "
-                "(e.g. Claude Code) can use it. (A gap, file reads inside a SELECT, was found later in review: see M11.)"),
+                "(e.g. Claude Code) can use it. (A gap, file reads inside a SELECT, was found later: see M11.)"),
       milestone("M7", "Version E: the agent, with memory",
                 "An agent that thinks, calls a tool, looks at the result and repeats until it can answer. Chat "
                 "memory for follow-ups, plus example memory: practice questions it got right, recalled as examples.",
@@ -285,8 +285,8 @@ s += [milestone("M9", "Final exam: 80 test questions, 3 runs each",
                 "Streamlit app (<font face='Courier'>app/streamlit_app.py</font>) showing each answer's SQL, result and "
                 "tool calls; PDFs generated from scripts so numbers come straight from the result files.",
                 "Everything needed to submit, re-run or present the project."),
-      milestone("M11", "Code review and fixes",
-                "An outside review of the finished code found real problems and over-strong claims.",
+      milestone("M11", "Fixes after the final runs",
+                "Checking the finished code found real problems and over-strong claims.",
                 "Switched off DuckDB file access and allowed only the 28 warehouse tables (a SELECT could read "
                 "<font face='Courier'>.env</font>); long results now drop rows instead of breaking JSON; the agent is sent "
                 "back once to run SQL it only showed; a fairer scorer; 30 unit tests that run on GitHub; Bonferroni and "
@@ -333,8 +333,8 @@ s += [P("What we learned", h2),
              ["Memory matters most for an agent", "example memory +12.5 points; chat memory turns follow-ups from 0% to 90%"],
              ["Never grade what didn't run", "the agent once \"answered\" with SQL it never executed; grading only "
               "executed SQL made it honest"],
-             ["Let someone else review it", "a code review found a file-read hole and two agent bugs that all our "
-              "own checks missed"],
+             ["Check the code again after the results", "a file-read hole and two agent bugs turned up that the earlier "
+              "done-tests had missed"],
              ["Freeze the test, report everything", "every change made on practice questions, and every pivot, is in "
               "the README, including negative results"]],
             [W * 0.33, W * 0.67])]

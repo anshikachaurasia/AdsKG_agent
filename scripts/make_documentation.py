@@ -199,8 +199,8 @@ s += [P("5. Orchestration and Context Handling (version E)", h2),
               "list_lookalikes, describe_table, sample_rows, run_sql. The agent discovers them over stdio, like any MCP client"],
              ["Safety", "Inside the server: read-only DB with file access switched off and locked, exactly one SELECT "
               "(sqlglot), only the 28 warehouse tables, 1,000 rows, 20 s timeout, every call logged. 12/12 attacks blocked, "
-              "incl. file reads like read_text('.env'), a gap found in a code review and fixed (no result changed)"],
-             ["Context", "Tool results kept under 4,000 characters (long SQL results drop rows, after the review fix); only the last 6 user turns sent; prompt states data facts "
+              "incl. file reads like read_text('.env'), a gap found and fixed after the final runs (no result changed)"],
+             ["Context", "Tool results kept under 4,000 characters (long results drop list items instead of being cut); only the last 6 user turns sent; prompt states data facts "
               "(IDs only, how events join to lookups) and working habits (search at most twice, query early)"],
              ["Memory", "<b>Chat memory:</b> checkpointer per conversation thread. <b>Example memory:</b> 34 correctly "
               "answered <i>practice</i> questions; the 2 most similar (cosine &ge; 0.75) are added to the prompt. Test "
@@ -246,7 +246,7 @@ s += [P("7. Results (80 test questions, 3 runs, gpt-5-mini)", h2),
         "tables are mostly off-topic, so this shows cost growing more than confusion."),
       B("<b>Memory caveat:</b> 56 of 80 test questions share a template with a practice example in memory. On the other "
         "24, memory still lifts E from 72% to 85%. No test question is in memory."),
-      B("<b>Post-hoc, after a code review:</b> two agent bugs (long results cut mid-JSON counted as failed runs; SQL shown "
+      B("<b>Post-hoc, after the final runs:</b> two agent bugs (long results cut mid-JSON counted as failed runs; SQL shown "
         "but never run scored as \"not sure\") were fixed and the agent re-run: E 80.0% &rarr; 84.2%, E + memory 92.5% "
         "&rarr; 95.0% (still tied with A, p = 0.11). Reported apart from the frozen results, because the bugs were found "
         "by reading test answers."),
@@ -293,7 +293,7 @@ s += [P("9. Final Choice and Framework Justification", h2),
             [W * 0.2, W * 0.5, W * 0.3]),
       P("<b>Limitations:</b> AI-drafted, template-based benchmark (frozen and cross-checked, but not written blind); "
         "simulated \"now\"; estimated value is not revenue; bigger-catalog runs are 1 run each; human/judge kappa "
-        "(0.65) rests on only 2 \"no\" grades among 30; Langfuse not used; unit tests and CI added after the review. <b>Next:</b> the \"Why\" stage (metric trees in the map, "
+        "(0.65) rests on only 2 \"no\" grades among 30; Langfuse not used; unit tests and CI added after the final runs. <b>Next:</b> the \"Why\" stage (metric trees in the map, "
         "multi-agent supervisor).", small)]
 
 doc = SimpleDocTemplate(OUT, pagesize=A4, leftMargin=15 * mm, rightMargin=15 * mm, topMargin=10 * mm, bottomMargin=10 * mm,
