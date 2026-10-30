@@ -197,9 +197,10 @@ s += [P("5. Orchestration and Context Handling (version E)", h2),
               "runs, 60k input tokens. At a limit it must answer only from SQL that already ran, or say \"not sure\""],
              ["Tools (MCP)", "One FastMCP server, <font face='Courier'>adskg</font>: search_tables, get_join_path, "
               "list_lookalikes, describe_table, sample_rows, run_sql. The agent discovers them over stdio, like any MCP client"],
-             ["Safety", "Inside the server: read-only DB, exactly one SELECT (sqlglot), 1,000 rows, 20 s timeout, known "
-              "tables only, every call logged. 6/6 injection/write attempts blocked"],
-             ["Context", "Tool results cut to 4,000 characters; only the last 6 user turns sent; prompt states data facts "
+             ["Safety", "Inside the server: read-only DB with file access switched off and locked, exactly one SELECT "
+              "(sqlglot), only the 28 warehouse tables, 1,000 rows, 20 s timeout, every call logged. 12/12 attacks blocked, "
+              "incl. file reads like read_text('.env'), a gap found in a code review and fixed (no result changed)"],
+             ["Context", "Tool results kept under 4,000 characters (long SQL results drop rows, after the review fix); only the last 6 user turns sent; prompt states data facts "
               "(IDs only, how events join to lookups) and working habits (search at most twice, query early)"],
              ["Memory", "<b>Chat memory:</b> checkpointer per conversation thread. <b>Example memory:</b> 34 correctly "
               "answered <i>practice</i> questions; the 2 most similar (cosine &ge; 0.75) are added to the prompt. Test "
@@ -234,8 +235,10 @@ s += [P("7. Results (80 test questions, 3 runs, gpt-5-mini)", h2),
       table(rows, [W * 0.17, W * 0.15, W * 0.09, W * 0.09, W * 0.09, W * 0.11, W * 0.09, W * 0.1, W * 0.11]),
       Spacer(1, 3),
       Image("docs/accuracy_ci.png", width=W * 0.72, height=W * 0.72 * 3.4 / 7),
-      B("<b>Significant (p &lt; 0.05):</b> A &gt; B (p = 0.006), A &gt; D (p = 0.001), E + memory &gt; E (15 fixed, 0 broken, "
-        "p = 0.0001). <b>Not significant:</b> B vs C vs D, D vs E, A vs E (p = 0.06)."),
+      B("<b>Significant (p &lt; 0.05):</b> A &gt; B (p = 0.0063), A &gt; D (p = 0.001), E + memory &gt; E (15 fixed, 0 broken, "
+        "p = 0.0001). With 8 comparisons, the Bonferroni check (p &lt; 0.00625) keeps A &gt; D and memory &gt; no memory; "
+        "A &gt; B is borderline. <b>Not significant:</b> B vs C vs D, D vs E, A vs E, and <b>A vs E + memory (p = 0.11): "
+        "statistically tied</b>."),
       B(f"<b>Follow-ups</b> (15 conversations &times; 3 turns): chat memory on {pct(conv['E']['accuracy'])}, off "
         f"{pct(conv['E_nochat']['accuracy'])}; turns 2&ndash;3 drop to 0% without memory."),
       B("<b>Bigger catalog</b> (1 run per size): A stays at 90% at 250 tables but its prompt grows from 3k to 29k tokens "
@@ -243,6 +246,10 @@ s += [P("7. Results (80 test questions, 3 runs, gpt-5-mini)", h2),
         "tables are mostly off-topic, so this shows cost growing more than confusion."),
       B("<b>Memory caveat:</b> 56 of 80 test questions share a template with a practice example in memory. On the other "
         "24, memory still lifts E from 72% to 85%. No test question is in memory."),
+      B("<b>Post-hoc, after a code review:</b> two agent bugs (long results cut mid-JSON counted as failed runs; SQL shown "
+        "but never run scored as \"not sure\") were fixed and the agent re-run: E 80.0% &rarr; 84.2%, E + memory 92.5% "
+        "&rarr; 95.0% (still tied with A, p = 0.11). Reported apart from the frozen results, because the bugs were found "
+        "by reading test answers."),
       B("<b>All 7 design-doc targets met</b> (kappa 0.65, see section 6): best accuracy &ge; 75%; +27 points over B on hard questions (target +10); "
         "table F1 0.85; follow-ups 90% (target 80%); 8.6 s and $0.002 per question; D drop 2.9 points.")]
 
@@ -269,11 +276,13 @@ s += [P("8. Failure Analysis, Attempted Approaches and Pivots", h2),
 
 # 9. Decision
 s += [P("9. Final Choice and Framework Justification", h2),
-      P("<b>Ship E + example memory.</b> It is the most accurate (92.5%), significantly better than the agent without "
-        "memory, the only version that handles follow-ups, faithful to the data (judge faithfulness 4.8/5), and it scales "
-        "because it retrieves through tools instead of reading every card. <b>For a small catalog and one-shot "
-        "questions, A is the simple alternative</b> (90.4%, not significantly different, 2.7&times; faster). This is "
-        "the baseline-first lesson: at 28 tables, retrieval only pays off once memory and follow-ups matter."),
+      P("<b>At 28 tables, A and E + example memory are statistically tied</b> (90.4% vs 92.5%, p = 0.11); A is simpler "
+        "and 2.7&times; faster. <b>For one-shot questions on a small catalog, use A.</b> <b>The project ships E + example "
+        "memory</b> because the real use needs follow-ups (90% vs 0% for turns 2&ndash;3 without chat memory) and a "
+        "growing catalog (it retrieves through tools instead of reading every card); it is significantly better than "
+        "the agent without memory, and nearly always faithful to the data (judge 4.8/5; one invented \"SQL used\" "
+        "in q033). This choice was made after seeing test results, so its score is somewhat optimistic. This is the "
+        "baseline-first lesson: at 28 tables, retrieval only pays off once memory and follow-ups matter."),
       table([["Choice", "Why", "Alternative considered"],
              ["LangGraph", "graph loop with explicit limits; checkpointer gives chat memory for free", "Pydantic AI, smolagents"],
              ["FastMCP server", "one safe plug for all data tools; any MCP client can use it", "plain Python functions"],
@@ -284,7 +293,7 @@ s += [P("9. Final Choice and Framework Justification", h2),
             [W * 0.2, W * 0.5, W * 0.3]),
       P("<b>Limitations:</b> AI-drafted, template-based benchmark (frozen and cross-checked, but not written blind); "
         "simulated \"now\"; estimated value is not revenue; bigger-catalog runs are 1 run each; human/judge kappa "
-        "(0.65) rests on only 2 \"no\" grades among 30; Langfuse not used. <b>Next:</b> the \"Why\" stage (metric trees in the map, "
+        "(0.65) rests on only 2 \"no\" grades among 30; Langfuse not used; unit tests and CI added after the review. <b>Next:</b> the \"Why\" stage (metric trees in the map, "
         "multi-agent supervisor).", small)]
 
 doc = SimpleDocTemplate(OUT, pagesize=A4, leftMargin=15 * mm, rightMargin=15 * mm, topMargin=10 * mm, bottomMargin=10 * mm,

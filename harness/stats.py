@@ -5,7 +5,9 @@
     (each question keeps its 3 runs), and take the middle 95% of the accuracies
   - McNemar test (exact): compares two versions on the SAME questions. A question counts as "right" for a
     version if it was right in at least 2 of 3 runs. Only questions where the two versions disagree matter.
-    p < 0.05 = the difference is unlikely to be luck.
+    p < 0.05 = the difference is unlikely to be luck. With 8 comparisons, some p < 0.05 happen by luck alone, so
+    we also show the stricter Bonferroni check: p < 0.05 / 8 = 0.00625.
+  - only COMPLETE runs are used (a quick --limit try is skipped, so it can't skew the numbers)
 
 Run from the project folder:
     .venv/bin/python harness/stats.py          # prints tables, writes results/final_summary.json
@@ -19,16 +21,31 @@ from pathlib import Path
 
 PROJECT = Path(__file__).resolve().parent.parent
 RESULTS = PROJECT / "results"
+BENCH = PROJECT / "benchmark"
 
 MAIN = ["A", "B", "C", "D", "E", "E_memory"]
+# post-hoc: the agent re-run with the fixes made after the code review (reported apart from the frozen results)
+POSTHOC = ["E_fixed", "E_memory_fixed"]
+POSTHOC_PAIRS = [("A", "E_memory"), ("E", "E_fixed"), ("E_memory", "E_memory_fixed"), ("A", "E_memory_fixed")]
 PAIRS = [("A", "B"), ("B", "C"), ("C", "D"), ("D", "E"), ("B", "D"), ("A", "D"), ("A", "E"), ("E", "E_memory")]
 
 
+def expected_count(suffix):
+    """How many answers a complete run has: questions in the split, or turns for conversations."""
+    split, kind = suffix.split("_")[0], "conversations" if "_conv" in suffix else "questions"
+    items = [json.loads(line) for line in (BENCH / f"{kind}.jsonl").read_text().splitlines()]
+    items = [x for x in items if x["split"] == split]
+    return sum(len(x["turns"]) for x in items) if kind == "conversations" else len(items)
+
+
 def load_runs(name, suffix="test"):
-    """All runs of one config: a list of runs, each {question id: record}."""
-    runs = []
+    """All COMPLETE runs of one config: a list of runs, each {question id: record}."""
+    runs, expected = [], expected_count(suffix)
     for folder in sorted(glob.glob(str(RESULTS / f"*_{name}_{suffix}"))):
         lines = Path(folder, "answers.jsonl").read_text().splitlines()
+        if len(lines) != expected:
+            print(f"  (skipped incomplete run {Path(folder).name}: {len(lines)} of {expected} answers)")
+            continue
         runs.append({r["id"]: r for r in map(json.loads, lines)})
     return runs
 
@@ -80,7 +97,8 @@ def describe(runs, tiers=("easy", "medium", "tricky")):
 
 
 def main():
-    summary = {"questions": {}, "pairs": [], "conversations": {}, "ablation": {}, "catalog": {}}
+    summary = {"questions": {}, "pairs": [], "conversations": {}, "ablation": {}, "catalog": {},
+               "posthoc": {}, "posthoc_pairs": []}
 
     # main versions, 3 runs each
     all_runs = {name: load_runs(name) for name in MAIN}
@@ -93,15 +111,18 @@ def main():
               f"{d['table_f1']:.2f}  {d['gold_tables_shown']:.2f}   {d['median_seconds']:5.1f}  {d['median_cost_usd']:.4f}")
 
     # McNemar on majority vote (right in >= 2 of 3 runs)
-    print("\nMcNemar (right in >= 2 of 3 runs)       only first right  only second right  p")
+    bonferroni = 0.05 / len(PAIRS)
+    print(f"\nMcNemar (right in >= 2 of 3 runs)       only first right  only second right  p        p < {bonferroni:.5f}?")
     for a, b in PAIRS:
         if a in all_runs and b in all_runs:
             ids = list(all_runs[a][0])
             right_a = {i: s >= 0.5 for i, s in per_question(all_runs[a], ids).items()}
             right_b = {i: s >= 0.5 for i, s in per_question(all_runs[b], ids).items()}
             only_a, only_b, p = mcnemar(right_a, right_b)
-            summary["pairs"].append({"a": a, "b": b, "only_a": only_a, "only_b": only_b, "p": round(p, 4)})
-            print(f"  {a:9s} vs {b:9s}                   {only_a:6d}            {only_b:6d}         {p:.4f}")
+            summary["pairs"].append({"a": a, "b": b, "only_a": only_a, "only_b": only_b, "p": round(p, 4),
+                                     "holds_after_bonferroni": p < bonferroni})
+            print(f"  {a:9s} vs {b:9s}                   {only_a:6d}            {only_b:6d}         {p:.4f}   "
+                  f"{'yes' if p < bonferroni else 'no'}")
 
     # follow-up conversations: chat memory on vs off
     print("\nConversations (15 x 3 turns)   all    turn1  turn2  turn3   95% CI")
@@ -133,6 +154,29 @@ def main():
             row[size] = describe(runs) if runs else None
         summary["catalog"][name] = row
         print(f"  {name}  " + "   ".join(f"{s}: {d['accuracy']:.3f} / ${d['avg_cost_usd']:.4f}" for s, d in row.items() if d))
+
+    # post-hoc: the fixed agent (practice and test)
+    fixed = {name: load_runs(name) for name in POSTHOC}
+    if any(fixed.values()):
+        print("\nPOST-HOC: agent with the review fixes (not part of the frozen results)")
+        for name, runs in fixed.items():
+            if not runs:
+                continue
+            d = summary["posthoc"][name] = describe(runs)
+            practice = load_runs(name, "practice")
+            d["practice_accuracy"] = describe(practice)["accuracy"] if practice else None
+            print(f"  {name:15s} test {d['accuracy']:.3f} [{d['ci_low']:.3f}, {d['ci_high']:.3f}] ({d['runs']} runs)  "
+                  f"medium {d['accuracy_medium']:.2f}  tricky {d['accuracy_tricky']:.2f}  not sure/run {d['not_sure']}  "
+                  f"practice {d['practice_accuracy']}")
+        everything = {**all_runs, **fixed}
+        for a, b in POSTHOC_PAIRS:
+            if everything.get(a) and everything.get(b):
+                ids = list(everything[a][0])
+                right_a = {i: s >= 0.5 for i, s in per_question(everything[a], ids).items()}
+                right_b = {i: s >= 0.5 for i, s in per_question(everything[b], ids).items()}
+                only_a, only_b, p = mcnemar(right_a, right_b)
+                summary["posthoc_pairs"].append({"a": a, "b": b, "only_a": only_a, "only_b": only_b, "p": round(p, 4)})
+                print(f"  McNemar {a} vs {b}: only first right {only_a}, only second right {only_b}, p = {p:.4f}")
 
     (RESULTS / "final_summary.json").write_text(json.dumps(summary, indent=2))
     print(f"\nSaved to {RESULTS / 'final_summary.json'}")

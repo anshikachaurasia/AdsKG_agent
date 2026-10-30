@@ -1,0 +1,10 @@
+# POST-HOC (added after review): same settings as E.yaml, run with the agent fixes made after the
+# code review: long SQL results keep valid JSON, unrun SQL is sent back once to run, stricter "not sure".
+# Reported separately from the frozen results; see README.
+version: E
+chat_memory: true
+example_memory: false
+model: gpt-5-mini
+reasoning_effort: low
+price_in_per_1m: 0.25     # USD per 1M input tokens (check openai.com/api/pricing)
+price_out_per_1m: 2.00    # USD per 1M output tokens

@@ -139,56 +139,64 @@
       "b": "B",
       "only_a": 11,
       "only_b": 1,
-      "p": 0.0063
+      "p": 0.0063,
+      "holds_after_bonferroni": false
     },
     {
       "a": "B",
       "b": "C",
       "only_a": 6,
       "only_b": 2,
-      "p": 0.2891
+      "p": 0.2891,
+      "holds_after_bonferroni": false
     },
     {
       "a": "C",
       "b": "D",
       "only_a": 4,
       "only_b": 7,
-      "p": 0.5488
+      "p": 0.5488,
+      "holds_after_bonferroni": false
     },
     {
       "a": "D",
       "b": "E",
       "only_a": 7,
       "only_b": 9,
-      "p": 0.8036
+      "p": 0.8036,
+      "holds_after_bonferroni": false
     },
     {
       "a": "B",
       "b": "D",
       "only_a": 4,
       "only_b": 3,
-      "p": 1.0
+      "p": 1.0,
+      "holds_after_bonferroni": false
     },
     {
       "a": "A",
       "b": "D",
       "only_a": 11,
       "only_b": 0,
-      "p": 0.001
+      "p": 0.001,
+      "holds_after_bonferroni": true
     },
     {
       "a": "A",
       "b": "E",
       "only_a": 14,
       "only_b": 5,
-      "p": 0.0636
+      "p": 0.0636,
+      "holds_after_bonferroni": false
     },
     {
       "a": "E",
       "b": "E_memory",
       "only_a": 0,
       "only_b": 15,
-      "p": 0.0001
+      "p": 0.0001,
+      "holds_after_bonferroni": true
     }
   ],
   "conversations": {
@@ -534,5 +542,83 @@
         "avg_cost_usd": 0.00081
       }
     }
-  }
+  },
+  "posthoc": {
+    "E_fixed": {
+      "runs": 3,
+      "questions": 80,
+      "accuracy": 0.842,
+      "ci_low": 0.775,
+      "ci_high": 0.9,
+      "run_accuracies": [
+        0.838,
+        0.85,
+        0.838
+      ],
+      "accuracy_easy": 0.938,
+      "accuracy_medium": 0.642,
+      "accuracy_tricky": 0.949,
+      "accuracy_hard": 0.792,
+      "table_f1": 0.839,
+      "gold_tables_shown": 0.804,
+      "not_sure": 3.3,
+      "median_seconds": 8.4,
+      "median_cost_usd": 0.0019,
+      "avg_cost_usd": 0.00249,
+      "practice_accuracy": 0.85
+    },
+    "E_memory_fixed": {
+      "runs": 3,
+      "questions": 80,
+      "accuracy": 0.95,
+      "ci_low": 0.912,
+      "ci_high": 0.979,
+      "run_accuracies": [
+        0.938,
+        0.95,
+        0.963
+      ],
+      "accuracy_easy": 0.951,
+      "accuracy_medium": 0.901,
+      "accuracy_tricky": 1.0,
+      "accuracy_hard": 0.95,
+      "table_f1": 0.871,
+      "gold_tables_shown": 0.787,
+      "not_sure": 0.3,
+      "median_seconds": 8.7,
+      "median_cost_usd": 0.0019,
+      "avg_cost_usd": 0.00225,
+      "practice_accuracy": 0.975
+    }
+  },
+  "posthoc_pairs": [
+    {
+      "a": "A",
+      "b": "E_memory",
+      "only_a": 2,
+      "only_b": 8,
+      "p": 0.1094
+    },
+    {
+      "a": "E",
+      "b": "E_fixed",
+      "only_a": 1,
+      "only_b": 9,
+      "p": 0.0215
+    },
+    {
+      "a": "E_memory",
+      "b": "E_memory_fixed",
+      "only_a": 0,
+      "only_b": 0,
+      "p": 1.0
+    },
+    {
+      "a": "A",
+      "b": "E_memory_fixed",
+      "only_a": 2,
+      "only_b": 8,
+      "p": 0.1094
+    }
+  ]
 }

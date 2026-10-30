@@ -25,20 +25,23 @@ def results_match(gold_rows, pred_rows):
     gold = [[normalize(v) for v in row] for row in gold_rows]
     pred = [[normalize(v) for v in row] for row in pred_rows]
 
-    # for every gold column, find a predicted column holding the same values
+    # for every gold column, the predicted columns holding the same values (there can be several)
     gold_cols = list(zip(*gold))
     pred_cols = list(zip(*pred))
-    chosen = []
-    for g in gold_cols:
-        match = next((i for i, p in enumerate(pred_cols)
-                      if i not in chosen and sorted(p, key=str) == sorted(g, key=str)), None)
-        if match is None:
-            return False
-        chosen.append(match)
+    candidates = [[i for i, p in enumerate(pred_cols) if sorted(p, key=str) == sorted(g, key=str)] for g in gold_cols]
+    gold_sorted = sorted((tuple(row) for row in gold), key=str)
 
-    # the chosen columns must also line up row by row
-    pred_projected = sorted((tuple(row[i] for i in chosen) for row in pred), key=str)
-    return pred_projected == sorted((tuple(row) for row in gold), key=str)
+    def lines_up(chosen):
+        """The chosen columns must also line up row by row."""
+        return sorted((tuple(row[i] for i in chosen) for row in pred), key=str) == gold_sorted
+
+    def try_columns(chosen):
+        """Try every way of pairing gold columns with predicted ones (backtracking), not just the first match."""
+        if len(chosen) == len(gold_cols):
+            return lines_up(chosen)
+        return any(try_columns(chosen + [i]) for i in candidates[len(chosen)] if i not in chosen)
+
+    return try_columns([])
 
 
 def table_scores(used, gold):

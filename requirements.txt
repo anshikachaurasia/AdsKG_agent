@@ -16,3 +16,4 @@ langgraph==1.2.18
 matplotlib==3.11.2   # M9 results chart
 streamlit==1.66.1    # M10 chat UI
 python-pptx==1.0.2   # M10 slides (scripts/make_slides.py)
+pytest==9.2.0        # unit tests (tests/)

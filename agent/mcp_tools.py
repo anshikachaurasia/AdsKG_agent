@@ -7,17 +7,16 @@ How: the MCP client needs an async event loop. We run one in a background thread
 of the agent can stay simple, normal (non-async) Python.
 """
 import asyncio
-import json
 import os
 import threading
 from pathlib import Path
 
+from answer_checks import fit_rows
 from fastmcp import Client
 from fastmcp.client.transports import PythonStdioTransport
 from langchain_core.tools import StructuredTool
 
 SERVER = Path(__file__).resolve().parent.parent / "mcp_server" / "server.py"
-MAX_RESULT_CHARS = 4000   # keep tool results short so the agent's context stays small
 
 
 class MCPConnection:
@@ -41,8 +40,9 @@ class MCPConnection:
     def call(self, name, args):
         """Call one MCP tool. Returns text for the AI (errors come back as text too, so it can fix them)."""
         result = self._wait(self.client.call_tool(name, args, raise_on_error=False))
-        text = result.content[0].text if result.is_error else json.dumps(result.data, default=str)
-        return text[:MAX_RESULT_CHARS]
+        if result.is_error:
+            return fit_rows(result.content[0].text)
+        return fit_rows(result.data)   # long results lose rows, not their JSON shape
 
     def close(self):
         self._wait(self.client.__aexit__(None, None, None))

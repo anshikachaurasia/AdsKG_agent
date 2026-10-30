@@ -1,0 +1,28 @@
+{
+  "config": {
+    "version": "E",
+    "chat_memory": true,
+    "example_memory": true,
+    "model": "gpt-5-mini",
+    "reasoning_effort": "low",
+    "price_in_per_1m": 0.25,
+    "price_out_per_1m": 2.0,
+    "catalog_size": 28
+  },
+  "split": "practice",
+  "kind": "questions",
+  "n": 40,
+  "accuracy": 0.975,
+  "accuracy_easy": 0.9231,
+  "accuracy_medium": 1.0,
+  "accuracy_tricky": 1.0,
+  "table_f1": 0.8917,
+  "gold_tables_shown": 0.75,
+  "sql_errors": 0,
+  "not_sure": 0,
+  "avg_steps": 4.3,
+  "avg_seconds": 9.0873,
+  "avg_tokens_in": 5939.725,
+  "avg_cost_usd": 0.0021,
+  "total_cost_usd": 0.0855
+}

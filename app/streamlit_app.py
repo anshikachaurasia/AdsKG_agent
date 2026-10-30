@@ -10,7 +10,6 @@ import sys
 import uuid
 from pathlib import Path
 
-import duckdb
 import pandas as pd
 import streamlit as st
 import yaml
@@ -18,7 +17,7 @@ import yaml
 PROJECT = Path(__file__).resolve().parent.parent
 sys.path += [str(PROJECT / "agent"), str(PROJECT / "mcp_server")]
 from agent_graph import AgentE  # noqa: E402
-from safety import run_sql, tables_in_sql  # noqa: E402
+from safety import connect, run_sql, tables_in_sql  # noqa: E402
 
 CONFIG = yaml.safe_load((PROJECT / "configs" / "E_memory.yaml").read_text())
 EXAMPLES = [
@@ -35,7 +34,7 @@ def get_agent():
 
 @st.cache_resource
 def get_db():
-    return duckdb.connect(str(PROJECT / "data" / "ads.duckdb"), read_only=True)
+    return connect(PROJECT / "data" / "ads.duckdb")   # read-only, no file access
 
 
 def show_details(out):

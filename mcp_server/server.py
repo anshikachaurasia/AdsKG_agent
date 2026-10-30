@@ -23,7 +23,6 @@ import time
 from datetime import datetime
 from pathlib import Path
 
-import duckdb
 from fastmcp import FastMCP
 from fastmcp.exceptions import ToolError
 
@@ -50,10 +49,10 @@ _con = None
 
 
 def db():
-    """One read-only database connection for the whole server."""
+    """One read-only database connection for the whole server (no file access, see safety.connect)."""
     global _con
     if _con is None:
-        _con = duckdb.connect(str(DB_PATH), read_only=True)
+        _con = safety.connect(DB_PATH)
     return _con
 
 
@@ -135,10 +134,12 @@ def sample_rows(table: str, n: int = 5) -> dict:
 @mcp.tool
 @logged
 def run_sql(sql: str) -> dict:
-    """Run ONE read-only SELECT query (DuckDB SQL). At most 1,000 rows; stopped after 20 seconds."""
-    rows, columns, error = safety.run_sql(db(), sql)
+    """Run ONE read-only SELECT query (DuckDB SQL) on the warehouse tables. At most 1,000 rows; stopped after 20 seconds."""
+    rows, columns, error = safety.run_sql(db(), sql, max_rows=safety.MAX_ROWS + 1)   # one extra row tells us if it was cut
+    truncated = len(rows) > safety.MAX_ROWS
+    rows = rows[:safety.MAX_ROWS]
     return {"columns": columns, "rows": [[str(v) for v in r] for r in rows], "row_count": len(rows),
-            "truncated": len(rows) == safety.MAX_ROWS, "error": error}
+            "truncated": truncated, "error": error}
 
 
 if __name__ == "__main__":

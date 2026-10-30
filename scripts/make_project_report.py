@@ -180,7 +180,7 @@ s += [P("AdsKG-Agent: What We Built and How We Built It", h1),
       P("<b>The approach.</b> Start with the simplest possible version and add one idea at a time, measuring each step: "
         "(A) show the AI every table description &rarr; (B) basic search &rarr; (C) advanced search &rarr; (D) search + "
         "a map of how tables connect &rarr; (E) an agent that uses tools, with memory. Everything was built in 10 "
-        "milestones (M1&ndash;M10), each with a walkthrough notebook."),
+        "milestones (M1&ndash;M10), then reviewed and fixed (M11), each with a walkthrough notebook."),
       Spacer(1, 4),
       stats_row([("92.5%", "best accuracy on 80 unseen test<br/>questions (agent + memory)"),
                  ("90%", "follow-up questions answered<br/>(0% without chat memory)"),
@@ -192,10 +192,12 @@ s += [P("AdsKG-Agent: What We Built and How We Built It", h1),
         "is only needed once the catalog is too big to show."),
       B("<b>\"Advanced\" search tricks made things worse</b> (C, 68.3%). Rewriting the question and re-ranking didn't help "
         "find the tables a join needs."),
-      B("The <b>agent with memory of solved practice examples</b> is the best (92.5%). It's the only version that "
-        "handles follow-ups, and its written answers match the data."),
-      B("Every claim was checked: 3 runs per version, confidence intervals, significance tests, an AI grader and a "
-        "human check (kappa 0.65), and a sorted list of all 91 wrong answers."),
+      B("The <b>agent with memory of solved practice examples</b> scores highest (92.5%), but is <b>statistically tied "
+        "with A</b> (p = 0.11). It's the only version that handles follow-ups, so it's the one we ship; A remains the "
+        "simple choice for one-shot questions on a small catalog."),
+      B("Every claim was checked: 3 runs per version, confidence intervals, significance tests (with a Bonferroni "
+        "check), an AI grader and a human check (kappa 0.65), a sorted list of all 91 wrong answers, and an outside "
+        "code review whose fixes are reported openly (M11)."),
       P("The big picture", h2),
       arch_diagram(),
       P("<i>Figure 1. One-time prep builds the tables and their descriptions. For each question, the agent finds and "
@@ -250,9 +252,9 @@ s += [milestone("M1", "Build the warehouse (28 tables)",
                 "Put all data tools behind one MCP server: search_tables, get_join_path, list_lookalikes, "
                 "describe_table, sample_rows, run_sql.",
                 "FastMCP. Safety lives inside the server so nothing can bypass it: read-only database, one SELECT, "
-                "1,000 rows, 20-second timeout, known tables only; every call logged.",
-                "6 of 6 tools work; 6 of 6 attack attempts (DELETE, DROP, two statements...) blocked. Any MCP app "
-                "(e.g. Claude Code) can use it."),
+                "1,000 rows, 20-second timeout; every call logged.",
+                "6 of 6 tools work; 6 of 6 write attacks (DELETE, DROP, two statements...) blocked. Any MCP app "
+                "(e.g. Claude Code) can use it. (A gap, file reads inside a SELECT, was found later in review: see M11.)"),
       milestone("M7", "Version E: the agent, with memory",
                 "An agent that thinks, calls a tool, looks at the result and repeats until it can answer. Chat "
                 "memory for follow-ups, plus example memory: practice questions it got right, recalled as examples.",
@@ -282,7 +284,17 @@ s += [milestone("M9", "Final exam: 80 test questions, 3 runs each",
                 "A chat app, the documentation, this report, the slides and a video script.",
                 "Streamlit app (<font face='Courier'>app/streamlit_app.py</font>) showing each answer's SQL, result and "
                 "tool calls; PDFs generated from scripts so numbers come straight from the result files.",
-                "Everything needed to submit, re-run or present the project.")]
+                "Everything needed to submit, re-run or present the project."),
+      milestone("M11", "Code review and fixes",
+                "An outside review of the finished code found real problems and over-strong claims.",
+                "Switched off DuckDB file access and allowed only the 28 warehouse tables (a SELECT could read "
+                "<font face='Courier'>.env</font>); long results now drop rows instead of breaking JSON; the agent is sent "
+                "back once to run SQL it only showed; a fairer scorer; 27 unit tests that run on GitHub; Bonferroni and "
+                "\"chosen on test\" caveats added.",
+                "No frozen number changed (re-checked 3,280 queries and 666 wrong answers). The fixed agent, re-run as a "
+                "separate post-hoc result: E 80.0% &rarr; 84.2%, E + memory 92.5% &rarr; 95.0%, still tied with A.",
+                "The bugs were found by reading test answers &rarr; the re-run is reported apart from the frozen results, "
+                "not swapped in.")]
 
 # ---------- results ----------
 rows = [["Version", "What it is", "Accuracy [95% CI]", "Medium", "Tricky", "Time", "Cost"]]
@@ -300,8 +312,10 @@ s += [P("Results", h2),
       Image("docs/accuracy_ci.png", width=W * 0.8, height=W * 0.8 * 3.4 / 7),
       P("<i>Figure 2. Dot = average of 3 runs on 80 test questions; line = 95% confidence interval (the range where "
         "the true accuracy probably lies).</i>", cap),
-      B("<b>Real differences</b> (McNemar test, p &lt; 0.05): A beats B and D; memory makes the agent better (15 "
-        "questions fixed, 0 broken). B, C, D and the agent without memory are <b>not</b> clearly different."),
+      B("<b>Real differences</b> (McNemar test): A beats D and memory makes the agent better (15 questions fixed, 0 "
+        "broken), both even after a Bonferroni correction for 8 tests; A beats B at p = 0.0063, borderline after "
+        "correction. B, C, D and the agent without memory are <b>not</b> clearly different, and <b>A vs agent + memory "
+        "is a tie</b> (p = 0.11)."),
       B("<b>Memory honesty check:</b> 56 of 80 test questions share a template with a practice example in memory. On "
         "the 24 that don't, memory still lifts the agent from 72% to 85%, so it's not just copying."),
       B("<b>Why things fail</b> (91 wrong answers sorted): wrong calculation (26), search missed the lookup table "
@@ -319,6 +333,8 @@ s += [P("What we learned", h2),
              ["Memory matters most for an agent", "example memory +12.5 points; chat memory turns follow-ups from 0% to 90%"],
              ["Never grade what didn't run", "the agent once \"answered\" with SQL it never executed; grading only "
               "executed SQL made it honest"],
+             ["Let someone else review it", "a code review found a file-read hole and two agent bugs that all our "
+              "own checks missed"],
              ["Freeze the test, report everything", "every change made on practice questions, and every pivot, is in "
               "the README, including negative results"]],
             [W * 0.33, W * 0.67])]

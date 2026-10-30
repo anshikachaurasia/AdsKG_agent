@@ -5,7 +5,8 @@ ReAct = REason + ACT, in a loop:
 
 The graph:
     START -> agent --(tool calls?)--> tools -> agent ...
-                   \\--(no tool calls)--> END
+                   \\--(answer shows SQL that never ran?)--> run_it -> agent   (once per question)
+                   \\--(otherwise)--> END
 
 Agent rules (the "harness" around the agent):
   - at most 8 steps (agent turns) per question
@@ -13,6 +14,7 @@ Agent rules (the "harness" around the agent):
   - a token budget per question (a cost limit)
   When a limit is hit, the agent must answer from queries that already ran, or say it is not sure.
   The answer is graded on the last SQL that actually ran without an error, never on SQL it only wrote.
+  If the final answer shows SQL that never ran, the agent is sent back once to run it.
 
 Memory:
   - chat memory (short-term): earlier turns of the same conversation are kept (LangGraph checkpointer),
@@ -35,6 +37,7 @@ from typing_extensions import TypedDict
 
 sys.path.append(str(Path(__file__).resolve().parent))
 load_dotenv(Path(__file__).resolve().parent.parent / ".env")   # OPENAI_API_KEY
+from answer_checks import says_not_sure, unrun_sql  # noqa: E402
 from mcp_tools import MCPConnection, langchain_tools  # noqa: E402
 from memory import recall  # noqa: E402
 
@@ -71,6 +74,8 @@ Final answer (when you are done):
 
 FINISH_NOW = ("You have reached your limit for this question. Do not call tools. Give your final answer now, based "
               "ONLY on queries that already ran successfully. If none did, say \"not sure\".")
+RUN_IT = ("Your answer shows SQL that you have not run. Run it with run_sql now, then answer from its actual "
+          "result (or say \"not sure\").")
 
 
 class State(TypedDict):
@@ -79,6 +84,7 @@ class State(TypedDict):
     sql_errors: int
     tokens_in: int
     tokens_out: int
+    nudged: bool   # already sent back once to run its SQL
 
 
 def recent_turns(messages, keep=KEEP_USER_TURNS):
@@ -101,6 +107,17 @@ def count_sql_errors(messages):
     return errors
 
 
+def at_limit(state):
+    return (state["steps"] >= MAX_STEPS or state["sql_errors"] >= MAX_SQL_ERRORS
+            or state["tokens_in"] >= MAX_TOKENS_IN)
+
+
+def this_question(messages):
+    """The messages since the latest user question."""
+    starts = [i for i, m in enumerate(messages) if isinstance(m, HumanMessage)]
+    return messages[starts[-1]:] if starts else messages
+
+
 def build_agent(config, connection):
     tools = langchain_tools(connection)
     llm = ChatOpenAI(model=config["model"], reasoning_effort=config.get("reasoning_effort"))
@@ -116,9 +133,7 @@ def build_agent(config, connection):
                 system += "\nSimilar questions answered correctly before:\n" + "\n".join(
                     f"Q: {e['question']}\nSQL: {e['sql']}" for e in examples)
 
-        at_limit = (state["steps"] >= MAX_STEPS or state["sql_errors"] >= MAX_SQL_ERRORS
-                    or state["tokens_in"] >= MAX_TOKENS_IN)
-        if at_limit:
+        if at_limit(state):
             response = llm.invoke([SystemMessage(system)] + messages + [HumanMessage(FINISH_NOW)])
         else:
             response = llm_with_tools.invoke([SystemMessage(system)] + messages)
@@ -137,31 +152,48 @@ def build_agent(config, connection):
 
     def next_step(state):
         last = state["messages"][-1]
-        return "tools" if isinstance(last, AIMessage) and last.tool_calls else END
+        if isinstance(last, AIMessage) and last.tool_calls:
+            return "tools"
+        if (not state["nudged"] and not at_limit(state) and not says_not_sure(last.content)
+                and unrun_sql(last.content, good_sqls(this_question(state["messages"])))):
+            return "run_it"
+        return END
+
+    def run_it(state):
+        """The answer shows SQL that never ran: send the agent back (once) to run it."""
+        return {"messages": [SystemMessage(RUN_IT)], "nudged": True}
 
     graph = StateGraph(State)
     graph.add_node("agent", agent)
     graph.add_node("tools", run_tools)
+    graph.add_node("run_it", run_it)
     graph.add_edge(START, "agent")
-    graph.add_conditional_edges("agent", next_step, {"tools": "tools", END: END})
+    graph.add_conditional_edges("agent", next_step, {"tools": "tools", "run_it": "run_it", END: END})
     graph.add_edge("tools", "agent")
+    graph.add_edge("run_it", "agent")
     return graph.compile(checkpointer=InMemorySaver())
 
 
-def last_good_sql(messages):
-    """The last run_sql query that actually ran without an error (the answer is graded on what really ran)."""
+def good_sqls(messages):
+    """Every run_sql query that actually ran without an error, in order."""
     results = {m.tool_call_id: m.content for m in messages if isinstance(m, ToolMessage) and m.name == "run_sql"}
-    good = ""
+    good = []
     for m in messages:
         if isinstance(m, AIMessage):
             for call in m.tool_calls:
                 if call["name"] == "run_sql" and call["id"] in results:
                     try:
                         if not json.loads(results[call["id"]]).get("error"):
-                            good = call["args"]["sql"]
+                            good.append(call["args"]["sql"])
                     except json.JSONDecodeError:
                         pass
     return good
+
+
+def last_good_sql(messages):
+    """The last query that actually ran without an error (the answer is graded on what really ran)."""
+    good = good_sqls(messages)
+    return good[-1] if good else ""
 
 
 def tables_seen(messages):
@@ -195,10 +227,10 @@ class AgentE:
         run_config = {"configurable": {"thread_id": thread_id}, "recursion_limit": 4 * MAX_STEPS}
         before = len(self.agent.get_state(run_config).values.get("messages", []))
         state = self.agent.invoke({"messages": [HumanMessage(question)], "steps": 0, "sql_errors": 0,
-                                   "tokens_in": 0, "tokens_out": 0}, run_config)
+                                   "tokens_in": 0, "tokens_out": 0, "nudged": False}, run_config)
         new = state["messages"][before:]
         answer = new[-1].content
-        not_sure = "not sure" in answer.lower()
+        not_sure = says_not_sure(answer)   # an answer that STARTS with "not sure"; a caveat doesn't count
         return {
             "answer": answer,
             "sql": "" if not_sure else last_good_sql(new),   # never grade SQL that was not actually run

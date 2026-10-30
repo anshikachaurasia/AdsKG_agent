@@ -16,7 +16,6 @@ import time
 from datetime import datetime
 from pathlib import Path
 
-import duckdb
 import yaml
 
 PROJECT = Path(__file__).resolve().parent.parent
@@ -24,7 +23,7 @@ sys.path += [str(PROJECT / "agent"), str(PROJECT / "mcp_server"), str(PROJECT / 
 
 from metrics import results_match, table_scores  # noqa: E402
 from pipelines import VERSIONS  # noqa: E402
-from safety import run_sql, tables_in_sql  # noqa: E402
+from safety import connect, run_sql, tables_in_sql  # noqa: E402
 
 DB_PATH = PROJECT / "data" / "ads.duckdb"
 BENCH = PROJECT / "benchmark"
@@ -118,7 +117,7 @@ def main():
               + ("_conv" if args.conversations else "") + (f"_cat{args.catalog}" if args.catalog != 28 else ""))
     out_dir = RESULTS / run_id
     out_dir.mkdir(parents=True)
-    con = duckdb.connect(str(DB_PATH), read_only=True)
+    con = connect(DB_PATH)   # read-only, no file access
 
     records = []
     with open(out_dir / "answers.jsonl", "w") as f:

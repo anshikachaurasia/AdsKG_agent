@@ -1,0 +1,17 @@
+name: tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  unit-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      # the unit tests need no data, no Neo4j, no Qdrant and no API key, so only 4 small packages
+      - run: pip install duckdb==2.0.0 sqlglot==30.25.0 PyYAML==6.0.3 pytest==9.2.0
+      - run: python -m pytest -q

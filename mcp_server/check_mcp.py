@@ -27,6 +27,13 @@ ATTACKS = [
     ("run_sql", {"sql": "COPY dim_ad TO 'stolen.csv'"}),
     ("run_sql", {"sql": "INSERT INTO dim_ad VALUES (1, 1, 1, 1, 1, 1)"}),
     ("sample_rows", {"table": "dim_ad; DROP TABLE dim_ad"}),
+    # reads of local files and of anything outside the 28 warehouse tables
+    ("run_sql", {"sql": "SELECT content FROM read_text('.env')"}),
+    ("run_sql", {"sql": "SELECT * FROM read_csv('/etc/passwd', header=false)"}),
+    ("run_sql", {"sql": "SELECT * FROM glob('*')"}),
+    ("run_sql", {"sql": "SELECT * FROM dim_ad WHERE ad_id IN (SELECT 1 FROM read_text('.env'))"}),
+    ("run_sql", {"sql": "SELECT * FROM raw_sample LIMIT 1"}),
+    ("run_sql", {"sql": "SET enable_external_access = true"}),
 ]
 
 
